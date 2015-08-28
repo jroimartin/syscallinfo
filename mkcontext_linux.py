@@ -1,13 +1,19 @@
 #!/usr/bin/env python
 
-# ctags file must be generated with:
+# Dependencies:
+#   pip install python-ctags
+# The ctags file must be generated with:
 #   ctags --fields=afmikKlnsStz --c-kinds=+pc -R
 
-import ctags, re, simplejson, sys, os
+import sys
+import os
+import re
+import ctags
+import simplejson
 
 def main():
     if len(sys.argv) != 3:
-        print 'usage: python gen_syscalls.py tbl_file tags_file'
+        print 'usage: %s generate_context.py tbl_file tags_file' % sys.argv[0]
         sys.exit(2)
     tbl_path = sys.argv[1]
     tags_path = sys.argv[2]
@@ -30,7 +36,7 @@ def main():
         if not tags.find(entry, entrypoint, ctags.TAG_FULLMATCH | ctags.TAG_OBSERVECASE):
             continue
 
-        syscall['num'] = num
+        syscall['num'] = int(num)
         syscall['name'] = name
         syscall['entry'] = entrypoint
 
@@ -49,9 +55,8 @@ def main():
             strargs = entry['signature'].strip('()').split(',')
             for strarg in strargs:
                 strarg = strarg.strip()
-                arg = {'name': '', 'type': '', 'refcount': ''}
-                arg['name'] = re.split(r'[ *]+', strarg)[-1]
-                arg['type'] = strarg
+                arg = {'sig': '', 'refcount': 0, 'context': ''}
+                arg['sig'] = strarg
                 arg['refcount'] = strarg.count('*')
                 args.append(arg)
 
@@ -61,7 +66,7 @@ def main():
 
     tbl_file.close()
 
-    print simplejson.dumps({'syscalls': syscalls}, indent='\t')
+    print simplejson.dumps(syscalls, indent='\t')
 
 if __name__ == "__main__":
     main()
