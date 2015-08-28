@@ -84,8 +84,7 @@ var syscalls = map[int]syscallinfo.Syscall{
 				Sig: "{{.Sig}}",
 				Context: {{.Context}},
 			},
-{{end}}
-		},
+{{end}}		},
 	},
 {{end}}}
 
