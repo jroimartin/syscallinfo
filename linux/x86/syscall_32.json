@@ -1,0 +1,6576 @@
+[
+	{
+		"entry": "sys_restart_syscall",
+		"num": 0,
+		"name": "restart_syscall",
+		"args": []
+	},
+	{
+		"entry": "sys_exit",
+		"num": 1,
+		"name": "exit",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int error_code",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fork",
+		"num": 2,
+		"name": "fork",
+		"args": []
+	},
+	{
+		"entry": "sys_read",
+		"num": 3,
+		"name": "read",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t count",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_write",
+		"num": 4,
+		"name": "write",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t count",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_open",
+		"num": 5,
+		"name": "open",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_close",
+		"num": 6,
+		"name": "close",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_waitpid",
+		"num": 7,
+		"name": "waitpid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "int __user *stat_addr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int options",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_creat",
+		"num": 8,
+		"name": "creat",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *pathname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_link",
+		"num": 9,
+		"name": "link",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *oldname",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *newname",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_unlink",
+		"num": 10,
+		"name": "unlink",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *pathname",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_execve",
+		"num": 11,
+		"name": "execve",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const char __user *const __user *argv",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const char __user *const __user *envp",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_chdir",
+		"num": 12,
+		"name": "chdir",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_time",
+		"num": 13,
+		"name": "time",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "time_t __user *tloc",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mknod",
+		"num": 14,
+		"name": "mknod",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned dev",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_chmod",
+		"num": 15,
+		"name": "chmod",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lchown16",
+		"num": 16,
+		"name": "lchown",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_uid_t user",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_gid_t group",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_stat",
+		"num": 18,
+		"name": "oldstat",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct __old_kernel_stat __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lseek",
+		"num": 19,
+		"name": "lseek",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "off_t offset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int whence",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getpid",
+		"num": 20,
+		"name": "getpid",
+		"args": []
+	},
+	{
+		"entry": "sys_mount",
+		"num": 21,
+		"name": "mount",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *dev_name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *dir_name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *type",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *data",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_oldumount",
+		"num": 22,
+		"name": "umount",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *name",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setuid16",
+		"num": 23,
+		"name": "setuid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "old_uid_t uid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getuid16",
+		"num": 24,
+		"name": "getuid",
+		"args": []
+	},
+	{
+		"entry": "sys_stime",
+		"num": 25,
+		"name": "stime",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "time_t __user *tptr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ptrace",
+		"num": 26,
+		"name": "ptrace",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "long request",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "long pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long addr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long data",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_alarm",
+		"num": 27,
+		"name": "alarm",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int seconds",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fstat",
+		"num": 28,
+		"name": "oldfstat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct __old_kernel_stat __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_pause",
+		"num": 29,
+		"name": "pause",
+		"args": []
+	},
+	{
+		"entry": "sys_utime",
+		"num": 30,
+		"name": "utime",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct utimbuf __user *times",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_access",
+		"num": 33,
+		"name": "access",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_nice",
+		"num": 34,
+		"name": "nice",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int increment",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sync",
+		"num": 36,
+		"name": "sync",
+		"args": []
+	},
+	{
+		"entry": "sys_kill",
+		"num": 37,
+		"name": "kill",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int sig",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rename",
+		"num": 38,
+		"name": "rename",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *oldname",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *newname",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mkdir",
+		"num": 39,
+		"name": "mkdir",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *pathname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rmdir",
+		"num": 40,
+		"name": "rmdir",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *pathname",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_dup",
+		"num": 41,
+		"name": "dup",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fildes",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_pipe",
+		"num": 42,
+		"name": "pipe",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "int __user *fildes",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_times",
+		"num": 43,
+		"name": "times",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct tms __user *tbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_brk",
+		"num": 45,
+		"name": "brk",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long brk",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setgid16",
+		"num": 46,
+		"name": "setgid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "old_gid_t gid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getgid16",
+		"num": 47,
+		"name": "getgid",
+		"args": []
+	},
+	{
+		"entry": "sys_signal",
+		"num": 48,
+		"name": "signal",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int sig",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "__sighandler_t handler",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_geteuid16",
+		"num": 49,
+		"name": "geteuid",
+		"args": []
+	},
+	{
+		"entry": "sys_getegid16",
+		"num": 50,
+		"name": "getegid",
+		"args": []
+	},
+	{
+		"entry": "sys_acct",
+		"num": 51,
+		"name": "acct",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_umount",
+		"num": 52,
+		"name": "umount2",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ioctl",
+		"num": 54,
+		"name": "ioctl",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int cmd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fcntl",
+		"num": 55,
+		"name": "fcntl",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int cmd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setpgid",
+		"num": 57,
+		"name": "setpgid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "pid_t pgid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_olduname",
+		"num": 59,
+		"name": "oldolduname",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct oldold_utsname __user *",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_umask",
+		"num": 60,
+		"name": "umask",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int mask",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_chroot",
+		"num": 61,
+		"name": "chroot",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ustat",
+		"num": 62,
+		"name": "ustat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned dev",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct ustat __user *ubuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_dup2",
+		"num": 63,
+		"name": "dup2",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int oldfd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int newfd",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getppid",
+		"num": 64,
+		"name": "getppid",
+		"args": []
+	},
+	{
+		"entry": "sys_getpgrp",
+		"num": 65,
+		"name": "getpgrp",
+		"args": []
+	},
+	{
+		"entry": "sys_setsid",
+		"num": 66,
+		"name": "setsid",
+		"args": []
+	},
+	{
+		"entry": "sys_sigaction",
+		"num": 67,
+		"name": "sigaction",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct old_sigaction __user *",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct old_sigaction __user *",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sgetmask",
+		"num": 68,
+		"name": "sgetmask",
+		"args": []
+	},
+	{
+		"entry": "sys_ssetmask",
+		"num": 69,
+		"name": "ssetmask",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int newmask",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setreuid16",
+		"num": 70,
+		"name": "setreuid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "old_uid_t ruid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_uid_t euid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setregid16",
+		"num": 71,
+		"name": "setregid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "old_gid_t rgid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_gid_t egid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sigsuspend",
+		"num": 72,
+		"name": "sigsuspend",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int unused1",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int unused2",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_sigset_t mask",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sigpending",
+		"num": 73,
+		"name": "sigpending",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "old_sigset_t __user *set",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sethostname",
+		"num": 74,
+		"name": "sethostname",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setrlimit",
+		"num": 75,
+		"name": "setrlimit",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int resource",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct rlimit __user *rlim",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_old_getrlimit",
+		"num": 76,
+		"name": "getrlimit",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int resource",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct rlimit __user *rlim",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getrusage",
+		"num": 77,
+		"name": "getrusage",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int who",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct rusage __user *ru",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_gettimeofday",
+		"num": 78,
+		"name": "gettimeofday",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct timeval __user *tv",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timezone __user *tz",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_settimeofday",
+		"num": 79,
+		"name": "settimeofday",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct timeval __user *tv",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timezone __user *tz",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getgroups16",
+		"num": 80,
+		"name": "getgroups",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int gidsetsize",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "old_gid_t __user *grouplist",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setgroups16",
+		"num": 81,
+		"name": "setgroups",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int gidsetsize",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "old_gid_t __user *grouplist",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_old_select",
+		"num": 82,
+		"name": "select",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct sel_arg_struct __user *arg",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_symlink",
+		"num": 83,
+		"name": "symlink",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *old",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *new",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lstat",
+		"num": 84,
+		"name": "oldlstat",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct __old_kernel_stat __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_readlink",
+		"num": 85,
+		"name": "readlink",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int bufsiz",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_uselib",
+		"num": 86,
+		"name": "uselib",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *library",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_swapon",
+		"num": 87,
+		"name": "swapon",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *specialfile",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int swap_flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_reboot",
+		"num": 88,
+		"name": "reboot",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int magic1",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int magic2",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int cmd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *arg",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_old_readdir",
+		"num": 89,
+		"name": "readdir",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct old_linux_dirent __user *",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_old_mmap",
+		"num": 90,
+		"name": "mmap",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct mmap_arg_struct __user *arg",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_munmap",
+		"num": 91,
+		"name": "munmap",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long addr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_truncate",
+		"num": 92,
+		"name": "truncate",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "long length",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ftruncate",
+		"num": 93,
+		"name": "ftruncate",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long length",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fchmod",
+		"num": 94,
+		"name": "fchmod",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fchown16",
+		"num": 95,
+		"name": "fchown",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_uid_t user",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_gid_t group",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getpriority",
+		"num": 96,
+		"name": "getpriority",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int which",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int who",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setpriority",
+		"num": 97,
+		"name": "setpriority",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int which",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int who",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int niceval",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_statfs",
+		"num": 99,
+		"name": "statfs",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user * path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct statfs __user *buf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fstatfs",
+		"num": 100,
+		"name": "fstatfs",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct statfs __user *buf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ioperm",
+		"num": 101,
+		"name": "ioperm",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_socketcall",
+		"num": 102,
+		"name": "socketcall",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int call",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "unsigned long __user *args",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_syslog",
+		"num": 103,
+		"name": "syslog",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int type",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setitimer",
+		"num": 104,
+		"name": "setitimer",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int which",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct itimerval __user *value",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct itimerval __user *ovalue",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getitimer",
+		"num": 105,
+		"name": "getitimer",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int which",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct itimerval __user *value",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_newstat",
+		"num": 106,
+		"name": "stat",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct stat __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_newlstat",
+		"num": 107,
+		"name": "lstat",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct stat __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_newfstat",
+		"num": 108,
+		"name": "fstat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct stat __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_uname",
+		"num": 109,
+		"name": "olduname",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct old_utsname __user *",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_iopl",
+		"num": 110,
+		"name": "iopl",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_vhangup",
+		"num": 111,
+		"name": "vhangup",
+		"args": []
+	},
+	{
+		"entry": "sys_vm86old",
+		"num": 113,
+		"name": "vm86old",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct vm86_struct __user *",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_wait4",
+		"num": 114,
+		"name": "wait4",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "int __user *stat_addr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int options",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct rusage __user *ru",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_swapoff",
+		"num": 115,
+		"name": "swapoff",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *specialfile",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sysinfo",
+		"num": 116,
+		"name": "sysinfo",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct sysinfo __user *info",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ipc",
+		"num": 117,
+		"name": "ipc",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int call",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int first",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long second",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long third",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *ptr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "long fifth",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fsync",
+		"num": 118,
+		"name": "fsync",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sigreturn",
+		"num": 119,
+		"name": "sigreturn",
+		"args": []
+	},
+	{
+		"entry": "sys_clone",
+		"num": 120,
+		"name": "clone",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "int __user *",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "int __user *",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setdomainname",
+		"num": 121,
+		"name": "setdomainname",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_newuname",
+		"num": 122,
+		"name": "uname",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct new_utsname __user *name",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_modify_ldt",
+		"num": 123,
+		"name": "modify_ldt",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_adjtimex",
+		"num": 124,
+		"name": "adjtimex",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct timex __user *txc_p",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mprotect",
+		"num": 125,
+		"name": "mprotect",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long start",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long prot",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sigprocmask",
+		"num": 126,
+		"name": "sigprocmask",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int how",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "old_sigset_t __user *set",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "old_sigset_t __user *oset",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_init_module",
+		"num": 128,
+		"name": "init_module",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "void __user *umod",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long len",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *uargs",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_delete_module",
+		"num": 129,
+		"name": "delete_module",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *name_user",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_quotactl",
+		"num": 131,
+		"name": "quotactl",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int cmd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *special",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "qid_t id",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *addr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getpgid",
+		"num": 132,
+		"name": "getpgid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fchdir",
+		"num": 133,
+		"name": "fchdir",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_bdflush",
+		"num": 134,
+		"name": "bdflush",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int func",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "long data",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sysfs",
+		"num": 135,
+		"name": "sysfs",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int option",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg1",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg2",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_personality",
+		"num": 136,
+		"name": "personality",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int personality",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setfsuid16",
+		"num": 138,
+		"name": "setfsuid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "old_uid_t uid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setfsgid16",
+		"num": 139,
+		"name": "setfsgid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "old_gid_t gid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_llseek",
+		"num": 140,
+		"name": "_llseek",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long offset_high",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long offset_low",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "loff_t __user *result",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int whence",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getdents",
+		"num": 141,
+		"name": "getdents",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct linux_dirent __user *dirent",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int count",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_select",
+		"num": 142,
+		"name": "_newselect",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int n",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "fd_set __user *inp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "fd_set __user *outp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "fd_set __user *exp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timeval __user *tvp",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_flock",
+		"num": 143,
+		"name": "flock",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int cmd",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_msync",
+		"num": 144,
+		"name": "msync",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long start",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_readv",
+		"num": 145,
+		"name": "readv",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *vec",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long vlen",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_writev",
+		"num": 146,
+		"name": "writev",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *vec",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long vlen",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getsid",
+		"num": 147,
+		"name": "getsid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fdatasync",
+		"num": 148,
+		"name": "fdatasync",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sysctl",
+		"num": 149,
+		"name": "_sysctl",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct __sysctl_args __user *args",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mlock",
+		"num": 150,
+		"name": "mlock",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long start",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_munlock",
+		"num": 151,
+		"name": "munlock",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long start",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mlockall",
+		"num": 152,
+		"name": "mlockall",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_munlockall",
+		"num": 153,
+		"name": "munlockall",
+		"args": []
+	},
+	{
+		"entry": "sys_sched_setparam",
+		"num": 154,
+		"name": "sched_setparam",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct sched_param __user *param",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_getparam",
+		"num": 155,
+		"name": "sched_getparam",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct sched_param __user *param",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_setscheduler",
+		"num": 156,
+		"name": "sched_setscheduler",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int policy",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct sched_param __user *param",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_getscheduler",
+		"num": 157,
+		"name": "sched_getscheduler",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_yield",
+		"num": 158,
+		"name": "sched_yield",
+		"args": []
+	},
+	{
+		"entry": "sys_sched_get_priority_max",
+		"num": 159,
+		"name": "sched_get_priority_max",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int policy",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_get_priority_min",
+		"num": 160,
+		"name": "sched_get_priority_min",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int policy",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_rr_get_interval",
+		"num": 161,
+		"name": "sched_rr_get_interval",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *interval",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_nanosleep",
+		"num": 162,
+		"name": "nanosleep",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *rqtp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *rmtp",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mremap",
+		"num": 163,
+		"name": "mremap",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long addr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long old_len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long new_len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long new_addr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setresuid16",
+		"num": 164,
+		"name": "setresuid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "old_uid_t ruid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_uid_t euid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_uid_t suid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getresuid16",
+		"num": 165,
+		"name": "getresuid",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "old_uid_t __user *ruid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "old_uid_t __user *euid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "old_uid_t __user *suid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_vm86",
+		"num": 166,
+		"name": "vm86",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_poll",
+		"num": 168,
+		"name": "poll",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct pollfd __user *ufds",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int nfds",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int timeout",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setresgid16",
+		"num": 170,
+		"name": "setresgid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "old_gid_t rgid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_gid_t egid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_gid_t sgid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getresgid16",
+		"num": 171,
+		"name": "getresgid",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "old_gid_t __user *rgid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "old_gid_t __user *egid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "old_gid_t __user *sgid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_prctl",
+		"num": 172,
+		"name": "prctl",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int option",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg2",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg3",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg4",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg5",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rt_sigreturn",
+		"num": 173,
+		"name": "rt_sigreturn",
+		"args": []
+	},
+	{
+		"entry": "sys_rt_sigaction",
+		"num": 174,
+		"name": "rt_sigaction",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct sigaction __user *",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct sigaction __user *",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rt_sigprocmask",
+		"num": 175,
+		"name": "rt_sigprocmask",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int how",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "sigset_t __user *set",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "sigset_t __user *oset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sigsetsize",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rt_sigpending",
+		"num": 176,
+		"name": "rt_sigpending",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "sigset_t __user *set",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sigsetsize",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rt_sigtimedwait",
+		"num": 177,
+		"name": "rt_sigtimedwait",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const sigset_t __user *uthese",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "siginfo_t __user *uinfo",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct timespec __user *uts",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sigsetsize",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rt_sigqueueinfo",
+		"num": 178,
+		"name": "rt_sigqueueinfo",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int sig",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "siginfo_t __user *uinfo",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rt_sigsuspend",
+		"num": 179,
+		"name": "rt_sigsuspend",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "sigset_t __user *unewset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sigsetsize",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_pread64",
+		"num": 180,
+		"name": "pread64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t count",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t pos",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_pwrite64",
+		"num": 181,
+		"name": "pwrite64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t count",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t pos",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_chown16",
+		"num": 182,
+		"name": "chown",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_uid_t user",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "old_gid_t group",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getcwd",
+		"num": 183,
+		"name": "getcwd",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_capget",
+		"num": 184,
+		"name": "capget",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "cap_user_header_t header",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "cap_user_data_t dataptr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_capset",
+		"num": 185,
+		"name": "capset",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "cap_user_header_t header",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "const cap_user_data_t data",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sigaltstack",
+		"num": 186,
+		"name": "sigaltstack",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const struct sigaltstack __user *uss",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct sigaltstack __user *uoss",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sendfile",
+		"num": 187,
+		"name": "sendfile",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int out_fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int in_fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "off_t __user *offset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t count",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_vfork",
+		"num": 190,
+		"name": "vfork",
+		"args": []
+	},
+	{
+		"entry": "sys_getrlimit",
+		"num": 191,
+		"name": "ugetrlimit",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int resource",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct rlimit __user *rlim",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mmap_pgoff",
+		"num": 192,
+		"name": "mmap2",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long addr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long prot",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long pgoff",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_truncate64",
+		"num": 193,
+		"name": "truncate64",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t length",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ftruncate64",
+		"num": 194,
+		"name": "ftruncate64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t length",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_stat64",
+		"num": 195,
+		"name": "stat64",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct stat64 __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lstat64",
+		"num": 196,
+		"name": "lstat64",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct stat64 __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fstat64",
+		"num": 197,
+		"name": "fstat64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct stat64 __user *statbuf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lchown",
+		"num": 198,
+		"name": "lchown32",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "uid_t user",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "gid_t group",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getuid",
+		"num": 199,
+		"name": "getuid32",
+		"args": []
+	},
+	{
+		"entry": "sys_getgid",
+		"num": 200,
+		"name": "getgid32",
+		"args": []
+	},
+	{
+		"entry": "sys_geteuid",
+		"num": 201,
+		"name": "geteuid32",
+		"args": []
+	},
+	{
+		"entry": "sys_getegid",
+		"num": 202,
+		"name": "getegid32",
+		"args": []
+	},
+	{
+		"entry": "sys_setreuid",
+		"num": 203,
+		"name": "setreuid32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "uid_t ruid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "uid_t euid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setregid",
+		"num": 204,
+		"name": "setregid32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "gid_t rgid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "gid_t egid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getgroups",
+		"num": 205,
+		"name": "getgroups32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int gidsetsize",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "gid_t __user *grouplist",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setgroups",
+		"num": 206,
+		"name": "setgroups32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int gidsetsize",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "gid_t __user *grouplist",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fchown",
+		"num": 207,
+		"name": "fchown32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "uid_t user",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "gid_t group",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setresuid",
+		"num": 208,
+		"name": "setresuid32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "uid_t ruid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "uid_t euid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "uid_t suid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getresuid",
+		"num": 209,
+		"name": "getresuid32",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "uid_t __user *ruid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "uid_t __user *euid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "uid_t __user *suid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setresgid",
+		"num": 210,
+		"name": "setresgid32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "gid_t rgid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "gid_t egid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "gid_t sgid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getresgid",
+		"num": 211,
+		"name": "getresgid32",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "gid_t __user *rgid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "gid_t __user *egid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "gid_t __user *sgid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_chown",
+		"num": 212,
+		"name": "chown32",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "uid_t user",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "gid_t group",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setuid",
+		"num": 213,
+		"name": "setuid32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "uid_t uid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setgid",
+		"num": 214,
+		"name": "setgid32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "gid_t gid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setfsuid",
+		"num": 215,
+		"name": "setfsuid32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "uid_t uid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setfsgid",
+		"num": 216,
+		"name": "setfsgid32",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "gid_t gid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_pivot_root",
+		"num": 217,
+		"name": "pivot_root",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *new_root",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *put_old",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mincore",
+		"num": 218,
+		"name": "mincore",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long start",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "unsigned char __user * vec",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_madvise",
+		"num": 219,
+		"name": "madvise",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long start",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int behavior",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getdents64",
+		"num": 220,
+		"name": "getdents64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct linux_dirent64 __user *dirent",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int count",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fcntl64",
+		"num": 221,
+		"name": "fcntl64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int cmd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_gettid",
+		"num": 224,
+		"name": "gettid",
+		"args": []
+	},
+	{
+		"entry": "sys_readahead",
+		"num": 225,
+		"name": "readahead",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t offset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t count",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setxattr",
+		"num": 226,
+		"name": "setxattr",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const void __user *value",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lsetxattr",
+		"num": 227,
+		"name": "lsetxattr",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const void __user *value",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fsetxattr",
+		"num": 228,
+		"name": "fsetxattr",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const void __user *value",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getxattr",
+		"num": 229,
+		"name": "getxattr",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *value",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lgetxattr",
+		"num": 230,
+		"name": "lgetxattr",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *value",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fgetxattr",
+		"num": 231,
+		"name": "fgetxattr",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *value",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_listxattr",
+		"num": 232,
+		"name": "listxattr",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *list",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_llistxattr",
+		"num": 233,
+		"name": "llistxattr",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *list",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_flistxattr",
+		"num": 234,
+		"name": "flistxattr",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *list",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_removexattr",
+		"num": 235,
+		"name": "removexattr",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lremovexattr",
+		"num": 236,
+		"name": "lremovexattr",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fremovexattr",
+		"num": 237,
+		"name": "fremovexattr",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_tkill",
+		"num": 238,
+		"name": "tkill",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int sig",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sendfile64",
+		"num": 239,
+		"name": "sendfile64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int out_fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int in_fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "loff_t __user *offset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t count",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_futex",
+		"num": 240,
+		"name": "futex",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "u32 __user *uaddr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int op",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "u32 val",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *utime",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "u32 __user *uaddr2",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "u32 val3",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_setaffinity",
+		"num": 241,
+		"name": "sched_setaffinity",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int len",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "unsigned long __user *user_mask_ptr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_getaffinity",
+		"num": 242,
+		"name": "sched_getaffinity",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int len",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "unsigned long __user *user_mask_ptr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_set_thread_area",
+		"num": 243,
+		"name": "set_thread_area",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct user_desc __user *",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_get_thread_area",
+		"num": 244,
+		"name": "get_thread_area",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct user_desc __user *",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_io_setup",
+		"num": 245,
+		"name": "io_setup",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned nr_reqs",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "aio_context_t __user *ctx",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_io_destroy",
+		"num": 246,
+		"name": "io_destroy",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "aio_context_t ctx",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_io_getevents",
+		"num": 247,
+		"name": "io_getevents",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "aio_context_t ctx_id",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "long min_nr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "long nr",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct io_event __user *events",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *timeout",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_io_submit",
+		"num": 248,
+		"name": "io_submit",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "aio_context_t",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "long",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "struct iocb __user * __user *",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_io_cancel",
+		"num": 249,
+		"name": "io_cancel",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "aio_context_t ctx_id",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct iocb __user *iocb",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct io_event __user *result",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fadvise64",
+		"num": 250,
+		"name": "fadvise64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t offset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int advice",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_exit_group",
+		"num": 252,
+		"name": "exit_group",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int error_code",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_lookup_dcookie",
+		"num": 253,
+		"name": "lookup_dcookie",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "u64 cookie64",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_epoll_create",
+		"num": 254,
+		"name": "epoll_create",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_epoll_ctl",
+		"num": 255,
+		"name": "epoll_ctl",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int epfd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int op",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct epoll_event __user *event",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_epoll_wait",
+		"num": 256,
+		"name": "epoll_wait",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int epfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct epoll_event __user *events",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int maxevents",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int timeout",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_remap_file_pages",
+		"num": 257,
+		"name": "remap_file_pages",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long start",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long size",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long prot",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long pgoff",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_set_tid_address",
+		"num": 258,
+		"name": "set_tid_address",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "int __user *tidptr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_timer_create",
+		"num": 259,
+		"name": "timer_create",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "clockid_t which_clock",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct sigevent __user *timer_event_spec",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "timer_t __user * created_timer_id",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_timer_settime",
+		"num": 260,
+		"name": "timer_settime",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "timer_t timer_id",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct itimerspec __user *new_setting",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct itimerspec __user *old_setting",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_timer_gettime",
+		"num": 261,
+		"name": "timer_gettime",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "timer_t timer_id",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct itimerspec __user *setting",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_timer_getoverrun",
+		"num": 262,
+		"name": "timer_getoverrun",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "timer_t timer_id",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_timer_delete",
+		"num": 263,
+		"name": "timer_delete",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "timer_t timer_id",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_clock_settime",
+		"num": 264,
+		"name": "clock_settime",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "clockid_t which_clock",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct timespec __user *tp",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_clock_gettime",
+		"num": 265,
+		"name": "clock_gettime",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "clockid_t which_clock",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *tp",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_clock_getres",
+		"num": 266,
+		"name": "clock_getres",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "clockid_t which_clock",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *tp",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_clock_nanosleep",
+		"num": 267,
+		"name": "clock_nanosleep",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "clockid_t which_clock",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct timespec __user *rqtp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *rmtp",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_statfs64",
+		"num": 268,
+		"name": "statfs64",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sz",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct statfs64 __user *buf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fstatfs64",
+		"num": 269,
+		"name": "fstatfs64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sz",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct statfs64 __user *buf",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_tgkill",
+		"num": 270,
+		"name": "tgkill",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int tgid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int sig",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_utimes",
+		"num": 271,
+		"name": "utimes",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timeval __user *utimes",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fadvise64_64",
+		"num": 272,
+		"name": "fadvise64_64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t offset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int advice",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mbind",
+		"num": 274,
+		"name": "mbind",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long start",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long mode",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const unsigned long __user *nmask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long maxnode",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_get_mempolicy",
+		"num": 275,
+		"name": "get_mempolicy",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "int __user *policy",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "unsigned long __user *nmask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long maxnode",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long addr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_set_mempolicy",
+		"num": 276,
+		"name": "set_mempolicy",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int mode",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const unsigned long __user *nmask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long maxnode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mq_open",
+		"num": 277,
+		"name": "mq_open",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int oflag",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct mq_attr __user *attr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mq_unlink",
+		"num": 278,
+		"name": "mq_unlink",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mq_timedsend",
+		"num": 279,
+		"name": "mq_timedsend",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "mqd_t mqdes",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *msg_ptr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t msg_len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int msg_prio",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct timespec __user *abs_timeout",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mq_timedreceive",
+		"num": 280,
+		"name": "mq_timedreceive",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "mqd_t mqdes",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *msg_ptr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t msg_len",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "unsigned int __user *msg_prio",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct timespec __user *abs_timeout",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mq_notify",
+		"num": 281,
+		"name": "mq_notify",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "mqd_t mqdes",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct sigevent __user *notification",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mq_getsetattr",
+		"num": 282,
+		"name": "mq_getsetattr",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "mqd_t mqdes",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct mq_attr __user *mqstat",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct mq_attr __user *omqstat",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_kexec_load",
+		"num": 283,
+		"name": "kexec_load",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long entry",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long nr_segments",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct kexec_segment __user *segments",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_waitid",
+		"num": 284,
+		"name": "waitid",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int which",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct siginfo __user *infop",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int options",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct rusage __user *ru",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_add_key",
+		"num": 286,
+		"name": "add_key",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *_type",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *_description",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const void __user *_payload",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t plen",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "key_serial_t destringid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_request_key",
+		"num": 287,
+		"name": "request_key",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *_type",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *_description",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *_callout_info",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "key_serial_t destringid",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_keyctl",
+		"num": 288,
+		"name": "keyctl",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int cmd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg2",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg3",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg4",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long arg5",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ioprio_set",
+		"num": 289,
+		"name": "ioprio_set",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int which",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int who",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int ioprio",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ioprio_get",
+		"num": 290,
+		"name": "ioprio_get",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int which",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int who",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_inotify_init",
+		"num": 291,
+		"name": "inotify_init",
+		"args": []
+	},
+	{
+		"entry": "sys_inotify_add_watch",
+		"num": 292,
+		"name": "inotify_add_watch",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "u32 mask",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_inotify_rm_watch",
+		"num": 293,
+		"name": "inotify_rm_watch",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "__s32 wd",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_migrate_pages",
+		"num": 294,
+		"name": "migrate_pages",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long maxnode",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const unsigned long __user *from",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const unsigned long __user *to",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_openat",
+		"num": 295,
+		"name": "openat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mkdirat",
+		"num": 296,
+		"name": "mkdirat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user * pathname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_mknodat",
+		"num": 297,
+		"name": "mknodat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user * filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned dev",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fchownat",
+		"num": 298,
+		"name": "fchownat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "uid_t user",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "gid_t group",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flag",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_futimesat",
+		"num": 299,
+		"name": "futimesat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timeval __user *utimes",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fstatat64",
+		"num": 300,
+		"name": "fstatat64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct stat64 __user *statbuf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flag",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_unlinkat",
+		"num": 301,
+		"name": "unlinkat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user * pathname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flag",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_renameat",
+		"num": 302,
+		"name": "renameat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int olddfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user * oldname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int newdfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user * newname",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_linkat",
+		"num": 303,
+		"name": "linkat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int olddfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *oldname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int newdfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *newname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_symlinkat",
+		"num": 304,
+		"name": "symlinkat",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user * oldname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int newdfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user * newname",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_readlinkat",
+		"num": 305,
+		"name": "readlinkat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *path",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int bufsiz",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fchmodat",
+		"num": 306,
+		"name": "fchmodat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user * filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "umode_t mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_faccessat",
+		"num": 307,
+		"name": "faccessat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int mode",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_pselect6",
+		"num": 308,
+		"name": "pselect6",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int n",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "fd_set __user *inp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "fd_set __user *outp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "fd_set __user *exp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *tsp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "void __user *sig",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_ppoll",
+		"num": 309,
+		"name": "ppoll",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct pollfd __user *ufds",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int nfds",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *tsp",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const sigset_t __user *sigmask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sigsetsize",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_unshare",
+		"num": 310,
+		"name": "unshare",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long unshare_flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_set_robust_list",
+		"num": 311,
+		"name": "set_robust_list",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct robust_list_head __user *head",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_get_robust_list",
+		"num": 312,
+		"name": "get_robust_list",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int pid",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "struct robust_list_head __user * __user *head_ptr",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "size_t __user *len_ptr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_splice",
+		"num": 313,
+		"name": "splice",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd_in",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "loff_t __user *off_in",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int fd_out",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "loff_t __user *off_out",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sync_file_range",
+		"num": 314,
+		"name": "sync_file_range",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t offset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t nbytes",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_tee",
+		"num": 315,
+		"name": "tee",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fdin",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int fdout",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t len",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_vmsplice",
+		"num": 316,
+		"name": "vmsplice",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *iov",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long nr_segs",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_move_pages",
+		"num": 317,
+		"name": "move_pages",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long nr_pages",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const void __user * __user *pages",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const int __user *nodes",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "int __user *status",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getcpu",
+		"num": 318,
+		"name": "getcpu",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "unsigned __user *cpu",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "unsigned __user *node",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct getcpu_cache __user *cache",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_epoll_pwait",
+		"num": 319,
+		"name": "epoll_pwait",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int epfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct epoll_event __user *events",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int maxevents",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int timeout",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const sigset_t __user *sigmask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sigsetsize",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_utimensat",
+		"num": 320,
+		"name": "utimensat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *utimes",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_signalfd",
+		"num": 321,
+		"name": "signalfd",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int ufd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "sigset_t __user *user_mask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sizemask",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_timerfd_create",
+		"num": 322,
+		"name": "timerfd_create",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int clockid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_eventfd",
+		"num": 323,
+		"name": "eventfd",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int count",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fallocate",
+		"num": 324,
+		"name": "fallocate",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int mode",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t offset",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "loff_t len",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_timerfd_settime",
+		"num": 325,
+		"name": "timerfd_settime",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int ufd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct itimerspec __user *utmr",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct itimerspec __user *otmr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_timerfd_gettime",
+		"num": 326,
+		"name": "timerfd_gettime",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int ufd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct itimerspec __user *otmr",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_signalfd4",
+		"num": 327,
+		"name": "signalfd4",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int ufd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "sigset_t __user *user_mask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t sizemask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_eventfd2",
+		"num": 328,
+		"name": "eventfd2",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int count",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_epoll_create1",
+		"num": 329,
+		"name": "epoll_create1",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_dup3",
+		"num": 330,
+		"name": "dup3",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int oldfd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int newfd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_pipe2",
+		"num": 331,
+		"name": "pipe2",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "int __user *fildes",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_inotify_init1",
+		"num": 332,
+		"name": "inotify_init1",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_preadv",
+		"num": 333,
+		"name": "preadv",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *vec",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long vlen",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long pos_l",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long pos_h",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_pwritev",
+		"num": 334,
+		"name": "pwritev",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *vec",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long vlen",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long pos_l",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long pos_h",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_rt_tgsigqueueinfo",
+		"num": 335,
+		"name": "rt_tgsigqueueinfo",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t tgid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int sig",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "siginfo_t __user *uinfo",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_perf_event_open",
+		"num": 336,
+		"name": "perf_event_open",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "struct perf_event_attr __user *attr_uptr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int cpu",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int group_fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_recvmmsg",
+		"num": 337,
+		"name": "recvmmsg",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct mmsghdr __user *msg",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int vlen",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned flags",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timespec __user *timeout",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fanotify_init",
+		"num": 338,
+		"name": "fanotify_init",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int event_f_flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_fanotify_mark",
+		"num": 339,
+		"name": "fanotify_mark",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fanotify_fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "u64 mask",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *pathname",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_prlimit64",
+		"num": 340,
+		"name": "prlimit64",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int resource",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct rlimit64 __user *new_rlim",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct rlimit64 __user *old_rlim",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_name_to_handle_at",
+		"num": 341,
+		"name": "name_to_handle_at",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *name",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct file_handle __user *handle",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "int __user *mnt_id",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flag",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_open_by_handle_at",
+		"num": 342,
+		"name": "open_by_handle_at",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int mountdirfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct file_handle __user *handle",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_clock_adjtime",
+		"num": 343,
+		"name": "clock_adjtime",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "clockid_t which_clock",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct timex __user *tx",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_syncfs",
+		"num": 344,
+		"name": "syncfs",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sendmmsg",
+		"num": 345,
+		"name": "sendmmsg",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct mmsghdr __user *msg",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int vlen",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_setns",
+		"num": 346,
+		"name": "setns",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int nstype",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_process_vm_readv",
+		"num": 347,
+		"name": "process_vm_readv",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *lvec",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long liovcnt",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *rvec",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long riovcnt",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_process_vm_writev",
+		"num": 348,
+		"name": "process_vm_writev",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *lvec",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long liovcnt",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const struct iovec __user *rvec",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long riovcnt",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_kcmp",
+		"num": 349,
+		"name": "kcmp",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid1",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "pid_t pid2",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int type",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long idx1",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long idx2",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_finit_module",
+		"num": 350,
+		"name": "finit_module",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int fd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *uargs",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_setattr",
+		"num": 351,
+		"name": "sched_setattr",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct sched_attr __user *attr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_sched_getattr",
+		"num": 352,
+		"name": "sched_getattr",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "pid_t pid",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "struct sched_attr __user *attr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int size",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_renameat2",
+		"num": 353,
+		"name": "renameat2",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int olddfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *oldname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int newdfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *newname",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_seccomp",
+		"num": 354,
+		"name": "seccomp",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned int op",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *uargs",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_getrandom",
+		"num": 355,
+		"name": "getrandom",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "char __user *buf",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "size_t count",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_memfd_create",
+		"num": 356,
+		"name": "memfd_create",
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *uname_ptr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int flags",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_bpf",
+		"num": 357,
+		"name": "bpf",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int cmd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "union bpf_attr *attr",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned int size",
+				"context": ""
+			}
+		]
+	},
+	{
+		"entry": "sys_execveat",
+		"num": 358,
+		"name": "execveat",
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const char __user *const __user *argv",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const char __user *const __user *envp",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		]
+	}
+]
