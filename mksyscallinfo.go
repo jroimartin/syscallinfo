@@ -59,7 +59,7 @@ func main() {
 }
 
 func usage() {
-	fmt.Fprintf(os.Stderr, "usage: mksyscallinfo_linux [flags] arch ctxfile\n")
+	fmt.Fprintf(os.Stderr, "usage: go run mksyscallinfo.go [flags] ctxfile\n")
 	flag.PrintDefaults()
 	os.Exit(2)
 }
