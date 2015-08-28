@@ -2,42 +2,25 @@
 
 package x86
 
-import "errors"
-
-type Syscall struct {
-	Num   int
-	Name  string
-	Entry string
-	Args  []Argument
-}
-
-type Argument struct {
-	RefCount int
-	Sig      string
-	Context  Context
-}
-
-type Context int
-
-const (
-	CTX_NONE Context = iota
-	CTX_FD
+import (
+	"errors"
+	"github.com/jroimartin/syscallinfo"
 )
 
-var syscalls = map[int]Syscall{
-	0: Syscall{
+var syscalls = map[int]syscallinfo.Syscall{
+	0: syscallinfo.Syscall{
 		Num: 0,
 		Name: "restart_syscall",
 		Entry: "sys_restart_syscall",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	1: Syscall{
+	1: syscallinfo.Syscall{
 		Num: 1,
 		Name: "exit",
 		Entry: "sys_exit",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int error_code",
@@ -46,19 +29,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	2: Syscall{
+	2: syscallinfo.Syscall{
 		Num: 2,
 		Name: "fork",
 		Entry: "sys_fork",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	3: Syscall{
+	3: syscallinfo.Syscall{
 		Num: 3,
 		Name: "read",
 		Entry: "sys_read",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -77,11 +60,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	4: Syscall{
+	4: syscallinfo.Syscall{
 		Num: 4,
 		Name: "write",
 		Entry: "sys_write",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -100,11 +83,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	5: Syscall{
+	5: syscallinfo.Syscall{
 		Num: 5,
 		Name: "open",
 		Entry: "sys_open",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -123,11 +106,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	6: Syscall{
+	6: syscallinfo.Syscall{
 		Num: 6,
 		Name: "close",
 		Entry: "sys_close",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -136,11 +119,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	7: Syscall{
+	7: syscallinfo.Syscall{
 		Num: 7,
 		Name: "waitpid",
 		Entry: "sys_waitpid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -159,11 +142,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	8: Syscall{
+	8: syscallinfo.Syscall{
 		Num: 8,
 		Name: "creat",
 		Entry: "sys_creat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *pathname",
@@ -177,11 +160,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	9: Syscall{
+	9: syscallinfo.Syscall{
 		Num: 9,
 		Name: "link",
 		Entry: "sys_link",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *oldname",
@@ -195,11 +178,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	10: Syscall{
+	10: syscallinfo.Syscall{
 		Num: 10,
 		Name: "unlink",
 		Entry: "sys_unlink",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *pathname",
@@ -208,11 +191,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	11: Syscall{
+	11: syscallinfo.Syscall{
 		Num: 11,
 		Name: "execve",
 		Entry: "sys_execve",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -231,11 +214,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	12: Syscall{
+	12: syscallinfo.Syscall{
 		Num: 12,
 		Name: "chdir",
 		Entry: "sys_chdir",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -244,11 +227,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	13: Syscall{
+	13: syscallinfo.Syscall{
 		Num: 13,
 		Name: "time",
 		Entry: "sys_time",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "time_t __user *tloc",
@@ -257,11 +240,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	14: Syscall{
+	14: syscallinfo.Syscall{
 		Num: 14,
 		Name: "mknod",
 		Entry: "sys_mknod",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -280,11 +263,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	15: Syscall{
+	15: syscallinfo.Syscall{
 		Num: 15,
 		Name: "chmod",
 		Entry: "sys_chmod",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -298,11 +281,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	16: Syscall{
+	16: syscallinfo.Syscall{
 		Num: 16,
 		Name: "lchown",
 		Entry: "sys_lchown16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -321,11 +304,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	18: Syscall{
+	18: syscallinfo.Syscall{
 		Num: 18,
 		Name: "oldstat",
 		Entry: "sys_stat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -339,11 +322,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	19: Syscall{
+	19: syscallinfo.Syscall{
 		Num: 19,
 		Name: "lseek",
 		Entry: "sys_lseek",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -362,19 +345,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	20: Syscall{
+	20: syscallinfo.Syscall{
 		Num: 20,
 		Name: "getpid",
 		Entry: "sys_getpid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	21: Syscall{
+	21: syscallinfo.Syscall{
 		Num: 21,
 		Name: "mount",
 		Entry: "sys_mount",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *dev_name",
@@ -403,11 +386,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	22: Syscall{
+	22: syscallinfo.Syscall{
 		Num: 22,
 		Name: "umount",
 		Entry: "sys_oldumount",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *name",
@@ -416,11 +399,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	23: Syscall{
+	23: syscallinfo.Syscall{
 		Num: 23,
 		Name: "setuid",
 		Entry: "sys_setuid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "old_uid_t uid",
@@ -429,19 +412,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	24: Syscall{
+	24: syscallinfo.Syscall{
 		Num: 24,
 		Name: "getuid",
 		Entry: "sys_getuid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	25: Syscall{
+	25: syscallinfo.Syscall{
 		Num: 25,
 		Name: "stime",
 		Entry: "sys_stime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "time_t __user *tptr",
@@ -450,11 +433,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	26: Syscall{
+	26: syscallinfo.Syscall{
 		Num: 26,
 		Name: "ptrace",
 		Entry: "sys_ptrace",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "long request",
@@ -478,11 +461,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	27: Syscall{
+	27: syscallinfo.Syscall{
 		Num: 27,
 		Name: "alarm",
 		Entry: "sys_alarm",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int seconds",
@@ -491,11 +474,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	28: Syscall{
+	28: syscallinfo.Syscall{
 		Num: 28,
 		Name: "oldfstat",
 		Entry: "sys_fstat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -509,19 +492,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	29: Syscall{
+	29: syscallinfo.Syscall{
 		Num: 29,
 		Name: "pause",
 		Entry: "sys_pause",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	30: Syscall{
+	30: syscallinfo.Syscall{
 		Num: 30,
 		Name: "utime",
 		Entry: "sys_utime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *filename",
@@ -535,11 +518,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	33: Syscall{
+	33: syscallinfo.Syscall{
 		Num: 33,
 		Name: "access",
 		Entry: "sys_access",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -553,11 +536,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	34: Syscall{
+	34: syscallinfo.Syscall{
 		Num: 34,
 		Name: "nice",
 		Entry: "sys_nice",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int increment",
@@ -566,19 +549,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	36: Syscall{
+	36: syscallinfo.Syscall{
 		Num: 36,
 		Name: "sync",
 		Entry: "sys_sync",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	37: Syscall{
+	37: syscallinfo.Syscall{
 		Num: 37,
 		Name: "kill",
 		Entry: "sys_kill",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int pid",
@@ -592,11 +575,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	38: Syscall{
+	38: syscallinfo.Syscall{
 		Num: 38,
 		Name: "rename",
 		Entry: "sys_rename",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *oldname",
@@ -610,11 +593,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	39: Syscall{
+	39: syscallinfo.Syscall{
 		Num: 39,
 		Name: "mkdir",
 		Entry: "sys_mkdir",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *pathname",
@@ -628,11 +611,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	40: Syscall{
+	40: syscallinfo.Syscall{
 		Num: 40,
 		Name: "rmdir",
 		Entry: "sys_rmdir",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *pathname",
@@ -641,11 +624,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	41: Syscall{
+	41: syscallinfo.Syscall{
 		Num: 41,
 		Name: "dup",
 		Entry: "sys_dup",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fildes",
@@ -654,11 +637,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	42: Syscall{
+	42: syscallinfo.Syscall{
 		Num: 42,
 		Name: "pipe",
 		Entry: "sys_pipe",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "int __user *fildes",
@@ -667,11 +650,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	43: Syscall{
+	43: syscallinfo.Syscall{
 		Num: 43,
 		Name: "times",
 		Entry: "sys_times",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct tms __user *tbuf",
@@ -680,11 +663,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	45: Syscall{
+	45: syscallinfo.Syscall{
 		Num: 45,
 		Name: "brk",
 		Entry: "sys_brk",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long brk",
@@ -693,11 +676,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	46: Syscall{
+	46: syscallinfo.Syscall{
 		Num: 46,
 		Name: "setgid",
 		Entry: "sys_setgid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "old_gid_t gid",
@@ -706,19 +689,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	47: Syscall{
+	47: syscallinfo.Syscall{
 		Num: 47,
 		Name: "getgid",
 		Entry: "sys_getgid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	48: Syscall{
+	48: syscallinfo.Syscall{
 		Num: 48,
 		Name: "signal",
 		Entry: "sys_signal",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int sig",
@@ -732,27 +715,27 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	49: Syscall{
+	49: syscallinfo.Syscall{
 		Num: 49,
 		Name: "geteuid",
 		Entry: "sys_geteuid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	50: Syscall{
+	50: syscallinfo.Syscall{
 		Num: 50,
 		Name: "getegid",
 		Entry: "sys_getegid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	51: Syscall{
+	51: syscallinfo.Syscall{
 		Num: 51,
 		Name: "acct",
 		Entry: "sys_acct",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *name",
@@ -761,11 +744,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	52: Syscall{
+	52: syscallinfo.Syscall{
 		Num: 52,
 		Name: "umount2",
 		Entry: "sys_umount",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *name",
@@ -779,11 +762,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	54: Syscall{
+	54: syscallinfo.Syscall{
 		Num: 54,
 		Name: "ioctl",
 		Entry: "sys_ioctl",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -802,11 +785,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	55: Syscall{
+	55: syscallinfo.Syscall{
 		Num: 55,
 		Name: "fcntl",
 		Entry: "sys_fcntl",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -825,11 +808,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	57: Syscall{
+	57: syscallinfo.Syscall{
 		Num: 57,
 		Name: "setpgid",
 		Entry: "sys_setpgid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -843,11 +826,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	59: Syscall{
+	59: syscallinfo.Syscall{
 		Num: 59,
 		Name: "oldolduname",
 		Entry: "sys_olduname",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct oldold_utsname __user *",
@@ -856,11 +839,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	60: Syscall{
+	60: syscallinfo.Syscall{
 		Num: 60,
 		Name: "umask",
 		Entry: "sys_umask",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int mask",
@@ -869,11 +852,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	61: Syscall{
+	61: syscallinfo.Syscall{
 		Num: 61,
 		Name: "chroot",
 		Entry: "sys_chroot",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -882,11 +865,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	62: Syscall{
+	62: syscallinfo.Syscall{
 		Num: 62,
 		Name: "ustat",
 		Entry: "sys_ustat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned dev",
@@ -900,11 +883,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	63: Syscall{
+	63: syscallinfo.Syscall{
 		Num: 63,
 		Name: "dup2",
 		Entry: "sys_dup2",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int oldfd",
@@ -918,35 +901,35 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	64: Syscall{
+	64: syscallinfo.Syscall{
 		Num: 64,
 		Name: "getppid",
 		Entry: "sys_getppid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	65: Syscall{
+	65: syscallinfo.Syscall{
 		Num: 65,
 		Name: "getpgrp",
 		Entry: "sys_getpgrp",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	66: Syscall{
+	66: syscallinfo.Syscall{
 		Num: 66,
 		Name: "setsid",
 		Entry: "sys_setsid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	67: Syscall{
+	67: syscallinfo.Syscall{
 		Num: 67,
 		Name: "sigaction",
 		Entry: "sys_sigaction",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int",
@@ -965,19 +948,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	68: Syscall{
+	68: syscallinfo.Syscall{
 		Num: 68,
 		Name: "sgetmask",
 		Entry: "sys_sgetmask",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	69: Syscall{
+	69: syscallinfo.Syscall{
 		Num: 69,
 		Name: "ssetmask",
 		Entry: "sys_ssetmask",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int newmask",
@@ -986,11 +969,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	70: Syscall{
+	70: syscallinfo.Syscall{
 		Num: 70,
 		Name: "setreuid",
 		Entry: "sys_setreuid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "old_uid_t ruid",
@@ -1004,11 +987,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	71: Syscall{
+	71: syscallinfo.Syscall{
 		Num: 71,
 		Name: "setregid",
 		Entry: "sys_setregid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "old_gid_t rgid",
@@ -1022,11 +1005,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	72: Syscall{
+	72: syscallinfo.Syscall{
 		Num: 72,
 		Name: "sigsuspend",
 		Entry: "sys_sigsuspend",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int unused1",
@@ -1045,11 +1028,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	73: Syscall{
+	73: syscallinfo.Syscall{
 		Num: 73,
 		Name: "sigpending",
 		Entry: "sys_sigpending",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "old_sigset_t __user *set",
@@ -1058,11 +1041,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	74: Syscall{
+	74: syscallinfo.Syscall{
 		Num: 74,
 		Name: "sethostname",
 		Entry: "sys_sethostname",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *name",
@@ -1076,11 +1059,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	75: Syscall{
+	75: syscallinfo.Syscall{
 		Num: 75,
 		Name: "setrlimit",
 		Entry: "sys_setrlimit",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int resource",
@@ -1094,11 +1077,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	76: Syscall{
+	76: syscallinfo.Syscall{
 		Num: 76,
 		Name: "getrlimit",
 		Entry: "sys_old_getrlimit",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int resource",
@@ -1112,11 +1095,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	77: Syscall{
+	77: syscallinfo.Syscall{
 		Num: 77,
 		Name: "getrusage",
 		Entry: "sys_getrusage",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int who",
@@ -1130,11 +1113,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	78: Syscall{
+	78: syscallinfo.Syscall{
 		Num: 78,
 		Name: "gettimeofday",
 		Entry: "sys_gettimeofday",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct timeval __user *tv",
@@ -1148,11 +1131,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	79: Syscall{
+	79: syscallinfo.Syscall{
 		Num: 79,
 		Name: "settimeofday",
 		Entry: "sys_settimeofday",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct timeval __user *tv",
@@ -1166,11 +1149,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	80: Syscall{
+	80: syscallinfo.Syscall{
 		Num: 80,
 		Name: "getgroups",
 		Entry: "sys_getgroups16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int gidsetsize",
@@ -1184,11 +1167,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	81: Syscall{
+	81: syscallinfo.Syscall{
 		Num: 81,
 		Name: "setgroups",
 		Entry: "sys_setgroups16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int gidsetsize",
@@ -1202,11 +1185,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	82: Syscall{
+	82: syscallinfo.Syscall{
 		Num: 82,
 		Name: "select",
 		Entry: "sys_old_select",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct sel_arg_struct __user *arg",
@@ -1215,11 +1198,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	83: Syscall{
+	83: syscallinfo.Syscall{
 		Num: 83,
 		Name: "symlink",
 		Entry: "sys_symlink",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *old",
@@ -1233,11 +1216,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	84: Syscall{
+	84: syscallinfo.Syscall{
 		Num: 84,
 		Name: "oldlstat",
 		Entry: "sys_lstat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -1251,11 +1234,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	85: Syscall{
+	85: syscallinfo.Syscall{
 		Num: 85,
 		Name: "readlink",
 		Entry: "sys_readlink",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -1274,11 +1257,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	86: Syscall{
+	86: syscallinfo.Syscall{
 		Num: 86,
 		Name: "uselib",
 		Entry: "sys_uselib",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *library",
@@ -1287,11 +1270,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	87: Syscall{
+	87: syscallinfo.Syscall{
 		Num: 87,
 		Name: "swapon",
 		Entry: "sys_swapon",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *specialfile",
@@ -1305,11 +1288,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	88: Syscall{
+	88: syscallinfo.Syscall{
 		Num: 88,
 		Name: "reboot",
 		Entry: "sys_reboot",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int magic1",
@@ -1333,11 +1316,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	89: Syscall{
+	89: syscallinfo.Syscall{
 		Num: 89,
 		Name: "readdir",
 		Entry: "sys_old_readdir",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int",
@@ -1356,11 +1339,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	90: Syscall{
+	90: syscallinfo.Syscall{
 		Num: 90,
 		Name: "mmap",
 		Entry: "sys_old_mmap",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct mmap_arg_struct __user *arg",
@@ -1369,11 +1352,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	91: Syscall{
+	91: syscallinfo.Syscall{
 		Num: 91,
 		Name: "munmap",
 		Entry: "sys_munmap",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long addr",
@@ -1387,11 +1370,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	92: Syscall{
+	92: syscallinfo.Syscall{
 		Num: 92,
 		Name: "truncate",
 		Entry: "sys_truncate",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -1405,11 +1388,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	93: Syscall{
+	93: syscallinfo.Syscall{
 		Num: 93,
 		Name: "ftruncate",
 		Entry: "sys_ftruncate",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -1423,11 +1406,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	94: Syscall{
+	94: syscallinfo.Syscall{
 		Num: 94,
 		Name: "fchmod",
 		Entry: "sys_fchmod",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -1441,11 +1424,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	95: Syscall{
+	95: syscallinfo.Syscall{
 		Num: 95,
 		Name: "fchown",
 		Entry: "sys_fchown16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -1464,11 +1447,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	96: Syscall{
+	96: syscallinfo.Syscall{
 		Num: 96,
 		Name: "getpriority",
 		Entry: "sys_getpriority",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int which",
@@ -1482,11 +1465,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	97: Syscall{
+	97: syscallinfo.Syscall{
 		Num: 97,
 		Name: "setpriority",
 		Entry: "sys_setpriority",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int which",
@@ -1505,11 +1488,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	99: Syscall{
+	99: syscallinfo.Syscall{
 		Num: 99,
 		Name: "statfs",
 		Entry: "sys_statfs",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user * path",
@@ -1523,11 +1506,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	100: Syscall{
+	100: syscallinfo.Syscall{
 		Num: 100,
 		Name: "fstatfs",
 		Entry: "sys_fstatfs",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -1541,11 +1524,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	101: Syscall{
+	101: syscallinfo.Syscall{
 		Num: 101,
 		Name: "ioperm",
 		Entry: "sys_ioperm",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long",
@@ -1564,11 +1547,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	102: Syscall{
+	102: syscallinfo.Syscall{
 		Num: 102,
 		Name: "socketcall",
 		Entry: "sys_socketcall",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int call",
@@ -1582,11 +1565,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	103: Syscall{
+	103: syscallinfo.Syscall{
 		Num: 103,
 		Name: "syslog",
 		Entry: "sys_syslog",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int type",
@@ -1605,11 +1588,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	104: Syscall{
+	104: syscallinfo.Syscall{
 		Num: 104,
 		Name: "setitimer",
 		Entry: "sys_setitimer",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int which",
@@ -1628,11 +1611,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	105: Syscall{
+	105: syscallinfo.Syscall{
 		Num: 105,
 		Name: "getitimer",
 		Entry: "sys_getitimer",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int which",
@@ -1646,11 +1629,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	106: Syscall{
+	106: syscallinfo.Syscall{
 		Num: 106,
 		Name: "stat",
 		Entry: "sys_newstat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -1664,11 +1647,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	107: Syscall{
+	107: syscallinfo.Syscall{
 		Num: 107,
 		Name: "lstat",
 		Entry: "sys_newlstat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -1682,11 +1665,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	108: Syscall{
+	108: syscallinfo.Syscall{
 		Num: 108,
 		Name: "fstat",
 		Entry: "sys_newfstat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -1700,11 +1683,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	109: Syscall{
+	109: syscallinfo.Syscall{
 		Num: 109,
 		Name: "olduname",
 		Entry: "sys_uname",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct old_utsname __user *",
@@ -1713,11 +1696,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	110: Syscall{
+	110: syscallinfo.Syscall{
 		Num: 110,
 		Name: "iopl",
 		Entry: "sys_iopl",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int",
@@ -1726,19 +1709,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	111: Syscall{
+	111: syscallinfo.Syscall{
 		Num: 111,
 		Name: "vhangup",
 		Entry: "sys_vhangup",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	113: Syscall{
+	113: syscallinfo.Syscall{
 		Num: 113,
 		Name: "vm86old",
 		Entry: "sys_vm86old",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct vm86_struct __user *",
@@ -1747,11 +1730,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	114: Syscall{
+	114: syscallinfo.Syscall{
 		Num: 114,
 		Name: "wait4",
 		Entry: "sys_wait4",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -1775,11 +1758,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	115: Syscall{
+	115: syscallinfo.Syscall{
 		Num: 115,
 		Name: "swapoff",
 		Entry: "sys_swapoff",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *specialfile",
@@ -1788,11 +1771,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	116: Syscall{
+	116: syscallinfo.Syscall{
 		Num: 116,
 		Name: "sysinfo",
 		Entry: "sys_sysinfo",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct sysinfo __user *info",
@@ -1801,11 +1784,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	117: Syscall{
+	117: syscallinfo.Syscall{
 		Num: 117,
 		Name: "ipc",
 		Entry: "sys_ipc",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int call",
@@ -1839,11 +1822,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	118: Syscall{
+	118: syscallinfo.Syscall{
 		Num: 118,
 		Name: "fsync",
 		Entry: "sys_fsync",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -1852,19 +1835,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	119: Syscall{
+	119: syscallinfo.Syscall{
 		Num: 119,
 		Name: "sigreturn",
 		Entry: "sys_sigreturn",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	120: Syscall{
+	120: syscallinfo.Syscall{
 		Num: 120,
 		Name: "clone",
 		Entry: "sys_clone",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long",
@@ -1893,11 +1876,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	121: Syscall{
+	121: syscallinfo.Syscall{
 		Num: 121,
 		Name: "setdomainname",
 		Entry: "sys_setdomainname",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *name",
@@ -1911,11 +1894,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	122: Syscall{
+	122: syscallinfo.Syscall{
 		Num: 122,
 		Name: "uname",
 		Entry: "sys_newuname",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct new_utsname __user *name",
@@ -1924,11 +1907,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	123: Syscall{
+	123: syscallinfo.Syscall{
 		Num: 123,
 		Name: "modify_ldt",
 		Entry: "sys_modify_ldt",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int",
@@ -1947,11 +1930,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	124: Syscall{
+	124: syscallinfo.Syscall{
 		Num: 124,
 		Name: "adjtimex",
 		Entry: "sys_adjtimex",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct timex __user *txc_p",
@@ -1960,11 +1943,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	125: Syscall{
+	125: syscallinfo.Syscall{
 		Num: 125,
 		Name: "mprotect",
 		Entry: "sys_mprotect",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long start",
@@ -1983,11 +1966,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	126: Syscall{
+	126: syscallinfo.Syscall{
 		Num: 126,
 		Name: "sigprocmask",
 		Entry: "sys_sigprocmask",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int how",
@@ -2006,11 +1989,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	128: Syscall{
+	128: syscallinfo.Syscall{
 		Num: 128,
 		Name: "init_module",
 		Entry: "sys_init_module",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "void __user *umod",
@@ -2029,11 +2012,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	129: Syscall{
+	129: syscallinfo.Syscall{
 		Num: 129,
 		Name: "delete_module",
 		Entry: "sys_delete_module",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *name_user",
@@ -2047,11 +2030,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	131: Syscall{
+	131: syscallinfo.Syscall{
 		Num: 131,
 		Name: "quotactl",
 		Entry: "sys_quotactl",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int cmd",
@@ -2075,11 +2058,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	132: Syscall{
+	132: syscallinfo.Syscall{
 		Num: 132,
 		Name: "getpgid",
 		Entry: "sys_getpgid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -2088,11 +2071,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	133: Syscall{
+	133: syscallinfo.Syscall{
 		Num: 133,
 		Name: "fchdir",
 		Entry: "sys_fchdir",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -2101,11 +2084,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	134: Syscall{
+	134: syscallinfo.Syscall{
 		Num: 134,
 		Name: "bdflush",
 		Entry: "sys_bdflush",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int func",
@@ -2119,11 +2102,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	135: Syscall{
+	135: syscallinfo.Syscall{
 		Num: 135,
 		Name: "sysfs",
 		Entry: "sys_sysfs",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int option",
@@ -2142,11 +2125,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	136: Syscall{
+	136: syscallinfo.Syscall{
 		Num: 136,
 		Name: "personality",
 		Entry: "sys_personality",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int personality",
@@ -2155,11 +2138,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	138: Syscall{
+	138: syscallinfo.Syscall{
 		Num: 138,
 		Name: "setfsuid",
 		Entry: "sys_setfsuid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "old_uid_t uid",
@@ -2168,11 +2151,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	139: Syscall{
+	139: syscallinfo.Syscall{
 		Num: 139,
 		Name: "setfsgid",
 		Entry: "sys_setfsgid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "old_gid_t gid",
@@ -2181,11 +2164,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	140: Syscall{
+	140: syscallinfo.Syscall{
 		Num: 140,
 		Name: "_llseek",
 		Entry: "sys_llseek",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -2214,11 +2197,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	141: Syscall{
+	141: syscallinfo.Syscall{
 		Num: 141,
 		Name: "getdents",
 		Entry: "sys_getdents",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -2237,11 +2220,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	142: Syscall{
+	142: syscallinfo.Syscall{
 		Num: 142,
 		Name: "_newselect",
 		Entry: "sys_select",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int n",
@@ -2270,11 +2253,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	143: Syscall{
+	143: syscallinfo.Syscall{
 		Num: 143,
 		Name: "flock",
 		Entry: "sys_flock",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -2288,11 +2271,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	144: Syscall{
+	144: syscallinfo.Syscall{
 		Num: 144,
 		Name: "msync",
 		Entry: "sys_msync",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long start",
@@ -2311,11 +2294,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	145: Syscall{
+	145: syscallinfo.Syscall{
 		Num: 145,
 		Name: "readv",
 		Entry: "sys_readv",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long fd",
@@ -2334,11 +2317,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	146: Syscall{
+	146: syscallinfo.Syscall{
 		Num: 146,
 		Name: "writev",
 		Entry: "sys_writev",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long fd",
@@ -2357,11 +2340,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	147: Syscall{
+	147: syscallinfo.Syscall{
 		Num: 147,
 		Name: "getsid",
 		Entry: "sys_getsid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -2370,11 +2353,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	148: Syscall{
+	148: syscallinfo.Syscall{
 		Num: 148,
 		Name: "fdatasync",
 		Entry: "sys_fdatasync",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -2383,11 +2366,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	149: Syscall{
+	149: syscallinfo.Syscall{
 		Num: 149,
 		Name: "_sysctl",
 		Entry: "sys_sysctl",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct __sysctl_args __user *args",
@@ -2396,11 +2379,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	150: Syscall{
+	150: syscallinfo.Syscall{
 		Num: 150,
 		Name: "mlock",
 		Entry: "sys_mlock",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long start",
@@ -2414,11 +2397,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	151: Syscall{
+	151: syscallinfo.Syscall{
 		Num: 151,
 		Name: "munlock",
 		Entry: "sys_munlock",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long start",
@@ -2432,11 +2415,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	152: Syscall{
+	152: syscallinfo.Syscall{
 		Num: 152,
 		Name: "mlockall",
 		Entry: "sys_mlockall",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int flags",
@@ -2445,19 +2428,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	153: Syscall{
+	153: syscallinfo.Syscall{
 		Num: 153,
 		Name: "munlockall",
 		Entry: "sys_munlockall",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	154: Syscall{
+	154: syscallinfo.Syscall{
 		Num: 154,
 		Name: "sched_setparam",
 		Entry: "sys_sched_setparam",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -2471,11 +2454,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	155: Syscall{
+	155: syscallinfo.Syscall{
 		Num: 155,
 		Name: "sched_getparam",
 		Entry: "sys_sched_getparam",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -2489,11 +2472,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	156: Syscall{
+	156: syscallinfo.Syscall{
 		Num: 156,
 		Name: "sched_setscheduler",
 		Entry: "sys_sched_setscheduler",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -2512,11 +2495,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	157: Syscall{
+	157: syscallinfo.Syscall{
 		Num: 157,
 		Name: "sched_getscheduler",
 		Entry: "sys_sched_getscheduler",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -2525,19 +2508,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	158: Syscall{
+	158: syscallinfo.Syscall{
 		Num: 158,
 		Name: "sched_yield",
 		Entry: "sys_sched_yield",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	159: Syscall{
+	159: syscallinfo.Syscall{
 		Num: 159,
 		Name: "sched_get_priority_max",
 		Entry: "sys_sched_get_priority_max",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int policy",
@@ -2546,11 +2529,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	160: Syscall{
+	160: syscallinfo.Syscall{
 		Num: 160,
 		Name: "sched_get_priority_min",
 		Entry: "sys_sched_get_priority_min",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int policy",
@@ -2559,11 +2542,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	161: Syscall{
+	161: syscallinfo.Syscall{
 		Num: 161,
 		Name: "sched_rr_get_interval",
 		Entry: "sys_sched_rr_get_interval",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -2577,11 +2560,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	162: Syscall{
+	162: syscallinfo.Syscall{
 		Num: 162,
 		Name: "nanosleep",
 		Entry: "sys_nanosleep",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct timespec __user *rqtp",
@@ -2595,11 +2578,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	163: Syscall{
+	163: syscallinfo.Syscall{
 		Num: 163,
 		Name: "mremap",
 		Entry: "sys_mremap",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long addr",
@@ -2628,11 +2611,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	164: Syscall{
+	164: syscallinfo.Syscall{
 		Num: 164,
 		Name: "setresuid",
 		Entry: "sys_setresuid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "old_uid_t ruid",
@@ -2651,11 +2634,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	165: Syscall{
+	165: syscallinfo.Syscall{
 		Num: 165,
 		Name: "getresuid",
 		Entry: "sys_getresuid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "old_uid_t __user *ruid",
@@ -2674,11 +2657,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	166: Syscall{
+	166: syscallinfo.Syscall{
 		Num: 166,
 		Name: "vm86",
 		Entry: "sys_vm86",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long",
@@ -2692,11 +2675,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	168: Syscall{
+	168: syscallinfo.Syscall{
 		Num: 168,
 		Name: "poll",
 		Entry: "sys_poll",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct pollfd __user *ufds",
@@ -2715,11 +2698,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	170: Syscall{
+	170: syscallinfo.Syscall{
 		Num: 170,
 		Name: "setresgid",
 		Entry: "sys_setresgid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "old_gid_t rgid",
@@ -2738,11 +2721,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	171: Syscall{
+	171: syscallinfo.Syscall{
 		Num: 171,
 		Name: "getresgid",
 		Entry: "sys_getresgid16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "old_gid_t __user *rgid",
@@ -2761,11 +2744,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	172: Syscall{
+	172: syscallinfo.Syscall{
 		Num: 172,
 		Name: "prctl",
 		Entry: "sys_prctl",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int option",
@@ -2794,19 +2777,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	173: Syscall{
+	173: syscallinfo.Syscall{
 		Num: 173,
 		Name: "rt_sigreturn",
 		Entry: "sys_rt_sigreturn",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	174: Syscall{
+	174: syscallinfo.Syscall{
 		Num: 174,
 		Name: "rt_sigaction",
 		Entry: "sys_rt_sigaction",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int",
@@ -2830,11 +2813,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	175: Syscall{
+	175: syscallinfo.Syscall{
 		Num: 175,
 		Name: "rt_sigprocmask",
 		Entry: "sys_rt_sigprocmask",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int how",
@@ -2858,11 +2841,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	176: Syscall{
+	176: syscallinfo.Syscall{
 		Num: 176,
 		Name: "rt_sigpending",
 		Entry: "sys_rt_sigpending",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "sigset_t __user *set",
@@ -2876,11 +2859,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	177: Syscall{
+	177: syscallinfo.Syscall{
 		Num: 177,
 		Name: "rt_sigtimedwait",
 		Entry: "sys_rt_sigtimedwait",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const sigset_t __user *uthese",
@@ -2904,11 +2887,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	178: Syscall{
+	178: syscallinfo.Syscall{
 		Num: 178,
 		Name: "rt_sigqueueinfo",
 		Entry: "sys_rt_sigqueueinfo",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int pid",
@@ -2927,11 +2910,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	179: Syscall{
+	179: syscallinfo.Syscall{
 		Num: 179,
 		Name: "rt_sigsuspend",
 		Entry: "sys_rt_sigsuspend",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "sigset_t __user *unewset",
@@ -2945,11 +2928,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	180: Syscall{
+	180: syscallinfo.Syscall{
 		Num: 180,
 		Name: "pread64",
 		Entry: "sys_pread64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -2973,11 +2956,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	181: Syscall{
+	181: syscallinfo.Syscall{
 		Num: 181,
 		Name: "pwrite64",
 		Entry: "sys_pwrite64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -3001,11 +2984,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	182: Syscall{
+	182: syscallinfo.Syscall{
 		Num: 182,
 		Name: "chown",
 		Entry: "sys_chown16",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -3024,11 +3007,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	183: Syscall{
+	183: syscallinfo.Syscall{
 		Num: 183,
 		Name: "getcwd",
 		Entry: "sys_getcwd",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *buf",
@@ -3042,11 +3025,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	184: Syscall{
+	184: syscallinfo.Syscall{
 		Num: 184,
 		Name: "capget",
 		Entry: "sys_capget",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "cap_user_header_t header",
@@ -3060,11 +3043,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	185: Syscall{
+	185: syscallinfo.Syscall{
 		Num: 185,
 		Name: "capset",
 		Entry: "sys_capset",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "cap_user_header_t header",
@@ -3078,11 +3061,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	186: Syscall{
+	186: syscallinfo.Syscall{
 		Num: 186,
 		Name: "sigaltstack",
 		Entry: "sys_sigaltstack",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const struct sigaltstack __user *uss",
@@ -3096,11 +3079,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	187: Syscall{
+	187: syscallinfo.Syscall{
 		Num: 187,
 		Name: "sendfile",
 		Entry: "sys_sendfile",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int out_fd",
@@ -3124,19 +3107,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	190: Syscall{
+	190: syscallinfo.Syscall{
 		Num: 190,
 		Name: "vfork",
 		Entry: "sys_vfork",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	191: Syscall{
+	191: syscallinfo.Syscall{
 		Num: 191,
 		Name: "ugetrlimit",
 		Entry: "sys_getrlimit",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int resource",
@@ -3150,11 +3133,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	192: Syscall{
+	192: syscallinfo.Syscall{
 		Num: 192,
 		Name: "mmap2",
 		Entry: "sys_mmap_pgoff",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long addr",
@@ -3188,11 +3171,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	193: Syscall{
+	193: syscallinfo.Syscall{
 		Num: 193,
 		Name: "truncate64",
 		Entry: "sys_truncate64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -3206,11 +3189,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	194: Syscall{
+	194: syscallinfo.Syscall{
 		Num: 194,
 		Name: "ftruncate64",
 		Entry: "sys_ftruncate64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -3224,11 +3207,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	195: Syscall{
+	195: syscallinfo.Syscall{
 		Num: 195,
 		Name: "stat64",
 		Entry: "sys_stat64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -3242,11 +3225,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	196: Syscall{
+	196: syscallinfo.Syscall{
 		Num: 196,
 		Name: "lstat64",
 		Entry: "sys_lstat64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -3260,11 +3243,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	197: Syscall{
+	197: syscallinfo.Syscall{
 		Num: 197,
 		Name: "fstat64",
 		Entry: "sys_fstat64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long fd",
@@ -3278,11 +3261,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	198: Syscall{
+	198: syscallinfo.Syscall{
 		Num: 198,
 		Name: "lchown32",
 		Entry: "sys_lchown",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -3301,43 +3284,43 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	199: Syscall{
+	199: syscallinfo.Syscall{
 		Num: 199,
 		Name: "getuid32",
 		Entry: "sys_getuid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	200: Syscall{
+	200: syscallinfo.Syscall{
 		Num: 200,
 		Name: "getgid32",
 		Entry: "sys_getgid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	201: Syscall{
+	201: syscallinfo.Syscall{
 		Num: 201,
 		Name: "geteuid32",
 		Entry: "sys_geteuid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	202: Syscall{
+	202: syscallinfo.Syscall{
 		Num: 202,
 		Name: "getegid32",
 		Entry: "sys_getegid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	203: Syscall{
+	203: syscallinfo.Syscall{
 		Num: 203,
 		Name: "setreuid32",
 		Entry: "sys_setreuid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "uid_t ruid",
@@ -3351,11 +3334,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	204: Syscall{
+	204: syscallinfo.Syscall{
 		Num: 204,
 		Name: "setregid32",
 		Entry: "sys_setregid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "gid_t rgid",
@@ -3369,11 +3352,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	205: Syscall{
+	205: syscallinfo.Syscall{
 		Num: 205,
 		Name: "getgroups32",
 		Entry: "sys_getgroups",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int gidsetsize",
@@ -3387,11 +3370,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	206: Syscall{
+	206: syscallinfo.Syscall{
 		Num: 206,
 		Name: "setgroups32",
 		Entry: "sys_setgroups",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int gidsetsize",
@@ -3405,11 +3388,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	207: Syscall{
+	207: syscallinfo.Syscall{
 		Num: 207,
 		Name: "fchown32",
 		Entry: "sys_fchown",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -3428,11 +3411,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	208: Syscall{
+	208: syscallinfo.Syscall{
 		Num: 208,
 		Name: "setresuid32",
 		Entry: "sys_setresuid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "uid_t ruid",
@@ -3451,11 +3434,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	209: Syscall{
+	209: syscallinfo.Syscall{
 		Num: 209,
 		Name: "getresuid32",
 		Entry: "sys_getresuid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "uid_t __user *ruid",
@@ -3474,11 +3457,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	210: Syscall{
+	210: syscallinfo.Syscall{
 		Num: 210,
 		Name: "setresgid32",
 		Entry: "sys_setresgid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "gid_t rgid",
@@ -3497,11 +3480,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	211: Syscall{
+	211: syscallinfo.Syscall{
 		Num: 211,
 		Name: "getresgid32",
 		Entry: "sys_getresgid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "gid_t __user *rgid",
@@ -3520,11 +3503,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	212: Syscall{
+	212: syscallinfo.Syscall{
 		Num: 212,
 		Name: "chown32",
 		Entry: "sys_chown",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *filename",
@@ -3543,11 +3526,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	213: Syscall{
+	213: syscallinfo.Syscall{
 		Num: 213,
 		Name: "setuid32",
 		Entry: "sys_setuid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "uid_t uid",
@@ -3556,11 +3539,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	214: Syscall{
+	214: syscallinfo.Syscall{
 		Num: 214,
 		Name: "setgid32",
 		Entry: "sys_setgid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "gid_t gid",
@@ -3569,11 +3552,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	215: Syscall{
+	215: syscallinfo.Syscall{
 		Num: 215,
 		Name: "setfsuid32",
 		Entry: "sys_setfsuid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "uid_t uid",
@@ -3582,11 +3565,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	216: Syscall{
+	216: syscallinfo.Syscall{
 		Num: 216,
 		Name: "setfsgid32",
 		Entry: "sys_setfsgid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "gid_t gid",
@@ -3595,11 +3578,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	217: Syscall{
+	217: syscallinfo.Syscall{
 		Num: 217,
 		Name: "pivot_root",
 		Entry: "sys_pivot_root",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *new_root",
@@ -3613,11 +3596,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	218: Syscall{
+	218: syscallinfo.Syscall{
 		Num: 218,
 		Name: "mincore",
 		Entry: "sys_mincore",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long start",
@@ -3636,11 +3619,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	219: Syscall{
+	219: syscallinfo.Syscall{
 		Num: 219,
 		Name: "madvise",
 		Entry: "sys_madvise",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long start",
@@ -3659,11 +3642,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	220: Syscall{
+	220: syscallinfo.Syscall{
 		Num: 220,
 		Name: "getdents64",
 		Entry: "sys_getdents64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -3682,11 +3665,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	221: Syscall{
+	221: syscallinfo.Syscall{
 		Num: 221,
 		Name: "fcntl64",
 		Entry: "sys_fcntl64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -3705,19 +3688,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	224: Syscall{
+	224: syscallinfo.Syscall{
 		Num: 224,
 		Name: "gettid",
 		Entry: "sys_gettid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	225: Syscall{
+	225: syscallinfo.Syscall{
 		Num: 225,
 		Name: "readahead",
 		Entry: "sys_readahead",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -3736,11 +3719,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	226: Syscall{
+	226: syscallinfo.Syscall{
 		Num: 226,
 		Name: "setxattr",
 		Entry: "sys_setxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -3769,11 +3752,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	227: Syscall{
+	227: syscallinfo.Syscall{
 		Num: 227,
 		Name: "lsetxattr",
 		Entry: "sys_lsetxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -3802,11 +3785,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	228: Syscall{
+	228: syscallinfo.Syscall{
 		Num: 228,
 		Name: "fsetxattr",
 		Entry: "sys_fsetxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -3835,11 +3818,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	229: Syscall{
+	229: syscallinfo.Syscall{
 		Num: 229,
 		Name: "getxattr",
 		Entry: "sys_getxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -3863,11 +3846,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	230: Syscall{
+	230: syscallinfo.Syscall{
 		Num: 230,
 		Name: "lgetxattr",
 		Entry: "sys_lgetxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -3891,11 +3874,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	231: Syscall{
+	231: syscallinfo.Syscall{
 		Num: 231,
 		Name: "fgetxattr",
 		Entry: "sys_fgetxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -3919,11 +3902,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	232: Syscall{
+	232: syscallinfo.Syscall{
 		Num: 232,
 		Name: "listxattr",
 		Entry: "sys_listxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -3942,11 +3925,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	233: Syscall{
+	233: syscallinfo.Syscall{
 		Num: 233,
 		Name: "llistxattr",
 		Entry: "sys_llistxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -3965,11 +3948,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	234: Syscall{
+	234: syscallinfo.Syscall{
 		Num: 234,
 		Name: "flistxattr",
 		Entry: "sys_flistxattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -3988,11 +3971,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	235: Syscall{
+	235: syscallinfo.Syscall{
 		Num: 235,
 		Name: "removexattr",
 		Entry: "sys_removexattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -4006,11 +3989,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	236: Syscall{
+	236: syscallinfo.Syscall{
 		Num: 236,
 		Name: "lremovexattr",
 		Entry: "sys_lremovexattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -4024,11 +4007,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	237: Syscall{
+	237: syscallinfo.Syscall{
 		Num: 237,
 		Name: "fremovexattr",
 		Entry: "sys_fremovexattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -4042,11 +4025,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	238: Syscall{
+	238: syscallinfo.Syscall{
 		Num: 238,
 		Name: "tkill",
 		Entry: "sys_tkill",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int pid",
@@ -4060,11 +4043,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	239: Syscall{
+	239: syscallinfo.Syscall{
 		Num: 239,
 		Name: "sendfile64",
 		Entry: "sys_sendfile64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int out_fd",
@@ -4088,11 +4071,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	240: Syscall{
+	240: syscallinfo.Syscall{
 		Num: 240,
 		Name: "futex",
 		Entry: "sys_futex",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "u32 __user *uaddr",
@@ -4126,11 +4109,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	241: Syscall{
+	241: syscallinfo.Syscall{
 		Num: 241,
 		Name: "sched_setaffinity",
 		Entry: "sys_sched_setaffinity",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -4149,11 +4132,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	242: Syscall{
+	242: syscallinfo.Syscall{
 		Num: 242,
 		Name: "sched_getaffinity",
 		Entry: "sys_sched_getaffinity",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -4172,11 +4155,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	243: Syscall{
+	243: syscallinfo.Syscall{
 		Num: 243,
 		Name: "set_thread_area",
 		Entry: "sys_set_thread_area",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct user_desc __user *",
@@ -4185,11 +4168,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	244: Syscall{
+	244: syscallinfo.Syscall{
 		Num: 244,
 		Name: "get_thread_area",
 		Entry: "sys_get_thread_area",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct user_desc __user *",
@@ -4198,11 +4181,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	245: Syscall{
+	245: syscallinfo.Syscall{
 		Num: 245,
 		Name: "io_setup",
 		Entry: "sys_io_setup",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned nr_reqs",
@@ -4216,11 +4199,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	246: Syscall{
+	246: syscallinfo.Syscall{
 		Num: 246,
 		Name: "io_destroy",
 		Entry: "sys_io_destroy",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "aio_context_t ctx",
@@ -4229,11 +4212,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	247: Syscall{
+	247: syscallinfo.Syscall{
 		Num: 247,
 		Name: "io_getevents",
 		Entry: "sys_io_getevents",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "aio_context_t ctx_id",
@@ -4262,11 +4245,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	248: Syscall{
+	248: syscallinfo.Syscall{
 		Num: 248,
 		Name: "io_submit",
 		Entry: "sys_io_submit",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "aio_context_t",
@@ -4285,11 +4268,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	249: Syscall{
+	249: syscallinfo.Syscall{
 		Num: 249,
 		Name: "io_cancel",
 		Entry: "sys_io_cancel",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "aio_context_t ctx_id",
@@ -4308,11 +4291,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	250: Syscall{
+	250: syscallinfo.Syscall{
 		Num: 250,
 		Name: "fadvise64",
 		Entry: "sys_fadvise64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -4336,11 +4319,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	252: Syscall{
+	252: syscallinfo.Syscall{
 		Num: 252,
 		Name: "exit_group",
 		Entry: "sys_exit_group",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int error_code",
@@ -4349,11 +4332,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	253: Syscall{
+	253: syscallinfo.Syscall{
 		Num: 253,
 		Name: "lookup_dcookie",
 		Entry: "sys_lookup_dcookie",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "u64 cookie64",
@@ -4372,11 +4355,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	254: Syscall{
+	254: syscallinfo.Syscall{
 		Num: 254,
 		Name: "epoll_create",
 		Entry: "sys_epoll_create",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int size",
@@ -4385,11 +4368,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	255: Syscall{
+	255: syscallinfo.Syscall{
 		Num: 255,
 		Name: "epoll_ctl",
 		Entry: "sys_epoll_ctl",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int epfd",
@@ -4413,11 +4396,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	256: Syscall{
+	256: syscallinfo.Syscall{
 		Num: 256,
 		Name: "epoll_wait",
 		Entry: "sys_epoll_wait",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int epfd",
@@ -4441,11 +4424,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	257: Syscall{
+	257: syscallinfo.Syscall{
 		Num: 257,
 		Name: "remap_file_pages",
 		Entry: "sys_remap_file_pages",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long start",
@@ -4474,11 +4457,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	258: Syscall{
+	258: syscallinfo.Syscall{
 		Num: 258,
 		Name: "set_tid_address",
 		Entry: "sys_set_tid_address",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "int __user *tidptr",
@@ -4487,11 +4470,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	259: Syscall{
+	259: syscallinfo.Syscall{
 		Num: 259,
 		Name: "timer_create",
 		Entry: "sys_timer_create",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "clockid_t which_clock",
@@ -4510,11 +4493,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	260: Syscall{
+	260: syscallinfo.Syscall{
 		Num: 260,
 		Name: "timer_settime",
 		Entry: "sys_timer_settime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "timer_t timer_id",
@@ -4538,11 +4521,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	261: Syscall{
+	261: syscallinfo.Syscall{
 		Num: 261,
 		Name: "timer_gettime",
 		Entry: "sys_timer_gettime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "timer_t timer_id",
@@ -4556,11 +4539,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	262: Syscall{
+	262: syscallinfo.Syscall{
 		Num: 262,
 		Name: "timer_getoverrun",
 		Entry: "sys_timer_getoverrun",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "timer_t timer_id",
@@ -4569,11 +4552,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	263: Syscall{
+	263: syscallinfo.Syscall{
 		Num: 263,
 		Name: "timer_delete",
 		Entry: "sys_timer_delete",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "timer_t timer_id",
@@ -4582,11 +4565,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	264: Syscall{
+	264: syscallinfo.Syscall{
 		Num: 264,
 		Name: "clock_settime",
 		Entry: "sys_clock_settime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "clockid_t which_clock",
@@ -4600,11 +4583,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	265: Syscall{
+	265: syscallinfo.Syscall{
 		Num: 265,
 		Name: "clock_gettime",
 		Entry: "sys_clock_gettime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "clockid_t which_clock",
@@ -4618,11 +4601,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	266: Syscall{
+	266: syscallinfo.Syscall{
 		Num: 266,
 		Name: "clock_getres",
 		Entry: "sys_clock_getres",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "clockid_t which_clock",
@@ -4636,11 +4619,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	267: Syscall{
+	267: syscallinfo.Syscall{
 		Num: 267,
 		Name: "clock_nanosleep",
 		Entry: "sys_clock_nanosleep",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "clockid_t which_clock",
@@ -4664,11 +4647,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	268: Syscall{
+	268: syscallinfo.Syscall{
 		Num: 268,
 		Name: "statfs64",
 		Entry: "sys_statfs64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *path",
@@ -4687,11 +4670,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	269: Syscall{
+	269: syscallinfo.Syscall{
 		Num: 269,
 		Name: "fstatfs64",
 		Entry: "sys_fstatfs64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int fd",
@@ -4710,11 +4693,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	270: Syscall{
+	270: syscallinfo.Syscall{
 		Num: 270,
 		Name: "tgkill",
 		Entry: "sys_tgkill",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int tgid",
@@ -4733,11 +4716,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	271: Syscall{
+	271: syscallinfo.Syscall{
 		Num: 271,
 		Name: "utimes",
 		Entry: "sys_utimes",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *filename",
@@ -4751,11 +4734,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	272: Syscall{
+	272: syscallinfo.Syscall{
 		Num: 272,
 		Name: "fadvise64_64",
 		Entry: "sys_fadvise64_64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -4779,11 +4762,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	274: Syscall{
+	274: syscallinfo.Syscall{
 		Num: 274,
 		Name: "mbind",
 		Entry: "sys_mbind",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long start",
@@ -4817,11 +4800,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	275: Syscall{
+	275: syscallinfo.Syscall{
 		Num: 275,
 		Name: "get_mempolicy",
 		Entry: "sys_get_mempolicy",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "int __user *policy",
@@ -4850,11 +4833,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	276: Syscall{
+	276: syscallinfo.Syscall{
 		Num: 276,
 		Name: "set_mempolicy",
 		Entry: "sys_set_mempolicy",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int mode",
@@ -4873,11 +4856,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	277: Syscall{
+	277: syscallinfo.Syscall{
 		Num: 277,
 		Name: "mq_open",
 		Entry: "sys_mq_open",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *name",
@@ -4901,11 +4884,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	278: Syscall{
+	278: syscallinfo.Syscall{
 		Num: 278,
 		Name: "mq_unlink",
 		Entry: "sys_mq_unlink",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *name",
@@ -4914,11 +4897,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	279: Syscall{
+	279: syscallinfo.Syscall{
 		Num: 279,
 		Name: "mq_timedsend",
 		Entry: "sys_mq_timedsend",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "mqd_t mqdes",
@@ -4947,11 +4930,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	280: Syscall{
+	280: syscallinfo.Syscall{
 		Num: 280,
 		Name: "mq_timedreceive",
 		Entry: "sys_mq_timedreceive",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "mqd_t mqdes",
@@ -4980,11 +4963,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	281: Syscall{
+	281: syscallinfo.Syscall{
 		Num: 281,
 		Name: "mq_notify",
 		Entry: "sys_mq_notify",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "mqd_t mqdes",
@@ -4998,11 +4981,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	282: Syscall{
+	282: syscallinfo.Syscall{
 		Num: 282,
 		Name: "mq_getsetattr",
 		Entry: "sys_mq_getsetattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "mqd_t mqdes",
@@ -5021,11 +5004,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	283: Syscall{
+	283: syscallinfo.Syscall{
 		Num: 283,
 		Name: "kexec_load",
 		Entry: "sys_kexec_load",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long entry",
@@ -5049,11 +5032,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	284: Syscall{
+	284: syscallinfo.Syscall{
 		Num: 284,
 		Name: "waitid",
 		Entry: "sys_waitid",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int which",
@@ -5082,11 +5065,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	286: Syscall{
+	286: syscallinfo.Syscall{
 		Num: 286,
 		Name: "add_key",
 		Entry: "sys_add_key",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *_type",
@@ -5115,11 +5098,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	287: Syscall{
+	287: syscallinfo.Syscall{
 		Num: 287,
 		Name: "request_key",
 		Entry: "sys_request_key",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *_type",
@@ -5143,11 +5126,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	288: Syscall{
+	288: syscallinfo.Syscall{
 		Num: 288,
 		Name: "keyctl",
 		Entry: "sys_keyctl",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int cmd",
@@ -5176,11 +5159,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	289: Syscall{
+	289: syscallinfo.Syscall{
 		Num: 289,
 		Name: "ioprio_set",
 		Entry: "sys_ioprio_set",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int which",
@@ -5199,11 +5182,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	290: Syscall{
+	290: syscallinfo.Syscall{
 		Num: 290,
 		Name: "ioprio_get",
 		Entry: "sys_ioprio_get",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int which",
@@ -5217,19 +5200,19 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	291: Syscall{
+	291: syscallinfo.Syscall{
 		Num: 291,
 		Name: "inotify_init",
 		Entry: "sys_inotify_init",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 
 		},
 	},
-	292: Syscall{
+	292: syscallinfo.Syscall{
 		Num: 292,
 		Name: "inotify_add_watch",
 		Entry: "sys_inotify_add_watch",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -5248,11 +5231,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	293: Syscall{
+	293: syscallinfo.Syscall{
 		Num: 293,
 		Name: "inotify_rm_watch",
 		Entry: "sys_inotify_rm_watch",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -5266,11 +5249,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	294: Syscall{
+	294: syscallinfo.Syscall{
 		Num: 294,
 		Name: "migrate_pages",
 		Entry: "sys_migrate_pages",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -5294,11 +5277,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	295: Syscall{
+	295: syscallinfo.Syscall{
 		Num: 295,
 		Name: "openat",
 		Entry: "sys_openat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5322,11 +5305,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	296: Syscall{
+	296: syscallinfo.Syscall{
 		Num: 296,
 		Name: "mkdirat",
 		Entry: "sys_mkdirat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5345,11 +5328,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	297: Syscall{
+	297: syscallinfo.Syscall{
 		Num: 297,
 		Name: "mknodat",
 		Entry: "sys_mknodat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5373,11 +5356,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	298: Syscall{
+	298: syscallinfo.Syscall{
 		Num: 298,
 		Name: "fchownat",
 		Entry: "sys_fchownat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5406,11 +5389,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	299: Syscall{
+	299: syscallinfo.Syscall{
 		Num: 299,
 		Name: "futimesat",
 		Entry: "sys_futimesat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5429,11 +5412,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	300: Syscall{
+	300: syscallinfo.Syscall{
 		Num: 300,
 		Name: "fstatat64",
 		Entry: "sys_fstatat64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5457,11 +5440,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	301: Syscall{
+	301: syscallinfo.Syscall{
 		Num: 301,
 		Name: "unlinkat",
 		Entry: "sys_unlinkat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5480,11 +5463,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	302: Syscall{
+	302: syscallinfo.Syscall{
 		Num: 302,
 		Name: "renameat",
 		Entry: "sys_renameat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int olddfd",
@@ -5508,11 +5491,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	303: Syscall{
+	303: syscallinfo.Syscall{
 		Num: 303,
 		Name: "linkat",
 		Entry: "sys_linkat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int olddfd",
@@ -5541,11 +5524,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	304: Syscall{
+	304: syscallinfo.Syscall{
 		Num: 304,
 		Name: "symlinkat",
 		Entry: "sys_symlinkat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user * oldname",
@@ -5564,11 +5547,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	305: Syscall{
+	305: syscallinfo.Syscall{
 		Num: 305,
 		Name: "readlinkat",
 		Entry: "sys_readlinkat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5592,11 +5575,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	306: Syscall{
+	306: syscallinfo.Syscall{
 		Num: 306,
 		Name: "fchmodat",
 		Entry: "sys_fchmodat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5615,11 +5598,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	307: Syscall{
+	307: syscallinfo.Syscall{
 		Num: 307,
 		Name: "faccessat",
 		Entry: "sys_faccessat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -5638,11 +5621,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	308: Syscall{
+	308: syscallinfo.Syscall{
 		Num: 308,
 		Name: "pselect6",
 		Entry: "sys_pselect6",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int n",
@@ -5676,11 +5659,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	309: Syscall{
+	309: syscallinfo.Syscall{
 		Num: 309,
 		Name: "ppoll",
 		Entry: "sys_ppoll",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct pollfd __user *ufds",
@@ -5709,11 +5692,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	310: Syscall{
+	310: syscallinfo.Syscall{
 		Num: 310,
 		Name: "unshare",
 		Entry: "sys_unshare",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long unshare_flags",
@@ -5722,11 +5705,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	311: Syscall{
+	311: syscallinfo.Syscall{
 		Num: 311,
 		Name: "set_robust_list",
 		Entry: "sys_set_robust_list",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct robust_list_head __user *head",
@@ -5740,11 +5723,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	312: Syscall{
+	312: syscallinfo.Syscall{
 		Num: 312,
 		Name: "get_robust_list",
 		Entry: "sys_get_robust_list",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int pid",
@@ -5763,11 +5746,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	313: Syscall{
+	313: syscallinfo.Syscall{
 		Num: 313,
 		Name: "splice",
 		Entry: "sys_splice",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd_in",
@@ -5801,11 +5784,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	314: Syscall{
+	314: syscallinfo.Syscall{
 		Num: 314,
 		Name: "sync_file_range",
 		Entry: "sys_sync_file_range",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -5829,11 +5812,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	315: Syscall{
+	315: syscallinfo.Syscall{
 		Num: 315,
 		Name: "tee",
 		Entry: "sys_tee",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fdin",
@@ -5857,11 +5840,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	316: Syscall{
+	316: syscallinfo.Syscall{
 		Num: 316,
 		Name: "vmsplice",
 		Entry: "sys_vmsplice",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -5885,11 +5868,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	317: Syscall{
+	317: syscallinfo.Syscall{
 		Num: 317,
 		Name: "move_pages",
 		Entry: "sys_move_pages",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -5923,11 +5906,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	318: Syscall{
+	318: syscallinfo.Syscall{
 		Num: 318,
 		Name: "getcpu",
 		Entry: "sys_getcpu",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "unsigned __user *cpu",
@@ -5946,11 +5929,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	319: Syscall{
+	319: syscallinfo.Syscall{
 		Num: 319,
 		Name: "epoll_pwait",
 		Entry: "sys_epoll_pwait",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int epfd",
@@ -5984,11 +5967,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	320: Syscall{
+	320: syscallinfo.Syscall{
 		Num: 320,
 		Name: "utimensat",
 		Entry: "sys_utimensat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -6012,11 +5995,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	321: Syscall{
+	321: syscallinfo.Syscall{
 		Num: 321,
 		Name: "signalfd",
 		Entry: "sys_signalfd",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int ufd",
@@ -6035,11 +6018,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	322: Syscall{
+	322: syscallinfo.Syscall{
 		Num: 322,
 		Name: "timerfd_create",
 		Entry: "sys_timerfd_create",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int clockid",
@@ -6053,11 +6036,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	323: Syscall{
+	323: syscallinfo.Syscall{
 		Num: 323,
 		Name: "eventfd",
 		Entry: "sys_eventfd",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int count",
@@ -6066,11 +6049,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	324: Syscall{
+	324: syscallinfo.Syscall{
 		Num: 324,
 		Name: "fallocate",
 		Entry: "sys_fallocate",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -6094,11 +6077,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	325: Syscall{
+	325: syscallinfo.Syscall{
 		Num: 325,
 		Name: "timerfd_settime",
 		Entry: "sys_timerfd_settime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int ufd",
@@ -6122,11 +6105,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	326: Syscall{
+	326: syscallinfo.Syscall{
 		Num: 326,
 		Name: "timerfd_gettime",
 		Entry: "sys_timerfd_gettime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int ufd",
@@ -6140,11 +6123,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	327: Syscall{
+	327: syscallinfo.Syscall{
 		Num: 327,
 		Name: "signalfd4",
 		Entry: "sys_signalfd4",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int ufd",
@@ -6168,11 +6151,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	328: Syscall{
+	328: syscallinfo.Syscall{
 		Num: 328,
 		Name: "eventfd2",
 		Entry: "sys_eventfd2",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int count",
@@ -6186,11 +6169,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	329: Syscall{
+	329: syscallinfo.Syscall{
 		Num: 329,
 		Name: "epoll_create1",
 		Entry: "sys_epoll_create1",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int flags",
@@ -6199,11 +6182,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	330: Syscall{
+	330: syscallinfo.Syscall{
 		Num: 330,
 		Name: "dup3",
 		Entry: "sys_dup3",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int oldfd",
@@ -6222,11 +6205,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	331: Syscall{
+	331: syscallinfo.Syscall{
 		Num: 331,
 		Name: "pipe2",
 		Entry: "sys_pipe2",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "int __user *fildes",
@@ -6240,11 +6223,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	332: Syscall{
+	332: syscallinfo.Syscall{
 		Num: 332,
 		Name: "inotify_init1",
 		Entry: "sys_inotify_init1",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int flags",
@@ -6253,11 +6236,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	333: Syscall{
+	333: syscallinfo.Syscall{
 		Num: 333,
 		Name: "preadv",
 		Entry: "sys_preadv",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long fd",
@@ -6286,11 +6269,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	334: Syscall{
+	334: syscallinfo.Syscall{
 		Num: 334,
 		Name: "pwritev",
 		Entry: "sys_pwritev",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned long fd",
@@ -6319,11 +6302,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	335: Syscall{
+	335: syscallinfo.Syscall{
 		Num: 335,
 		Name: "rt_tgsigqueueinfo",
 		Entry: "sys_rt_tgsigqueueinfo",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t tgid",
@@ -6347,11 +6330,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	336: Syscall{
+	336: syscallinfo.Syscall{
 		Num: 336,
 		Name: "perf_event_open",
 		Entry: "sys_perf_event_open",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "struct perf_event_attr __user *attr_uptr",
@@ -6380,11 +6363,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	337: Syscall{
+	337: syscallinfo.Syscall{
 		Num: 337,
 		Name: "recvmmsg",
 		Entry: "sys_recvmmsg",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -6413,11 +6396,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	338: Syscall{
+	338: syscallinfo.Syscall{
 		Num: 338,
 		Name: "fanotify_init",
 		Entry: "sys_fanotify_init",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int flags",
@@ -6431,11 +6414,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	339: Syscall{
+	339: syscallinfo.Syscall{
 		Num: 339,
 		Name: "fanotify_mark",
 		Entry: "sys_fanotify_mark",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fanotify_fd",
@@ -6464,11 +6447,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	340: Syscall{
+	340: syscallinfo.Syscall{
 		Num: 340,
 		Name: "prlimit64",
 		Entry: "sys_prlimit64",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -6492,11 +6475,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	341: Syscall{
+	341: syscallinfo.Syscall{
 		Num: 341,
 		Name: "name_to_handle_at",
 		Entry: "sys_name_to_handle_at",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -6525,11 +6508,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	342: Syscall{
+	342: syscallinfo.Syscall{
 		Num: 342,
 		Name: "open_by_handle_at",
 		Entry: "sys_open_by_handle_at",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int mountdirfd",
@@ -6548,11 +6531,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	343: Syscall{
+	343: syscallinfo.Syscall{
 		Num: 343,
 		Name: "clock_adjtime",
 		Entry: "sys_clock_adjtime",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "clockid_t which_clock",
@@ -6566,11 +6549,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	344: Syscall{
+	344: syscallinfo.Syscall{
 		Num: 344,
 		Name: "syncfs",
 		Entry: "sys_syncfs",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -6579,11 +6562,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	345: Syscall{
+	345: syscallinfo.Syscall{
 		Num: 345,
 		Name: "sendmmsg",
 		Entry: "sys_sendmmsg",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -6607,11 +6590,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	346: Syscall{
+	346: syscallinfo.Syscall{
 		Num: 346,
 		Name: "setns",
 		Entry: "sys_setns",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -6625,11 +6608,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	347: Syscall{
+	347: syscallinfo.Syscall{
 		Num: 347,
 		Name: "process_vm_readv",
 		Entry: "sys_process_vm_readv",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -6663,11 +6646,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	348: Syscall{
+	348: syscallinfo.Syscall{
 		Num: 348,
 		Name: "process_vm_writev",
 		Entry: "sys_process_vm_writev",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -6701,11 +6684,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	349: Syscall{
+	349: syscallinfo.Syscall{
 		Num: 349,
 		Name: "kcmp",
 		Entry: "sys_kcmp",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid1",
@@ -6734,11 +6717,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	350: Syscall{
+	350: syscallinfo.Syscall{
 		Num: 350,
 		Name: "finit_module",
 		Entry: "sys_finit_module",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int fd",
@@ -6757,11 +6740,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	351: Syscall{
+	351: syscallinfo.Syscall{
 		Num: 351,
 		Name: "sched_setattr",
 		Entry: "sys_sched_setattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -6780,11 +6763,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	352: Syscall{
+	352: syscallinfo.Syscall{
 		Num: 352,
 		Name: "sched_getattr",
 		Entry: "sys_sched_getattr",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "pid_t pid",
@@ -6808,11 +6791,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	353: Syscall{
+	353: syscallinfo.Syscall{
 		Num: 353,
 		Name: "renameat2",
 		Entry: "sys_renameat2",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int olddfd",
@@ -6841,11 +6824,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	354: Syscall{
+	354: syscallinfo.Syscall{
 		Num: 354,
 		Name: "seccomp",
 		Entry: "sys_seccomp",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "unsigned int op",
@@ -6864,11 +6847,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	355: Syscall{
+	355: syscallinfo.Syscall{
 		Num: 355,
 		Name: "getrandom",
 		Entry: "sys_getrandom",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "char __user *buf",
@@ -6887,11 +6870,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	356: Syscall{
+	356: syscallinfo.Syscall{
 		Num: 356,
 		Name: "memfd_create",
 		Entry: "sys_memfd_create",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
 				Sig: "const char __user *uname_ptr",
@@ -6905,11 +6888,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	357: Syscall{
+	357: syscallinfo.Syscall{
 		Num: 357,
 		Name: "bpf",
 		Entry: "sys_bpf",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int cmd",
@@ -6928,11 +6911,11 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
-	358: Syscall{
+	358: syscallinfo.Syscall{
 		Num: 358,
 		Name: "execveat",
 		Entry: "sys_execveat",
-		Args: []Argument{
+		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
 				Sig: "int dfd",
@@ -6963,19 +6946,19 @@ var syscalls = map[int]Syscall{
 	},
 }
 
-func GetSyscall(n int) (Syscall, error) {
+func Syscall(n int) (syscallinfo.Syscall, error) {
 	sc, ok := syscalls[n]
 	if !ok {
-		return Syscall{}, errors.New("unknown syscall")
+		return syscallinfo.Syscall{}, errors.New("unknown syscall")
 	}
 	return sc, nil
 }
 
-func GetSyscallByEntry(entry string) (Syscall, error) {
+func SyscallByEntry(entry string) (syscallinfo.Syscall, error) {
 	for _, sc := range syscalls {
 		if sc.Entry == entry {
 			return sc, nil
 		}
 	}
-	return Syscall{}, errors.New("unknown syscall")
+	return syscallinfo.Syscall{}, errors.New("unknown syscall")
 }
