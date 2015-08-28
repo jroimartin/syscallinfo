@@ -2,6 +2,8 @@
 
 package x86
 
+import "errors"
+
 type Syscall struct {
 	Num   int
 	Name  string
@@ -6959,4 +6961,21 @@ var syscalls = map[int]Syscall{
 
 		},
 	},
+}
+
+func GetSyscall(n int) (Syscall, error) {
+	sc, ok := syscalls[n]
+	if !ok {
+		return Syscall{}, errors.New("unknown syscall")
+	}
+	return sc, nil
+}
+
+func GetSyscallByEntry(entry string) (Syscall, error) {
+	for _, sc := range syscalls {
+		if sc.Entry == entry {
+			return sc, nil
+		}
+	}
+	return Syscall{}, errors.New("unknown syscall")
 }
