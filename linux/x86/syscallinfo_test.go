@@ -12,9 +12,9 @@ var checks = []struct {
 	{666, "", 0, false},
 }
 
-func TestGetSyscall(t *testing.T) {
+func TestSyscall(t *testing.T) {
 	for _, c := range checks {
-		sc, err := GetSyscall(c.num)
+		sc, err := Syscall(c.num)
 		if err != nil {
 			if c.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
@@ -30,9 +30,9 @@ func TestGetSyscall(t *testing.T) {
 	}
 }
 
-func TestGetSyscallByEntry(t *testing.T) {
+func TestSyscallByEntry(t *testing.T) {
 	for _, c := range checks {
-		sc, err := GetSyscallByEntry(c.entry)
+		sc, err := SyscallByEntry(c.entry)
 		if err != nil {
 			if c.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
