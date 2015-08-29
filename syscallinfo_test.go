@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/jroimartin/syscallinfo"
-	"github.com/jroimartin/syscallinfo/linux32"
+	"github.com/jroimartin/syscallinfo/linux_386"
 )
 
 var checksResolution = []struct {
@@ -39,7 +39,7 @@ var checksResolution = []struct {
 }
 
 func TestSyscall(t *testing.T) {
-	r := syscallinfo.NewResolver(linux32.SyscallTable)
+	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 	for _, check := range checksResolution {
 		sc, err := r.Syscall(check.num)
 		if err != nil {
@@ -64,7 +64,7 @@ func TestSyscall(t *testing.T) {
 }
 
 func TestSyscallByEntry(t *testing.T) {
-	r := syscallinfo.NewResolver(linux32.SyscallTable)
+	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 	for _, check := range checksResolution {
 		sc, err := r.SyscallByEntry(check.entry)
 		if err != nil {
@@ -109,7 +109,7 @@ var checksReprs = []struct {
 }
 
 func TestRepr(t *testing.T) {
-	r := syscallinfo.NewResolver(linux32.SyscallTable)
+	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 
 	for _, check := range checksReprs {
 		str, err := r.Repr(check.num, check.args...)
