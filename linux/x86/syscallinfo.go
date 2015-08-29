@@ -6584,6 +6584,7 @@ var syscalls = map[int]syscallinfo.Syscall{
 	},
 }
 
+// Syscall returns a Syscall object which number matches the provided one.
 func Syscall(n int) (syscallinfo.Syscall, error) {
 	sc, ok := syscalls[n]
 	if !ok {
@@ -6592,6 +6593,8 @@ func Syscall(n int) (syscallinfo.Syscall, error) {
 	return sc, nil
 }
 
+// SyscallByEntry returns a Syscall object which entry point matches the
+// provided one.
 func SyscallByEntry(entry string) (syscallinfo.Syscall, error) {
 	for _, sc := range syscalls {
 		if sc.Entry == entry {
