@@ -335,6 +335,13 @@ var SyscallTable = syscallinfo.SyscallTable{
 			},
 		},
 	},
+	15: syscallinfo.Syscall{
+		Num:     15,
+		Name:    "rt_sigreturn",
+		Entry:   "sys_rt_sigreturn",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
+	},
 	16: syscallinfo.Syscall{
 		Num:     16,
 		Name:    "ioctl",
@@ -1233,6 +1240,76 @@ var SyscallTable = syscallinfo.SyscallTable{
 			{
 				RefCount: 1,
 				Sig:      "int __user *optlen",
+				Context:  0,
+			},
+		},
+	},
+	56: syscallinfo.Syscall{
+		Num:     56,
+		Name:    "clone",
+		Entry:   "sys_clone",
+		Context: 0,
+		Args: []syscallinfo.Argument{
+			{
+				RefCount: 0,
+				Sig:      "unsigned long",
+				Context:  0,
+			},
+			{
+				RefCount: 0,
+				Sig:      "unsigned long",
+				Context:  0,
+			},
+			{
+				RefCount: 1,
+				Sig:      "int __user *",
+				Context:  0,
+			},
+			{
+				RefCount: 0,
+				Sig:      "int",
+				Context:  0,
+			},
+			{
+				RefCount: 1,
+				Sig:      "int __user *",
+				Context:  0,
+			},
+		},
+	},
+	57: syscallinfo.Syscall{
+		Num:     57,
+		Name:    "fork",
+		Entry:   "sys_fork",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
+	},
+	58: syscallinfo.Syscall{
+		Num:     58,
+		Name:    "vfork",
+		Entry:   "sys_vfork",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
+	},
+	59: syscallinfo.Syscall{
+		Num:     59,
+		Name:    "execve",
+		Entry:   "sys_execve",
+		Context: 0,
+		Args: []syscallinfo.Argument{
+			{
+				RefCount: 1,
+				Sig:      "const char __user *filename",
+				Context:  0,
+			},
+			{
+				RefCount: 2,
+				Sig:      "const char __user *const __user *argv",
+				Context:  0,
+			},
+			{
+				RefCount: 2,
+				Sig:      "const char __user *const __user *envp",
 				Context:  0,
 			},
 		},
@@ -6516,6 +6593,39 @@ var SyscallTable = syscallinfo.SyscallTable{
 			{
 				RefCount: 0,
 				Sig:      "unsigned int size",
+				Context:  0,
+			},
+		},
+	},
+	322: syscallinfo.Syscall{
+		Num:     322,
+		Name:    "execveat",
+		Entry:   "sys_execveat",
+		Context: 0,
+		Args: []syscallinfo.Argument{
+			{
+				RefCount: 0,
+				Sig:      "int dfd",
+				Context:  0,
+			},
+			{
+				RefCount: 1,
+				Sig:      "const char __user *filename",
+				Context:  0,
+			},
+			{
+				RefCount: 2,
+				Sig:      "const char __user *const __user *argv",
+				Context:  0,
+			},
+			{
+				RefCount: 2,
+				Sig:      "const char __user *const __user *envp",
+				Context:  0,
+			},
+			{
+				RefCount: 0,
+				Sig:      "int flags",
 				Context:  0,
 			},
 		},

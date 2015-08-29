@@ -36,7 +36,8 @@ def main():
 
         num = match.group(1)
         name = match.group(2)
-        entrypoint = match.group(3)
+        entrypoint = re.sub(r'^stub_', r'sys_', match.group(3))
+
         if not tags.find(entry, entrypoint, ctags.TAG_FULLMATCH | ctags.TAG_OBSERVECASE):
             continue
 

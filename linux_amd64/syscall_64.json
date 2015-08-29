@@ -330,6 +330,13 @@
 		"context": ""
 	},
 	{
+		"entry": "sys_rt_sigreturn",
+		"num": 15,
+		"args": [],
+		"name": "rt_sigreturn",
+		"context": ""
+	},
+	{
 		"entry": "sys_ioctl",
 		"num": 16,
 		"args": [
@@ -1229,6 +1236,76 @@
 			}
 		],
 		"name": "getsockopt",
+		"context": ""
+	},
+	{
+		"entry": "sys_clone",
+		"num": 56,
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "unsigned long",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "int __user *",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "int __user *",
+				"context": ""
+			}
+		],
+		"name": "clone",
+		"context": ""
+	},
+	{
+		"entry": "sys_fork",
+		"num": 57,
+		"args": [],
+		"name": "fork",
+		"context": ""
+	},
+	{
+		"entry": "sys_vfork",
+		"num": 58,
+		"args": [],
+		"name": "vfork",
+		"context": ""
+	},
+	{
+		"entry": "sys_execve",
+		"num": 59,
+		"args": [
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const char __user *const __user *argv",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const char __user *const __user *envp",
+				"context": ""
+			}
+		],
+		"name": "execve",
 		"context": ""
 	},
 	{
@@ -6512,6 +6589,39 @@
 			}
 		],
 		"name": "bpf",
+		"context": ""
+	},
+	{
+		"entry": "sys_execveat",
+		"num": 322,
+		"args": [
+			{
+				"refcount": 0,
+				"sig": "int dfd",
+				"context": ""
+			},
+			{
+				"refcount": 1,
+				"sig": "const char __user *filename",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const char __user *const __user *argv",
+				"context": ""
+			},
+			{
+				"refcount": 2,
+				"sig": "const char __user *const __user *envp",
+				"context": ""
+			},
+			{
+				"refcount": 0,
+				"sig": "int flags",
+				"context": ""
+			}
+		],
+		"name": "execveat",
 		"context": ""
 	},
 	{
