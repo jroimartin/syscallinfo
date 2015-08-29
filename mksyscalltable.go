@@ -77,6 +77,7 @@ var SyscallTable = syscallinfo.SyscallTable{
 		Num: {{.Num}},
 		Name: "{{.Name}}",
 		Entry: "{{.Entry}}",
+		Context: {{.Context}},
 		Args: []syscallinfo.Argument{
 {{range .Args}}			{
 				RefCount: {{.RefCount}},

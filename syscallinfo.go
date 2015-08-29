@@ -23,6 +23,10 @@ type Syscall struct {
 	// Entry is the entry point of the syscall (function name).
 	Entry string
 
+	// Context is specifies under which context the syscall's return value is
+	// used.
+	Context Context
+
 	// Args is a slice containing all the syscall's argurments.
 	Args []Argument
 }
@@ -97,28 +101,51 @@ func (r Resolver) SyscallByEntry(entry string) (Syscall, error) {
 	return Syscall{}, errors.New("unknown syscall")
 }
 
-// Repr returns a string with the representation of the call. The number of
-// provided arguments must be greater or equal to the number of arguments
-// required by the syscall.
-func (r Resolver) Repr(n int, args ...uint64) (string, error) {
+// Repr returns a string with the representation of the call plus the return
+// value. The number of provided arguments must be greater or equal to the
+// number of arguments required by the syscall.
+func (r Resolver) Repr(n int, ret uint64, args ...uint64) (string, error) {
 	sc, err := r.Syscall(n)
 	if err != nil {
 		return "", err
 	}
+	callStr, err := reprCall(sc, args...)
+	if err != nil {
+		return "", err
+	}
+	retStr := reprCtx(ret, sc.Context)
+	return fmt.Sprintf("%s = %s", callStr, retStr), nil
+}
+
+// ReprCall returns a string with the representation of the call. The number of
+// provided arguments must be greater or equal to the number of arguments
+// required by the syscall.
+func (r Resolver) ReprCall(n int, args ...uint64) (string, error) {
+	sc, err := r.Syscall(n)
+	if err != nil {
+		return "", err
+	}
+	return reprCall(sc, args...)
+}
+
+// reprCall returns a string with the representation of the call.  It takes a
+// Syscall objects as input and the number of provided arguments must be
+// greater or equal to the number of arguments required by the syscall.
+func reprCall(sc Syscall, args ...uint64) (string, error) {
 	if len(args) < len(sc.Args) {
 		return "", errors.New("invalid number of arguments")
 	}
 	argsStr := ""
 	for i := range sc.Args {
-		argsStr += ctxRepr(args[i], sc.Args[i].Context) + ", "
+		argsStr += reprCtx(args[i], sc.Args[i].Context) + ", "
 	}
 	argsStr = strings.TrimSuffix(argsStr, ", ")
 	return fmt.Sprintf("%s(%s)", sc.Name, argsStr), nil
 }
 
-// ctxRepr returns a string with the contextualized representation of the
+// reprCtx returns a string with the contextualized representation of the
 // provided number.
-func ctxRepr(n uint64, ctx Context) string {
+func reprCtx(n uint64, ctx Context) string {
 	switch ctx {
 	case CTX_FD:
 		return fmt.Sprintf("%d", n)

@@ -6,15 +6,17 @@ import "github.com/jroimartin/syscallinfo"
 
 var SyscallTable = syscallinfo.SyscallTable{
 	0: syscallinfo.Syscall{
-		Num:   0,
-		Name:  "restart_syscall",
-		Entry: "sys_restart_syscall",
-		Args:  []syscallinfo.Argument{},
+		Num:     0,
+		Name:    "restart_syscall",
+		Entry:   "sys_restart_syscall",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	1: syscallinfo.Syscall{
-		Num:   1,
-		Name:  "exit",
-		Entry: "sys_exit",
+		Num:     1,
+		Name:    "exit",
+		Entry:   "sys_exit",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -24,15 +26,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	2: syscallinfo.Syscall{
-		Num:   2,
-		Name:  "fork",
-		Entry: "sys_fork",
-		Args:  []syscallinfo.Argument{},
+		Num:     2,
+		Name:    "fork",
+		Entry:   "sys_fork",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	3: syscallinfo.Syscall{
-		Num:   3,
-		Name:  "read",
-		Entry: "sys_read",
+		Num:     3,
+		Name:    "read",
+		Entry:   "sys_read",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -52,9 +56,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	4: syscallinfo.Syscall{
-		Num:   4,
-		Name:  "write",
-		Entry: "sys_write",
+		Num:     4,
+		Name:    "write",
+		Entry:   "sys_write",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -74,9 +79,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	5: syscallinfo.Syscall{
-		Num:   5,
-		Name:  "open",
-		Entry: "sys_open",
+		Num:     5,
+		Name:    "open",
+		Entry:   "sys_open",
+		Context: 1,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -96,9 +102,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	6: syscallinfo.Syscall{
-		Num:   6,
-		Name:  "close",
-		Entry: "sys_close",
+		Num:     6,
+		Name:    "close",
+		Entry:   "sys_close",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -108,9 +115,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	7: syscallinfo.Syscall{
-		Num:   7,
-		Name:  "waitpid",
-		Entry: "sys_waitpid",
+		Num:     7,
+		Name:    "waitpid",
+		Entry:   "sys_waitpid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -130,9 +138,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	8: syscallinfo.Syscall{
-		Num:   8,
-		Name:  "creat",
-		Entry: "sys_creat",
+		Num:     8,
+		Name:    "creat",
+		Entry:   "sys_creat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -147,9 +156,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	9: syscallinfo.Syscall{
-		Num:   9,
-		Name:  "link",
-		Entry: "sys_link",
+		Num:     9,
+		Name:    "link",
+		Entry:   "sys_link",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -164,9 +174,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	10: syscallinfo.Syscall{
-		Num:   10,
-		Name:  "unlink",
-		Entry: "sys_unlink",
+		Num:     10,
+		Name:    "unlink",
+		Entry:   "sys_unlink",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -176,9 +187,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	11: syscallinfo.Syscall{
-		Num:   11,
-		Name:  "execve",
-		Entry: "sys_execve",
+		Num:     11,
+		Name:    "execve",
+		Entry:   "sys_execve",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -198,9 +210,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	12: syscallinfo.Syscall{
-		Num:   12,
-		Name:  "chdir",
-		Entry: "sys_chdir",
+		Num:     12,
+		Name:    "chdir",
+		Entry:   "sys_chdir",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -210,9 +223,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	13: syscallinfo.Syscall{
-		Num:   13,
-		Name:  "time",
-		Entry: "sys_time",
+		Num:     13,
+		Name:    "time",
+		Entry:   "sys_time",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -222,9 +236,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	14: syscallinfo.Syscall{
-		Num:   14,
-		Name:  "mknod",
-		Entry: "sys_mknod",
+		Num:     14,
+		Name:    "mknod",
+		Entry:   "sys_mknod",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -244,9 +259,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	15: syscallinfo.Syscall{
-		Num:   15,
-		Name:  "chmod",
-		Entry: "sys_chmod",
+		Num:     15,
+		Name:    "chmod",
+		Entry:   "sys_chmod",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -261,9 +277,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	16: syscallinfo.Syscall{
-		Num:   16,
-		Name:  "lchown",
-		Entry: "sys_lchown16",
+		Num:     16,
+		Name:    "lchown",
+		Entry:   "sys_lchown16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -283,9 +300,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	18: syscallinfo.Syscall{
-		Num:   18,
-		Name:  "oldstat",
-		Entry: "sys_stat",
+		Num:     18,
+		Name:    "oldstat",
+		Entry:   "sys_stat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -300,9 +318,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	19: syscallinfo.Syscall{
-		Num:   19,
-		Name:  "lseek",
-		Entry: "sys_lseek",
+		Num:     19,
+		Name:    "lseek",
+		Entry:   "sys_lseek",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -322,15 +341,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	20: syscallinfo.Syscall{
-		Num:   20,
-		Name:  "getpid",
-		Entry: "sys_getpid",
-		Args:  []syscallinfo.Argument{},
+		Num:     20,
+		Name:    "getpid",
+		Entry:   "sys_getpid",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	21: syscallinfo.Syscall{
-		Num:   21,
-		Name:  "mount",
-		Entry: "sys_mount",
+		Num:     21,
+		Name:    "mount",
+		Entry:   "sys_mount",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -360,9 +381,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	22: syscallinfo.Syscall{
-		Num:   22,
-		Name:  "umount",
-		Entry: "sys_oldumount",
+		Num:     22,
+		Name:    "umount",
+		Entry:   "sys_oldumount",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -372,9 +394,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	23: syscallinfo.Syscall{
-		Num:   23,
-		Name:  "setuid",
-		Entry: "sys_setuid16",
+		Num:     23,
+		Name:    "setuid",
+		Entry:   "sys_setuid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -384,15 +407,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	24: syscallinfo.Syscall{
-		Num:   24,
-		Name:  "getuid",
-		Entry: "sys_getuid16",
-		Args:  []syscallinfo.Argument{},
+		Num:     24,
+		Name:    "getuid",
+		Entry:   "sys_getuid16",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	25: syscallinfo.Syscall{
-		Num:   25,
-		Name:  "stime",
-		Entry: "sys_stime",
+		Num:     25,
+		Name:    "stime",
+		Entry:   "sys_stime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -402,9 +427,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	26: syscallinfo.Syscall{
-		Num:   26,
-		Name:  "ptrace",
-		Entry: "sys_ptrace",
+		Num:     26,
+		Name:    "ptrace",
+		Entry:   "sys_ptrace",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -429,9 +455,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	27: syscallinfo.Syscall{
-		Num:   27,
-		Name:  "alarm",
-		Entry: "sys_alarm",
+		Num:     27,
+		Name:    "alarm",
+		Entry:   "sys_alarm",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -441,9 +468,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	28: syscallinfo.Syscall{
-		Num:   28,
-		Name:  "oldfstat",
-		Entry: "sys_fstat",
+		Num:     28,
+		Name:    "oldfstat",
+		Entry:   "sys_fstat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -458,15 +486,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	29: syscallinfo.Syscall{
-		Num:   29,
-		Name:  "pause",
-		Entry: "sys_pause",
-		Args:  []syscallinfo.Argument{},
+		Num:     29,
+		Name:    "pause",
+		Entry:   "sys_pause",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	30: syscallinfo.Syscall{
-		Num:   30,
-		Name:  "utime",
-		Entry: "sys_utime",
+		Num:     30,
+		Name:    "utime",
+		Entry:   "sys_utime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -481,9 +511,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	33: syscallinfo.Syscall{
-		Num:   33,
-		Name:  "access",
-		Entry: "sys_access",
+		Num:     33,
+		Name:    "access",
+		Entry:   "sys_access",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -498,9 +529,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	34: syscallinfo.Syscall{
-		Num:   34,
-		Name:  "nice",
-		Entry: "sys_nice",
+		Num:     34,
+		Name:    "nice",
+		Entry:   "sys_nice",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -510,15 +542,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	36: syscallinfo.Syscall{
-		Num:   36,
-		Name:  "sync",
-		Entry: "sys_sync",
-		Args:  []syscallinfo.Argument{},
+		Num:     36,
+		Name:    "sync",
+		Entry:   "sys_sync",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	37: syscallinfo.Syscall{
-		Num:   37,
-		Name:  "kill",
-		Entry: "sys_kill",
+		Num:     37,
+		Name:    "kill",
+		Entry:   "sys_kill",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -533,9 +567,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	38: syscallinfo.Syscall{
-		Num:   38,
-		Name:  "rename",
-		Entry: "sys_rename",
+		Num:     38,
+		Name:    "rename",
+		Entry:   "sys_rename",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -550,9 +585,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	39: syscallinfo.Syscall{
-		Num:   39,
-		Name:  "mkdir",
-		Entry: "sys_mkdir",
+		Num:     39,
+		Name:    "mkdir",
+		Entry:   "sys_mkdir",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -567,9 +603,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	40: syscallinfo.Syscall{
-		Num:   40,
-		Name:  "rmdir",
-		Entry: "sys_rmdir",
+		Num:     40,
+		Name:    "rmdir",
+		Entry:   "sys_rmdir",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -579,9 +616,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	41: syscallinfo.Syscall{
-		Num:   41,
-		Name:  "dup",
-		Entry: "sys_dup",
+		Num:     41,
+		Name:    "dup",
+		Entry:   "sys_dup",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -591,9 +629,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	42: syscallinfo.Syscall{
-		Num:   42,
-		Name:  "pipe",
-		Entry: "sys_pipe",
+		Num:     42,
+		Name:    "pipe",
+		Entry:   "sys_pipe",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -603,9 +642,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	43: syscallinfo.Syscall{
-		Num:   43,
-		Name:  "times",
-		Entry: "sys_times",
+		Num:     43,
+		Name:    "times",
+		Entry:   "sys_times",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -615,9 +655,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	45: syscallinfo.Syscall{
-		Num:   45,
-		Name:  "brk",
-		Entry: "sys_brk",
+		Num:     45,
+		Name:    "brk",
+		Entry:   "sys_brk",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -627,9 +668,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	46: syscallinfo.Syscall{
-		Num:   46,
-		Name:  "setgid",
-		Entry: "sys_setgid16",
+		Num:     46,
+		Name:    "setgid",
+		Entry:   "sys_setgid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -639,15 +681,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	47: syscallinfo.Syscall{
-		Num:   47,
-		Name:  "getgid",
-		Entry: "sys_getgid16",
-		Args:  []syscallinfo.Argument{},
+		Num:     47,
+		Name:    "getgid",
+		Entry:   "sys_getgid16",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	48: syscallinfo.Syscall{
-		Num:   48,
-		Name:  "signal",
-		Entry: "sys_signal",
+		Num:     48,
+		Name:    "signal",
+		Entry:   "sys_signal",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -662,21 +706,24 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	49: syscallinfo.Syscall{
-		Num:   49,
-		Name:  "geteuid",
-		Entry: "sys_geteuid16",
-		Args:  []syscallinfo.Argument{},
+		Num:     49,
+		Name:    "geteuid",
+		Entry:   "sys_geteuid16",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	50: syscallinfo.Syscall{
-		Num:   50,
-		Name:  "getegid",
-		Entry: "sys_getegid16",
-		Args:  []syscallinfo.Argument{},
+		Num:     50,
+		Name:    "getegid",
+		Entry:   "sys_getegid16",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	51: syscallinfo.Syscall{
-		Num:   51,
-		Name:  "acct",
-		Entry: "sys_acct",
+		Num:     51,
+		Name:    "acct",
+		Entry:   "sys_acct",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -686,9 +733,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	52: syscallinfo.Syscall{
-		Num:   52,
-		Name:  "umount2",
-		Entry: "sys_umount",
+		Num:     52,
+		Name:    "umount2",
+		Entry:   "sys_umount",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -703,9 +751,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	54: syscallinfo.Syscall{
-		Num:   54,
-		Name:  "ioctl",
-		Entry: "sys_ioctl",
+		Num:     54,
+		Name:    "ioctl",
+		Entry:   "sys_ioctl",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -725,9 +774,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	55: syscallinfo.Syscall{
-		Num:   55,
-		Name:  "fcntl",
-		Entry: "sys_fcntl",
+		Num:     55,
+		Name:    "fcntl",
+		Entry:   "sys_fcntl",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -747,9 +797,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	57: syscallinfo.Syscall{
-		Num:   57,
-		Name:  "setpgid",
-		Entry: "sys_setpgid",
+		Num:     57,
+		Name:    "setpgid",
+		Entry:   "sys_setpgid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -764,9 +815,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	59: syscallinfo.Syscall{
-		Num:   59,
-		Name:  "oldolduname",
-		Entry: "sys_olduname",
+		Num:     59,
+		Name:    "oldolduname",
+		Entry:   "sys_olduname",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -776,9 +828,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	60: syscallinfo.Syscall{
-		Num:   60,
-		Name:  "umask",
-		Entry: "sys_umask",
+		Num:     60,
+		Name:    "umask",
+		Entry:   "sys_umask",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -788,9 +841,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	61: syscallinfo.Syscall{
-		Num:   61,
-		Name:  "chroot",
-		Entry: "sys_chroot",
+		Num:     61,
+		Name:    "chroot",
+		Entry:   "sys_chroot",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -800,9 +854,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	62: syscallinfo.Syscall{
-		Num:   62,
-		Name:  "ustat",
-		Entry: "sys_ustat",
+		Num:     62,
+		Name:    "ustat",
+		Entry:   "sys_ustat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -817,9 +872,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	63: syscallinfo.Syscall{
-		Num:   63,
-		Name:  "dup2",
-		Entry: "sys_dup2",
+		Num:     63,
+		Name:    "dup2",
+		Entry:   "sys_dup2",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -834,27 +890,31 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	64: syscallinfo.Syscall{
-		Num:   64,
-		Name:  "getppid",
-		Entry: "sys_getppid",
-		Args:  []syscallinfo.Argument{},
+		Num:     64,
+		Name:    "getppid",
+		Entry:   "sys_getppid",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	65: syscallinfo.Syscall{
-		Num:   65,
-		Name:  "getpgrp",
-		Entry: "sys_getpgrp",
-		Args:  []syscallinfo.Argument{},
+		Num:     65,
+		Name:    "getpgrp",
+		Entry:   "sys_getpgrp",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	66: syscallinfo.Syscall{
-		Num:   66,
-		Name:  "setsid",
-		Entry: "sys_setsid",
-		Args:  []syscallinfo.Argument{},
+		Num:     66,
+		Name:    "setsid",
+		Entry:   "sys_setsid",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	67: syscallinfo.Syscall{
-		Num:   67,
-		Name:  "sigaction",
-		Entry: "sys_sigaction",
+		Num:     67,
+		Name:    "sigaction",
+		Entry:   "sys_sigaction",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -874,15 +934,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	68: syscallinfo.Syscall{
-		Num:   68,
-		Name:  "sgetmask",
-		Entry: "sys_sgetmask",
-		Args:  []syscallinfo.Argument{},
+		Num:     68,
+		Name:    "sgetmask",
+		Entry:   "sys_sgetmask",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	69: syscallinfo.Syscall{
-		Num:   69,
-		Name:  "ssetmask",
-		Entry: "sys_ssetmask",
+		Num:     69,
+		Name:    "ssetmask",
+		Entry:   "sys_ssetmask",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -892,9 +954,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	70: syscallinfo.Syscall{
-		Num:   70,
-		Name:  "setreuid",
-		Entry: "sys_setreuid16",
+		Num:     70,
+		Name:    "setreuid",
+		Entry:   "sys_setreuid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -909,9 +972,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	71: syscallinfo.Syscall{
-		Num:   71,
-		Name:  "setregid",
-		Entry: "sys_setregid16",
+		Num:     71,
+		Name:    "setregid",
+		Entry:   "sys_setregid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -926,9 +990,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	72: syscallinfo.Syscall{
-		Num:   72,
-		Name:  "sigsuspend",
-		Entry: "sys_sigsuspend",
+		Num:     72,
+		Name:    "sigsuspend",
+		Entry:   "sys_sigsuspend",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -948,9 +1013,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	73: syscallinfo.Syscall{
-		Num:   73,
-		Name:  "sigpending",
-		Entry: "sys_sigpending",
+		Num:     73,
+		Name:    "sigpending",
+		Entry:   "sys_sigpending",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -960,9 +1026,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	74: syscallinfo.Syscall{
-		Num:   74,
-		Name:  "sethostname",
-		Entry: "sys_sethostname",
+		Num:     74,
+		Name:    "sethostname",
+		Entry:   "sys_sethostname",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -977,9 +1044,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	75: syscallinfo.Syscall{
-		Num:   75,
-		Name:  "setrlimit",
-		Entry: "sys_setrlimit",
+		Num:     75,
+		Name:    "setrlimit",
+		Entry:   "sys_setrlimit",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -994,9 +1062,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	76: syscallinfo.Syscall{
-		Num:   76,
-		Name:  "getrlimit",
-		Entry: "sys_old_getrlimit",
+		Num:     76,
+		Name:    "getrlimit",
+		Entry:   "sys_old_getrlimit",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1011,9 +1080,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	77: syscallinfo.Syscall{
-		Num:   77,
-		Name:  "getrusage",
-		Entry: "sys_getrusage",
+		Num:     77,
+		Name:    "getrusage",
+		Entry:   "sys_getrusage",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1028,9 +1098,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	78: syscallinfo.Syscall{
-		Num:   78,
-		Name:  "gettimeofday",
-		Entry: "sys_gettimeofday",
+		Num:     78,
+		Name:    "gettimeofday",
+		Entry:   "sys_gettimeofday",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1045,9 +1116,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	79: syscallinfo.Syscall{
-		Num:   79,
-		Name:  "settimeofday",
-		Entry: "sys_settimeofday",
+		Num:     79,
+		Name:    "settimeofday",
+		Entry:   "sys_settimeofday",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1062,9 +1134,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	80: syscallinfo.Syscall{
-		Num:   80,
-		Name:  "getgroups",
-		Entry: "sys_getgroups16",
+		Num:     80,
+		Name:    "getgroups",
+		Entry:   "sys_getgroups16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1079,9 +1152,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	81: syscallinfo.Syscall{
-		Num:   81,
-		Name:  "setgroups",
-		Entry: "sys_setgroups16",
+		Num:     81,
+		Name:    "setgroups",
+		Entry:   "sys_setgroups16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1096,9 +1170,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	82: syscallinfo.Syscall{
-		Num:   82,
-		Name:  "select",
-		Entry: "sys_old_select",
+		Num:     82,
+		Name:    "select",
+		Entry:   "sys_old_select",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1108,9 +1183,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	83: syscallinfo.Syscall{
-		Num:   83,
-		Name:  "symlink",
-		Entry: "sys_symlink",
+		Num:     83,
+		Name:    "symlink",
+		Entry:   "sys_symlink",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1125,9 +1201,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	84: syscallinfo.Syscall{
-		Num:   84,
-		Name:  "oldlstat",
-		Entry: "sys_lstat",
+		Num:     84,
+		Name:    "oldlstat",
+		Entry:   "sys_lstat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1142,9 +1219,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	85: syscallinfo.Syscall{
-		Num:   85,
-		Name:  "readlink",
-		Entry: "sys_readlink",
+		Num:     85,
+		Name:    "readlink",
+		Entry:   "sys_readlink",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1164,9 +1242,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	86: syscallinfo.Syscall{
-		Num:   86,
-		Name:  "uselib",
-		Entry: "sys_uselib",
+		Num:     86,
+		Name:    "uselib",
+		Entry:   "sys_uselib",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1176,9 +1255,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	87: syscallinfo.Syscall{
-		Num:   87,
-		Name:  "swapon",
-		Entry: "sys_swapon",
+		Num:     87,
+		Name:    "swapon",
+		Entry:   "sys_swapon",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1193,9 +1273,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	88: syscallinfo.Syscall{
-		Num:   88,
-		Name:  "reboot",
-		Entry: "sys_reboot",
+		Num:     88,
+		Name:    "reboot",
+		Entry:   "sys_reboot",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1220,9 +1301,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	89: syscallinfo.Syscall{
-		Num:   89,
-		Name:  "readdir",
-		Entry: "sys_old_readdir",
+		Num:     89,
+		Name:    "readdir",
+		Entry:   "sys_old_readdir",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1242,9 +1324,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	90: syscallinfo.Syscall{
-		Num:   90,
-		Name:  "mmap",
-		Entry: "sys_old_mmap",
+		Num:     90,
+		Name:    "mmap",
+		Entry:   "sys_old_mmap",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1254,9 +1337,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	91: syscallinfo.Syscall{
-		Num:   91,
-		Name:  "munmap",
-		Entry: "sys_munmap",
+		Num:     91,
+		Name:    "munmap",
+		Entry:   "sys_munmap",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1271,9 +1355,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	92: syscallinfo.Syscall{
-		Num:   92,
-		Name:  "truncate",
-		Entry: "sys_truncate",
+		Num:     92,
+		Name:    "truncate",
+		Entry:   "sys_truncate",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1288,9 +1373,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	93: syscallinfo.Syscall{
-		Num:   93,
-		Name:  "ftruncate",
-		Entry: "sys_ftruncate",
+		Num:     93,
+		Name:    "ftruncate",
+		Entry:   "sys_ftruncate",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1305,9 +1391,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	94: syscallinfo.Syscall{
-		Num:   94,
-		Name:  "fchmod",
-		Entry: "sys_fchmod",
+		Num:     94,
+		Name:    "fchmod",
+		Entry:   "sys_fchmod",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1322,9 +1409,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	95: syscallinfo.Syscall{
-		Num:   95,
-		Name:  "fchown",
-		Entry: "sys_fchown16",
+		Num:     95,
+		Name:    "fchown",
+		Entry:   "sys_fchown16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1344,9 +1432,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	96: syscallinfo.Syscall{
-		Num:   96,
-		Name:  "getpriority",
-		Entry: "sys_getpriority",
+		Num:     96,
+		Name:    "getpriority",
+		Entry:   "sys_getpriority",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1361,9 +1450,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	97: syscallinfo.Syscall{
-		Num:   97,
-		Name:  "setpriority",
-		Entry: "sys_setpriority",
+		Num:     97,
+		Name:    "setpriority",
+		Entry:   "sys_setpriority",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1383,9 +1473,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	99: syscallinfo.Syscall{
-		Num:   99,
-		Name:  "statfs",
-		Entry: "sys_statfs",
+		Num:     99,
+		Name:    "statfs",
+		Entry:   "sys_statfs",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1400,9 +1491,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	100: syscallinfo.Syscall{
-		Num:   100,
-		Name:  "fstatfs",
-		Entry: "sys_fstatfs",
+		Num:     100,
+		Name:    "fstatfs",
+		Entry:   "sys_fstatfs",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1417,9 +1509,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	101: syscallinfo.Syscall{
-		Num:   101,
-		Name:  "ioperm",
-		Entry: "sys_ioperm",
+		Num:     101,
+		Name:    "ioperm",
+		Entry:   "sys_ioperm",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1439,9 +1532,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	102: syscallinfo.Syscall{
-		Num:   102,
-		Name:  "socketcall",
-		Entry: "sys_socketcall",
+		Num:     102,
+		Name:    "socketcall",
+		Entry:   "sys_socketcall",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1456,9 +1550,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	103: syscallinfo.Syscall{
-		Num:   103,
-		Name:  "syslog",
-		Entry: "sys_syslog",
+		Num:     103,
+		Name:    "syslog",
+		Entry:   "sys_syslog",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1478,9 +1573,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	104: syscallinfo.Syscall{
-		Num:   104,
-		Name:  "setitimer",
-		Entry: "sys_setitimer",
+		Num:     104,
+		Name:    "setitimer",
+		Entry:   "sys_setitimer",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1500,9 +1596,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	105: syscallinfo.Syscall{
-		Num:   105,
-		Name:  "getitimer",
-		Entry: "sys_getitimer",
+		Num:     105,
+		Name:    "getitimer",
+		Entry:   "sys_getitimer",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1517,9 +1614,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	106: syscallinfo.Syscall{
-		Num:   106,
-		Name:  "stat",
-		Entry: "sys_newstat",
+		Num:     106,
+		Name:    "stat",
+		Entry:   "sys_newstat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1534,9 +1632,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	107: syscallinfo.Syscall{
-		Num:   107,
-		Name:  "lstat",
-		Entry: "sys_newlstat",
+		Num:     107,
+		Name:    "lstat",
+		Entry:   "sys_newlstat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1551,9 +1650,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	108: syscallinfo.Syscall{
-		Num:   108,
-		Name:  "fstat",
-		Entry: "sys_newfstat",
+		Num:     108,
+		Name:    "fstat",
+		Entry:   "sys_newfstat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1568,9 +1668,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	109: syscallinfo.Syscall{
-		Num:   109,
-		Name:  "olduname",
-		Entry: "sys_uname",
+		Num:     109,
+		Name:    "olduname",
+		Entry:   "sys_uname",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1580,9 +1681,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	110: syscallinfo.Syscall{
-		Num:   110,
-		Name:  "iopl",
-		Entry: "sys_iopl",
+		Num:     110,
+		Name:    "iopl",
+		Entry:   "sys_iopl",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1592,15 +1694,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	111: syscallinfo.Syscall{
-		Num:   111,
-		Name:  "vhangup",
-		Entry: "sys_vhangup",
-		Args:  []syscallinfo.Argument{},
+		Num:     111,
+		Name:    "vhangup",
+		Entry:   "sys_vhangup",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	113: syscallinfo.Syscall{
-		Num:   113,
-		Name:  "vm86old",
-		Entry: "sys_vm86old",
+		Num:     113,
+		Name:    "vm86old",
+		Entry:   "sys_vm86old",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1610,9 +1714,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	114: syscallinfo.Syscall{
-		Num:   114,
-		Name:  "wait4",
-		Entry: "sys_wait4",
+		Num:     114,
+		Name:    "wait4",
+		Entry:   "sys_wait4",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1637,9 +1742,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	115: syscallinfo.Syscall{
-		Num:   115,
-		Name:  "swapoff",
-		Entry: "sys_swapoff",
+		Num:     115,
+		Name:    "swapoff",
+		Entry:   "sys_swapoff",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1649,9 +1755,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	116: syscallinfo.Syscall{
-		Num:   116,
-		Name:  "sysinfo",
-		Entry: "sys_sysinfo",
+		Num:     116,
+		Name:    "sysinfo",
+		Entry:   "sys_sysinfo",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1661,9 +1768,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	117: syscallinfo.Syscall{
-		Num:   117,
-		Name:  "ipc",
-		Entry: "sys_ipc",
+		Num:     117,
+		Name:    "ipc",
+		Entry:   "sys_ipc",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1698,9 +1806,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	118: syscallinfo.Syscall{
-		Num:   118,
-		Name:  "fsync",
-		Entry: "sys_fsync",
+		Num:     118,
+		Name:    "fsync",
+		Entry:   "sys_fsync",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1710,15 +1819,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	119: syscallinfo.Syscall{
-		Num:   119,
-		Name:  "sigreturn",
-		Entry: "sys_sigreturn",
-		Args:  []syscallinfo.Argument{},
+		Num:     119,
+		Name:    "sigreturn",
+		Entry:   "sys_sigreturn",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	120: syscallinfo.Syscall{
-		Num:   120,
-		Name:  "clone",
-		Entry: "sys_clone",
+		Num:     120,
+		Name:    "clone",
+		Entry:   "sys_clone",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1748,9 +1859,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	121: syscallinfo.Syscall{
-		Num:   121,
-		Name:  "setdomainname",
-		Entry: "sys_setdomainname",
+		Num:     121,
+		Name:    "setdomainname",
+		Entry:   "sys_setdomainname",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1765,9 +1877,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	122: syscallinfo.Syscall{
-		Num:   122,
-		Name:  "uname",
-		Entry: "sys_newuname",
+		Num:     122,
+		Name:    "uname",
+		Entry:   "sys_newuname",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1777,9 +1890,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	123: syscallinfo.Syscall{
-		Num:   123,
-		Name:  "modify_ldt",
-		Entry: "sys_modify_ldt",
+		Num:     123,
+		Name:    "modify_ldt",
+		Entry:   "sys_modify_ldt",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1799,9 +1913,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	124: syscallinfo.Syscall{
-		Num:   124,
-		Name:  "adjtimex",
-		Entry: "sys_adjtimex",
+		Num:     124,
+		Name:    "adjtimex",
+		Entry:   "sys_adjtimex",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1811,9 +1926,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	125: syscallinfo.Syscall{
-		Num:   125,
-		Name:  "mprotect",
-		Entry: "sys_mprotect",
+		Num:     125,
+		Name:    "mprotect",
+		Entry:   "sys_mprotect",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1833,9 +1949,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	126: syscallinfo.Syscall{
-		Num:   126,
-		Name:  "sigprocmask",
-		Entry: "sys_sigprocmask",
+		Num:     126,
+		Name:    "sigprocmask",
+		Entry:   "sys_sigprocmask",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1855,9 +1972,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	128: syscallinfo.Syscall{
-		Num:   128,
-		Name:  "init_module",
-		Entry: "sys_init_module",
+		Num:     128,
+		Name:    "init_module",
+		Entry:   "sys_init_module",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1877,9 +1995,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	129: syscallinfo.Syscall{
-		Num:   129,
-		Name:  "delete_module",
-		Entry: "sys_delete_module",
+		Num:     129,
+		Name:    "delete_module",
+		Entry:   "sys_delete_module",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -1894,9 +2013,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	131: syscallinfo.Syscall{
-		Num:   131,
-		Name:  "quotactl",
-		Entry: "sys_quotactl",
+		Num:     131,
+		Name:    "quotactl",
+		Entry:   "sys_quotactl",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1921,9 +2041,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	132: syscallinfo.Syscall{
-		Num:   132,
-		Name:  "getpgid",
-		Entry: "sys_getpgid",
+		Num:     132,
+		Name:    "getpgid",
+		Entry:   "sys_getpgid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1933,9 +2054,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	133: syscallinfo.Syscall{
-		Num:   133,
-		Name:  "fchdir",
-		Entry: "sys_fchdir",
+		Num:     133,
+		Name:    "fchdir",
+		Entry:   "sys_fchdir",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1945,9 +2067,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	134: syscallinfo.Syscall{
-		Num:   134,
-		Name:  "bdflush",
-		Entry: "sys_bdflush",
+		Num:     134,
+		Name:    "bdflush",
+		Entry:   "sys_bdflush",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1962,9 +2085,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	135: syscallinfo.Syscall{
-		Num:   135,
-		Name:  "sysfs",
-		Entry: "sys_sysfs",
+		Num:     135,
+		Name:    "sysfs",
+		Entry:   "sys_sysfs",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1984,9 +2108,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	136: syscallinfo.Syscall{
-		Num:   136,
-		Name:  "personality",
-		Entry: "sys_personality",
+		Num:     136,
+		Name:    "personality",
+		Entry:   "sys_personality",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -1996,9 +2121,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	138: syscallinfo.Syscall{
-		Num:   138,
-		Name:  "setfsuid",
-		Entry: "sys_setfsuid16",
+		Num:     138,
+		Name:    "setfsuid",
+		Entry:   "sys_setfsuid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2008,9 +2134,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	139: syscallinfo.Syscall{
-		Num:   139,
-		Name:  "setfsgid",
-		Entry: "sys_setfsgid16",
+		Num:     139,
+		Name:    "setfsgid",
+		Entry:   "sys_setfsgid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2020,9 +2147,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	140: syscallinfo.Syscall{
-		Num:   140,
-		Name:  "_llseek",
-		Entry: "sys_llseek",
+		Num:     140,
+		Name:    "_llseek",
+		Entry:   "sys_llseek",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2052,9 +2180,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	141: syscallinfo.Syscall{
-		Num:   141,
-		Name:  "getdents",
-		Entry: "sys_getdents",
+		Num:     141,
+		Name:    "getdents",
+		Entry:   "sys_getdents",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2074,9 +2203,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	142: syscallinfo.Syscall{
-		Num:   142,
-		Name:  "_newselect",
-		Entry: "sys_select",
+		Num:     142,
+		Name:    "_newselect",
+		Entry:   "sys_select",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2106,9 +2236,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	143: syscallinfo.Syscall{
-		Num:   143,
-		Name:  "flock",
-		Entry: "sys_flock",
+		Num:     143,
+		Name:    "flock",
+		Entry:   "sys_flock",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2123,9 +2254,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	144: syscallinfo.Syscall{
-		Num:   144,
-		Name:  "msync",
-		Entry: "sys_msync",
+		Num:     144,
+		Name:    "msync",
+		Entry:   "sys_msync",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2145,9 +2277,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	145: syscallinfo.Syscall{
-		Num:   145,
-		Name:  "readv",
-		Entry: "sys_readv",
+		Num:     145,
+		Name:    "readv",
+		Entry:   "sys_readv",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2167,9 +2300,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	146: syscallinfo.Syscall{
-		Num:   146,
-		Name:  "writev",
-		Entry: "sys_writev",
+		Num:     146,
+		Name:    "writev",
+		Entry:   "sys_writev",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2189,9 +2323,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	147: syscallinfo.Syscall{
-		Num:   147,
-		Name:  "getsid",
-		Entry: "sys_getsid",
+		Num:     147,
+		Name:    "getsid",
+		Entry:   "sys_getsid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2201,9 +2336,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	148: syscallinfo.Syscall{
-		Num:   148,
-		Name:  "fdatasync",
-		Entry: "sys_fdatasync",
+		Num:     148,
+		Name:    "fdatasync",
+		Entry:   "sys_fdatasync",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2213,9 +2349,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	149: syscallinfo.Syscall{
-		Num:   149,
-		Name:  "_sysctl",
-		Entry: "sys_sysctl",
+		Num:     149,
+		Name:    "_sysctl",
+		Entry:   "sys_sysctl",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2225,9 +2362,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	150: syscallinfo.Syscall{
-		Num:   150,
-		Name:  "mlock",
-		Entry: "sys_mlock",
+		Num:     150,
+		Name:    "mlock",
+		Entry:   "sys_mlock",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2242,9 +2380,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	151: syscallinfo.Syscall{
-		Num:   151,
-		Name:  "munlock",
-		Entry: "sys_munlock",
+		Num:     151,
+		Name:    "munlock",
+		Entry:   "sys_munlock",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2259,9 +2398,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	152: syscallinfo.Syscall{
-		Num:   152,
-		Name:  "mlockall",
-		Entry: "sys_mlockall",
+		Num:     152,
+		Name:    "mlockall",
+		Entry:   "sys_mlockall",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2271,15 +2411,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	153: syscallinfo.Syscall{
-		Num:   153,
-		Name:  "munlockall",
-		Entry: "sys_munlockall",
-		Args:  []syscallinfo.Argument{},
+		Num:     153,
+		Name:    "munlockall",
+		Entry:   "sys_munlockall",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	154: syscallinfo.Syscall{
-		Num:   154,
-		Name:  "sched_setparam",
-		Entry: "sys_sched_setparam",
+		Num:     154,
+		Name:    "sched_setparam",
+		Entry:   "sys_sched_setparam",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2294,9 +2436,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	155: syscallinfo.Syscall{
-		Num:   155,
-		Name:  "sched_getparam",
-		Entry: "sys_sched_getparam",
+		Num:     155,
+		Name:    "sched_getparam",
+		Entry:   "sys_sched_getparam",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2311,9 +2454,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	156: syscallinfo.Syscall{
-		Num:   156,
-		Name:  "sched_setscheduler",
-		Entry: "sys_sched_setscheduler",
+		Num:     156,
+		Name:    "sched_setscheduler",
+		Entry:   "sys_sched_setscheduler",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2333,9 +2477,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	157: syscallinfo.Syscall{
-		Num:   157,
-		Name:  "sched_getscheduler",
-		Entry: "sys_sched_getscheduler",
+		Num:     157,
+		Name:    "sched_getscheduler",
+		Entry:   "sys_sched_getscheduler",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2345,15 +2490,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	158: syscallinfo.Syscall{
-		Num:   158,
-		Name:  "sched_yield",
-		Entry: "sys_sched_yield",
-		Args:  []syscallinfo.Argument{},
+		Num:     158,
+		Name:    "sched_yield",
+		Entry:   "sys_sched_yield",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	159: syscallinfo.Syscall{
-		Num:   159,
-		Name:  "sched_get_priority_max",
-		Entry: "sys_sched_get_priority_max",
+		Num:     159,
+		Name:    "sched_get_priority_max",
+		Entry:   "sys_sched_get_priority_max",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2363,9 +2510,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	160: syscallinfo.Syscall{
-		Num:   160,
-		Name:  "sched_get_priority_min",
-		Entry: "sys_sched_get_priority_min",
+		Num:     160,
+		Name:    "sched_get_priority_min",
+		Entry:   "sys_sched_get_priority_min",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2375,9 +2523,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	161: syscallinfo.Syscall{
-		Num:   161,
-		Name:  "sched_rr_get_interval",
-		Entry: "sys_sched_rr_get_interval",
+		Num:     161,
+		Name:    "sched_rr_get_interval",
+		Entry:   "sys_sched_rr_get_interval",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2392,9 +2541,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	162: syscallinfo.Syscall{
-		Num:   162,
-		Name:  "nanosleep",
-		Entry: "sys_nanosleep",
+		Num:     162,
+		Name:    "nanosleep",
+		Entry:   "sys_nanosleep",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2409,9 +2559,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	163: syscallinfo.Syscall{
-		Num:   163,
-		Name:  "mremap",
-		Entry: "sys_mremap",
+		Num:     163,
+		Name:    "mremap",
+		Entry:   "sys_mremap",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2441,9 +2592,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	164: syscallinfo.Syscall{
-		Num:   164,
-		Name:  "setresuid",
-		Entry: "sys_setresuid16",
+		Num:     164,
+		Name:    "setresuid",
+		Entry:   "sys_setresuid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2463,9 +2615,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	165: syscallinfo.Syscall{
-		Num:   165,
-		Name:  "getresuid",
-		Entry: "sys_getresuid16",
+		Num:     165,
+		Name:    "getresuid",
+		Entry:   "sys_getresuid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2485,9 +2638,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	166: syscallinfo.Syscall{
-		Num:   166,
-		Name:  "vm86",
-		Entry: "sys_vm86",
+		Num:     166,
+		Name:    "vm86",
+		Entry:   "sys_vm86",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2502,9 +2656,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	168: syscallinfo.Syscall{
-		Num:   168,
-		Name:  "poll",
-		Entry: "sys_poll",
+		Num:     168,
+		Name:    "poll",
+		Entry:   "sys_poll",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2524,9 +2679,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	170: syscallinfo.Syscall{
-		Num:   170,
-		Name:  "setresgid",
-		Entry: "sys_setresgid16",
+		Num:     170,
+		Name:    "setresgid",
+		Entry:   "sys_setresgid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2546,9 +2702,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	171: syscallinfo.Syscall{
-		Num:   171,
-		Name:  "getresgid",
-		Entry: "sys_getresgid16",
+		Num:     171,
+		Name:    "getresgid",
+		Entry:   "sys_getresgid16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2568,9 +2725,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	172: syscallinfo.Syscall{
-		Num:   172,
-		Name:  "prctl",
-		Entry: "sys_prctl",
+		Num:     172,
+		Name:    "prctl",
+		Entry:   "sys_prctl",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2600,15 +2758,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	173: syscallinfo.Syscall{
-		Num:   173,
-		Name:  "rt_sigreturn",
-		Entry: "sys_rt_sigreturn",
-		Args:  []syscallinfo.Argument{},
+		Num:     173,
+		Name:    "rt_sigreturn",
+		Entry:   "sys_rt_sigreturn",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	174: syscallinfo.Syscall{
-		Num:   174,
-		Name:  "rt_sigaction",
-		Entry: "sys_rt_sigaction",
+		Num:     174,
+		Name:    "rt_sigaction",
+		Entry:   "sys_rt_sigaction",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2633,9 +2793,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	175: syscallinfo.Syscall{
-		Num:   175,
-		Name:  "rt_sigprocmask",
-		Entry: "sys_rt_sigprocmask",
+		Num:     175,
+		Name:    "rt_sigprocmask",
+		Entry:   "sys_rt_sigprocmask",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2660,9 +2821,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	176: syscallinfo.Syscall{
-		Num:   176,
-		Name:  "rt_sigpending",
-		Entry: "sys_rt_sigpending",
+		Num:     176,
+		Name:    "rt_sigpending",
+		Entry:   "sys_rt_sigpending",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2677,9 +2839,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	177: syscallinfo.Syscall{
-		Num:   177,
-		Name:  "rt_sigtimedwait",
-		Entry: "sys_rt_sigtimedwait",
+		Num:     177,
+		Name:    "rt_sigtimedwait",
+		Entry:   "sys_rt_sigtimedwait",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2704,9 +2867,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	178: syscallinfo.Syscall{
-		Num:   178,
-		Name:  "rt_sigqueueinfo",
-		Entry: "sys_rt_sigqueueinfo",
+		Num:     178,
+		Name:    "rt_sigqueueinfo",
+		Entry:   "sys_rt_sigqueueinfo",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2726,9 +2890,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	179: syscallinfo.Syscall{
-		Num:   179,
-		Name:  "rt_sigsuspend",
-		Entry: "sys_rt_sigsuspend",
+		Num:     179,
+		Name:    "rt_sigsuspend",
+		Entry:   "sys_rt_sigsuspend",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2743,9 +2908,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	180: syscallinfo.Syscall{
-		Num:   180,
-		Name:  "pread64",
-		Entry: "sys_pread64",
+		Num:     180,
+		Name:    "pread64",
+		Entry:   "sys_pread64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2770,9 +2936,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	181: syscallinfo.Syscall{
-		Num:   181,
-		Name:  "pwrite64",
-		Entry: "sys_pwrite64",
+		Num:     181,
+		Name:    "pwrite64",
+		Entry:   "sys_pwrite64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2797,9 +2964,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	182: syscallinfo.Syscall{
-		Num:   182,
-		Name:  "chown",
-		Entry: "sys_chown16",
+		Num:     182,
+		Name:    "chown",
+		Entry:   "sys_chown16",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2819,9 +2987,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	183: syscallinfo.Syscall{
-		Num:   183,
-		Name:  "getcwd",
-		Entry: "sys_getcwd",
+		Num:     183,
+		Name:    "getcwd",
+		Entry:   "sys_getcwd",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2836,9 +3005,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	184: syscallinfo.Syscall{
-		Num:   184,
-		Name:  "capget",
-		Entry: "sys_capget",
+		Num:     184,
+		Name:    "capget",
+		Entry:   "sys_capget",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2853,9 +3023,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	185: syscallinfo.Syscall{
-		Num:   185,
-		Name:  "capset",
-		Entry: "sys_capset",
+		Num:     185,
+		Name:    "capset",
+		Entry:   "sys_capset",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2870,9 +3041,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	186: syscallinfo.Syscall{
-		Num:   186,
-		Name:  "sigaltstack",
-		Entry: "sys_sigaltstack",
+		Num:     186,
+		Name:    "sigaltstack",
+		Entry:   "sys_sigaltstack",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2887,9 +3059,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	187: syscallinfo.Syscall{
-		Num:   187,
-		Name:  "sendfile",
-		Entry: "sys_sendfile",
+		Num:     187,
+		Name:    "sendfile",
+		Entry:   "sys_sendfile",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2914,15 +3087,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	190: syscallinfo.Syscall{
-		Num:   190,
-		Name:  "vfork",
-		Entry: "sys_vfork",
-		Args:  []syscallinfo.Argument{},
+		Num:     190,
+		Name:    "vfork",
+		Entry:   "sys_vfork",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	191: syscallinfo.Syscall{
-		Num:   191,
-		Name:  "ugetrlimit",
-		Entry: "sys_getrlimit",
+		Num:     191,
+		Name:    "ugetrlimit",
+		Entry:   "sys_getrlimit",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2937,9 +3112,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	192: syscallinfo.Syscall{
-		Num:   192,
-		Name:  "mmap2",
-		Entry: "sys_mmap_pgoff",
+		Num:     192,
+		Name:    "mmap2",
+		Entry:   "sys_mmap_pgoff",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -2974,9 +3150,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	193: syscallinfo.Syscall{
-		Num:   193,
-		Name:  "truncate64",
-		Entry: "sys_truncate64",
+		Num:     193,
+		Name:    "truncate64",
+		Entry:   "sys_truncate64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -2991,9 +3168,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	194: syscallinfo.Syscall{
-		Num:   194,
-		Name:  "ftruncate64",
-		Entry: "sys_ftruncate64",
+		Num:     194,
+		Name:    "ftruncate64",
+		Entry:   "sys_ftruncate64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3008,9 +3186,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	195: syscallinfo.Syscall{
-		Num:   195,
-		Name:  "stat64",
-		Entry: "sys_stat64",
+		Num:     195,
+		Name:    "stat64",
+		Entry:   "sys_stat64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3025,9 +3204,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	196: syscallinfo.Syscall{
-		Num:   196,
-		Name:  "lstat64",
-		Entry: "sys_lstat64",
+		Num:     196,
+		Name:    "lstat64",
+		Entry:   "sys_lstat64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3042,9 +3222,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	197: syscallinfo.Syscall{
-		Num:   197,
-		Name:  "fstat64",
-		Entry: "sys_fstat64",
+		Num:     197,
+		Name:    "fstat64",
+		Entry:   "sys_fstat64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3059,9 +3240,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	198: syscallinfo.Syscall{
-		Num:   198,
-		Name:  "lchown32",
-		Entry: "sys_lchown",
+		Num:     198,
+		Name:    "lchown32",
+		Entry:   "sys_lchown",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3081,33 +3263,38 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	199: syscallinfo.Syscall{
-		Num:   199,
-		Name:  "getuid32",
-		Entry: "sys_getuid",
-		Args:  []syscallinfo.Argument{},
+		Num:     199,
+		Name:    "getuid32",
+		Entry:   "sys_getuid",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	200: syscallinfo.Syscall{
-		Num:   200,
-		Name:  "getgid32",
-		Entry: "sys_getgid",
-		Args:  []syscallinfo.Argument{},
+		Num:     200,
+		Name:    "getgid32",
+		Entry:   "sys_getgid",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	201: syscallinfo.Syscall{
-		Num:   201,
-		Name:  "geteuid32",
-		Entry: "sys_geteuid",
-		Args:  []syscallinfo.Argument{},
+		Num:     201,
+		Name:    "geteuid32",
+		Entry:   "sys_geteuid",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	202: syscallinfo.Syscall{
-		Num:   202,
-		Name:  "getegid32",
-		Entry: "sys_getegid",
-		Args:  []syscallinfo.Argument{},
+		Num:     202,
+		Name:    "getegid32",
+		Entry:   "sys_getegid",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	203: syscallinfo.Syscall{
-		Num:   203,
-		Name:  "setreuid32",
-		Entry: "sys_setreuid",
+		Num:     203,
+		Name:    "setreuid32",
+		Entry:   "sys_setreuid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3122,9 +3309,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	204: syscallinfo.Syscall{
-		Num:   204,
-		Name:  "setregid32",
-		Entry: "sys_setregid",
+		Num:     204,
+		Name:    "setregid32",
+		Entry:   "sys_setregid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3139,9 +3327,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	205: syscallinfo.Syscall{
-		Num:   205,
-		Name:  "getgroups32",
-		Entry: "sys_getgroups",
+		Num:     205,
+		Name:    "getgroups32",
+		Entry:   "sys_getgroups",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3156,9 +3345,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	206: syscallinfo.Syscall{
-		Num:   206,
-		Name:  "setgroups32",
-		Entry: "sys_setgroups",
+		Num:     206,
+		Name:    "setgroups32",
+		Entry:   "sys_setgroups",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3173,9 +3363,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	207: syscallinfo.Syscall{
-		Num:   207,
-		Name:  "fchown32",
-		Entry: "sys_fchown",
+		Num:     207,
+		Name:    "fchown32",
+		Entry:   "sys_fchown",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3195,9 +3386,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	208: syscallinfo.Syscall{
-		Num:   208,
-		Name:  "setresuid32",
-		Entry: "sys_setresuid",
+		Num:     208,
+		Name:    "setresuid32",
+		Entry:   "sys_setresuid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3217,9 +3409,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	209: syscallinfo.Syscall{
-		Num:   209,
-		Name:  "getresuid32",
-		Entry: "sys_getresuid",
+		Num:     209,
+		Name:    "getresuid32",
+		Entry:   "sys_getresuid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3239,9 +3432,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	210: syscallinfo.Syscall{
-		Num:   210,
-		Name:  "setresgid32",
-		Entry: "sys_setresgid",
+		Num:     210,
+		Name:    "setresgid32",
+		Entry:   "sys_setresgid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3261,9 +3455,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	211: syscallinfo.Syscall{
-		Num:   211,
-		Name:  "getresgid32",
-		Entry: "sys_getresgid",
+		Num:     211,
+		Name:    "getresgid32",
+		Entry:   "sys_getresgid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3283,9 +3478,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	212: syscallinfo.Syscall{
-		Num:   212,
-		Name:  "chown32",
-		Entry: "sys_chown",
+		Num:     212,
+		Name:    "chown32",
+		Entry:   "sys_chown",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3305,9 +3501,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	213: syscallinfo.Syscall{
-		Num:   213,
-		Name:  "setuid32",
-		Entry: "sys_setuid",
+		Num:     213,
+		Name:    "setuid32",
+		Entry:   "sys_setuid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3317,9 +3514,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	214: syscallinfo.Syscall{
-		Num:   214,
-		Name:  "setgid32",
-		Entry: "sys_setgid",
+		Num:     214,
+		Name:    "setgid32",
+		Entry:   "sys_setgid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3329,9 +3527,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	215: syscallinfo.Syscall{
-		Num:   215,
-		Name:  "setfsuid32",
-		Entry: "sys_setfsuid",
+		Num:     215,
+		Name:    "setfsuid32",
+		Entry:   "sys_setfsuid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3341,9 +3540,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	216: syscallinfo.Syscall{
-		Num:   216,
-		Name:  "setfsgid32",
-		Entry: "sys_setfsgid",
+		Num:     216,
+		Name:    "setfsgid32",
+		Entry:   "sys_setfsgid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3353,9 +3553,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	217: syscallinfo.Syscall{
-		Num:   217,
-		Name:  "pivot_root",
-		Entry: "sys_pivot_root",
+		Num:     217,
+		Name:    "pivot_root",
+		Entry:   "sys_pivot_root",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3370,9 +3571,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	218: syscallinfo.Syscall{
-		Num:   218,
-		Name:  "mincore",
-		Entry: "sys_mincore",
+		Num:     218,
+		Name:    "mincore",
+		Entry:   "sys_mincore",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3392,9 +3594,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	219: syscallinfo.Syscall{
-		Num:   219,
-		Name:  "madvise",
-		Entry: "sys_madvise",
+		Num:     219,
+		Name:    "madvise",
+		Entry:   "sys_madvise",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3414,9 +3617,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	220: syscallinfo.Syscall{
-		Num:   220,
-		Name:  "getdents64",
-		Entry: "sys_getdents64",
+		Num:     220,
+		Name:    "getdents64",
+		Entry:   "sys_getdents64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3436,9 +3640,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	221: syscallinfo.Syscall{
-		Num:   221,
-		Name:  "fcntl64",
-		Entry: "sys_fcntl64",
+		Num:     221,
+		Name:    "fcntl64",
+		Entry:   "sys_fcntl64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3458,15 +3663,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	224: syscallinfo.Syscall{
-		Num:   224,
-		Name:  "gettid",
-		Entry: "sys_gettid",
-		Args:  []syscallinfo.Argument{},
+		Num:     224,
+		Name:    "gettid",
+		Entry:   "sys_gettid",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	225: syscallinfo.Syscall{
-		Num:   225,
-		Name:  "readahead",
-		Entry: "sys_readahead",
+		Num:     225,
+		Name:    "readahead",
+		Entry:   "sys_readahead",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3486,9 +3693,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	226: syscallinfo.Syscall{
-		Num:   226,
-		Name:  "setxattr",
-		Entry: "sys_setxattr",
+		Num:     226,
+		Name:    "setxattr",
+		Entry:   "sys_setxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3518,9 +3726,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	227: syscallinfo.Syscall{
-		Num:   227,
-		Name:  "lsetxattr",
-		Entry: "sys_lsetxattr",
+		Num:     227,
+		Name:    "lsetxattr",
+		Entry:   "sys_lsetxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3550,9 +3759,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	228: syscallinfo.Syscall{
-		Num:   228,
-		Name:  "fsetxattr",
-		Entry: "sys_fsetxattr",
+		Num:     228,
+		Name:    "fsetxattr",
+		Entry:   "sys_fsetxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3582,9 +3792,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	229: syscallinfo.Syscall{
-		Num:   229,
-		Name:  "getxattr",
-		Entry: "sys_getxattr",
+		Num:     229,
+		Name:    "getxattr",
+		Entry:   "sys_getxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3609,9 +3820,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	230: syscallinfo.Syscall{
-		Num:   230,
-		Name:  "lgetxattr",
-		Entry: "sys_lgetxattr",
+		Num:     230,
+		Name:    "lgetxattr",
+		Entry:   "sys_lgetxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3636,9 +3848,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	231: syscallinfo.Syscall{
-		Num:   231,
-		Name:  "fgetxattr",
-		Entry: "sys_fgetxattr",
+		Num:     231,
+		Name:    "fgetxattr",
+		Entry:   "sys_fgetxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3663,9 +3876,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	232: syscallinfo.Syscall{
-		Num:   232,
-		Name:  "listxattr",
-		Entry: "sys_listxattr",
+		Num:     232,
+		Name:    "listxattr",
+		Entry:   "sys_listxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3685,9 +3899,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	233: syscallinfo.Syscall{
-		Num:   233,
-		Name:  "llistxattr",
-		Entry: "sys_llistxattr",
+		Num:     233,
+		Name:    "llistxattr",
+		Entry:   "sys_llistxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3707,9 +3922,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	234: syscallinfo.Syscall{
-		Num:   234,
-		Name:  "flistxattr",
-		Entry: "sys_flistxattr",
+		Num:     234,
+		Name:    "flistxattr",
+		Entry:   "sys_flistxattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3729,9 +3945,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	235: syscallinfo.Syscall{
-		Num:   235,
-		Name:  "removexattr",
-		Entry: "sys_removexattr",
+		Num:     235,
+		Name:    "removexattr",
+		Entry:   "sys_removexattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3746,9 +3963,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	236: syscallinfo.Syscall{
-		Num:   236,
-		Name:  "lremovexattr",
-		Entry: "sys_lremovexattr",
+		Num:     236,
+		Name:    "lremovexattr",
+		Entry:   "sys_lremovexattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3763,9 +3981,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	237: syscallinfo.Syscall{
-		Num:   237,
-		Name:  "fremovexattr",
-		Entry: "sys_fremovexattr",
+		Num:     237,
+		Name:    "fremovexattr",
+		Entry:   "sys_fremovexattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3780,9 +3999,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	238: syscallinfo.Syscall{
-		Num:   238,
-		Name:  "tkill",
-		Entry: "sys_tkill",
+		Num:     238,
+		Name:    "tkill",
+		Entry:   "sys_tkill",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3797,9 +4017,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	239: syscallinfo.Syscall{
-		Num:   239,
-		Name:  "sendfile64",
-		Entry: "sys_sendfile64",
+		Num:     239,
+		Name:    "sendfile64",
+		Entry:   "sys_sendfile64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3824,9 +4045,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	240: syscallinfo.Syscall{
-		Num:   240,
-		Name:  "futex",
-		Entry: "sys_futex",
+		Num:     240,
+		Name:    "futex",
+		Entry:   "sys_futex",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3861,9 +4083,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	241: syscallinfo.Syscall{
-		Num:   241,
-		Name:  "sched_setaffinity",
-		Entry: "sys_sched_setaffinity",
+		Num:     241,
+		Name:    "sched_setaffinity",
+		Entry:   "sys_sched_setaffinity",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3883,9 +4106,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	242: syscallinfo.Syscall{
-		Num:   242,
-		Name:  "sched_getaffinity",
-		Entry: "sys_sched_getaffinity",
+		Num:     242,
+		Name:    "sched_getaffinity",
+		Entry:   "sys_sched_getaffinity",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3905,9 +4129,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	243: syscallinfo.Syscall{
-		Num:   243,
-		Name:  "set_thread_area",
-		Entry: "sys_set_thread_area",
+		Num:     243,
+		Name:    "set_thread_area",
+		Entry:   "sys_set_thread_area",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3917,9 +4142,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	244: syscallinfo.Syscall{
-		Num:   244,
-		Name:  "get_thread_area",
-		Entry: "sys_get_thread_area",
+		Num:     244,
+		Name:    "get_thread_area",
+		Entry:   "sys_get_thread_area",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -3929,9 +4155,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	245: syscallinfo.Syscall{
-		Num:   245,
-		Name:  "io_setup",
-		Entry: "sys_io_setup",
+		Num:     245,
+		Name:    "io_setup",
+		Entry:   "sys_io_setup",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3946,9 +4173,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	246: syscallinfo.Syscall{
-		Num:   246,
-		Name:  "io_destroy",
-		Entry: "sys_io_destroy",
+		Num:     246,
+		Name:    "io_destroy",
+		Entry:   "sys_io_destroy",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3958,9 +4186,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	247: syscallinfo.Syscall{
-		Num:   247,
-		Name:  "io_getevents",
-		Entry: "sys_io_getevents",
+		Num:     247,
+		Name:    "io_getevents",
+		Entry:   "sys_io_getevents",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -3990,9 +4219,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	248: syscallinfo.Syscall{
-		Num:   248,
-		Name:  "io_submit",
-		Entry: "sys_io_submit",
+		Num:     248,
+		Name:    "io_submit",
+		Entry:   "sys_io_submit",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4012,9 +4242,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	249: syscallinfo.Syscall{
-		Num:   249,
-		Name:  "io_cancel",
-		Entry: "sys_io_cancel",
+		Num:     249,
+		Name:    "io_cancel",
+		Entry:   "sys_io_cancel",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4034,9 +4265,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	250: syscallinfo.Syscall{
-		Num:   250,
-		Name:  "fadvise64",
-		Entry: "sys_fadvise64",
+		Num:     250,
+		Name:    "fadvise64",
+		Entry:   "sys_fadvise64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4061,9 +4293,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	252: syscallinfo.Syscall{
-		Num:   252,
-		Name:  "exit_group",
-		Entry: "sys_exit_group",
+		Num:     252,
+		Name:    "exit_group",
+		Entry:   "sys_exit_group",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4073,9 +4306,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	253: syscallinfo.Syscall{
-		Num:   253,
-		Name:  "lookup_dcookie",
-		Entry: "sys_lookup_dcookie",
+		Num:     253,
+		Name:    "lookup_dcookie",
+		Entry:   "sys_lookup_dcookie",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4095,9 +4329,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	254: syscallinfo.Syscall{
-		Num:   254,
-		Name:  "epoll_create",
-		Entry: "sys_epoll_create",
+		Num:     254,
+		Name:    "epoll_create",
+		Entry:   "sys_epoll_create",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4107,9 +4342,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	255: syscallinfo.Syscall{
-		Num:   255,
-		Name:  "epoll_ctl",
-		Entry: "sys_epoll_ctl",
+		Num:     255,
+		Name:    "epoll_ctl",
+		Entry:   "sys_epoll_ctl",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4134,9 +4370,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	256: syscallinfo.Syscall{
-		Num:   256,
-		Name:  "epoll_wait",
-		Entry: "sys_epoll_wait",
+		Num:     256,
+		Name:    "epoll_wait",
+		Entry:   "sys_epoll_wait",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4161,9 +4398,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	257: syscallinfo.Syscall{
-		Num:   257,
-		Name:  "remap_file_pages",
-		Entry: "sys_remap_file_pages",
+		Num:     257,
+		Name:    "remap_file_pages",
+		Entry:   "sys_remap_file_pages",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4193,9 +4431,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	258: syscallinfo.Syscall{
-		Num:   258,
-		Name:  "set_tid_address",
-		Entry: "sys_set_tid_address",
+		Num:     258,
+		Name:    "set_tid_address",
+		Entry:   "sys_set_tid_address",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -4205,9 +4444,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	259: syscallinfo.Syscall{
-		Num:   259,
-		Name:  "timer_create",
-		Entry: "sys_timer_create",
+		Num:     259,
+		Name:    "timer_create",
+		Entry:   "sys_timer_create",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4227,9 +4467,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	260: syscallinfo.Syscall{
-		Num:   260,
-		Name:  "timer_settime",
-		Entry: "sys_timer_settime",
+		Num:     260,
+		Name:    "timer_settime",
+		Entry:   "sys_timer_settime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4254,9 +4495,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	261: syscallinfo.Syscall{
-		Num:   261,
-		Name:  "timer_gettime",
-		Entry: "sys_timer_gettime",
+		Num:     261,
+		Name:    "timer_gettime",
+		Entry:   "sys_timer_gettime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4271,9 +4513,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	262: syscallinfo.Syscall{
-		Num:   262,
-		Name:  "timer_getoverrun",
-		Entry: "sys_timer_getoverrun",
+		Num:     262,
+		Name:    "timer_getoverrun",
+		Entry:   "sys_timer_getoverrun",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4283,9 +4526,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	263: syscallinfo.Syscall{
-		Num:   263,
-		Name:  "timer_delete",
-		Entry: "sys_timer_delete",
+		Num:     263,
+		Name:    "timer_delete",
+		Entry:   "sys_timer_delete",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4295,9 +4539,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	264: syscallinfo.Syscall{
-		Num:   264,
-		Name:  "clock_settime",
-		Entry: "sys_clock_settime",
+		Num:     264,
+		Name:    "clock_settime",
+		Entry:   "sys_clock_settime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4312,9 +4557,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	265: syscallinfo.Syscall{
-		Num:   265,
-		Name:  "clock_gettime",
-		Entry: "sys_clock_gettime",
+		Num:     265,
+		Name:    "clock_gettime",
+		Entry:   "sys_clock_gettime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4329,9 +4575,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	266: syscallinfo.Syscall{
-		Num:   266,
-		Name:  "clock_getres",
-		Entry: "sys_clock_getres",
+		Num:     266,
+		Name:    "clock_getres",
+		Entry:   "sys_clock_getres",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4346,9 +4593,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	267: syscallinfo.Syscall{
-		Num:   267,
-		Name:  "clock_nanosleep",
-		Entry: "sys_clock_nanosleep",
+		Num:     267,
+		Name:    "clock_nanosleep",
+		Entry:   "sys_clock_nanosleep",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4373,9 +4621,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	268: syscallinfo.Syscall{
-		Num:   268,
-		Name:  "statfs64",
-		Entry: "sys_statfs64",
+		Num:     268,
+		Name:    "statfs64",
+		Entry:   "sys_statfs64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -4395,9 +4644,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	269: syscallinfo.Syscall{
-		Num:   269,
-		Name:  "fstatfs64",
-		Entry: "sys_fstatfs64",
+		Num:     269,
+		Name:    "fstatfs64",
+		Entry:   "sys_fstatfs64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4417,9 +4667,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	270: syscallinfo.Syscall{
-		Num:   270,
-		Name:  "tgkill",
-		Entry: "sys_tgkill",
+		Num:     270,
+		Name:    "tgkill",
+		Entry:   "sys_tgkill",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4439,9 +4690,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	271: syscallinfo.Syscall{
-		Num:   271,
-		Name:  "utimes",
-		Entry: "sys_utimes",
+		Num:     271,
+		Name:    "utimes",
+		Entry:   "sys_utimes",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -4456,9 +4708,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	272: syscallinfo.Syscall{
-		Num:   272,
-		Name:  "fadvise64_64",
-		Entry: "sys_fadvise64_64",
+		Num:     272,
+		Name:    "fadvise64_64",
+		Entry:   "sys_fadvise64_64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4483,9 +4736,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	274: syscallinfo.Syscall{
-		Num:   274,
-		Name:  "mbind",
-		Entry: "sys_mbind",
+		Num:     274,
+		Name:    "mbind",
+		Entry:   "sys_mbind",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4520,9 +4774,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	275: syscallinfo.Syscall{
-		Num:   275,
-		Name:  "get_mempolicy",
-		Entry: "sys_get_mempolicy",
+		Num:     275,
+		Name:    "get_mempolicy",
+		Entry:   "sys_get_mempolicy",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -4552,9 +4807,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	276: syscallinfo.Syscall{
-		Num:   276,
-		Name:  "set_mempolicy",
-		Entry: "sys_set_mempolicy",
+		Num:     276,
+		Name:    "set_mempolicy",
+		Entry:   "sys_set_mempolicy",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4574,9 +4830,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	277: syscallinfo.Syscall{
-		Num:   277,
-		Name:  "mq_open",
-		Entry: "sys_mq_open",
+		Num:     277,
+		Name:    "mq_open",
+		Entry:   "sys_mq_open",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -4601,9 +4858,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	278: syscallinfo.Syscall{
-		Num:   278,
-		Name:  "mq_unlink",
-		Entry: "sys_mq_unlink",
+		Num:     278,
+		Name:    "mq_unlink",
+		Entry:   "sys_mq_unlink",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -4613,9 +4871,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	279: syscallinfo.Syscall{
-		Num:   279,
-		Name:  "mq_timedsend",
-		Entry: "sys_mq_timedsend",
+		Num:     279,
+		Name:    "mq_timedsend",
+		Entry:   "sys_mq_timedsend",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4645,9 +4904,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	280: syscallinfo.Syscall{
-		Num:   280,
-		Name:  "mq_timedreceive",
-		Entry: "sys_mq_timedreceive",
+		Num:     280,
+		Name:    "mq_timedreceive",
+		Entry:   "sys_mq_timedreceive",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4677,9 +4937,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	281: syscallinfo.Syscall{
-		Num:   281,
-		Name:  "mq_notify",
-		Entry: "sys_mq_notify",
+		Num:     281,
+		Name:    "mq_notify",
+		Entry:   "sys_mq_notify",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4694,9 +4955,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	282: syscallinfo.Syscall{
-		Num:   282,
-		Name:  "mq_getsetattr",
-		Entry: "sys_mq_getsetattr",
+		Num:     282,
+		Name:    "mq_getsetattr",
+		Entry:   "sys_mq_getsetattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4716,9 +4978,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	283: syscallinfo.Syscall{
-		Num:   283,
-		Name:  "kexec_load",
-		Entry: "sys_kexec_load",
+		Num:     283,
+		Name:    "kexec_load",
+		Entry:   "sys_kexec_load",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4743,9 +5006,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	284: syscallinfo.Syscall{
-		Num:   284,
-		Name:  "waitid",
-		Entry: "sys_waitid",
+		Num:     284,
+		Name:    "waitid",
+		Entry:   "sys_waitid",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4775,9 +5039,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	286: syscallinfo.Syscall{
-		Num:   286,
-		Name:  "add_key",
-		Entry: "sys_add_key",
+		Num:     286,
+		Name:    "add_key",
+		Entry:   "sys_add_key",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -4807,9 +5072,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	287: syscallinfo.Syscall{
-		Num:   287,
-		Name:  "request_key",
-		Entry: "sys_request_key",
+		Num:     287,
+		Name:    "request_key",
+		Entry:   "sys_request_key",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -4834,9 +5100,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	288: syscallinfo.Syscall{
-		Num:   288,
-		Name:  "keyctl",
-		Entry: "sys_keyctl",
+		Num:     288,
+		Name:    "keyctl",
+		Entry:   "sys_keyctl",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4866,9 +5133,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	289: syscallinfo.Syscall{
-		Num:   289,
-		Name:  "ioprio_set",
-		Entry: "sys_ioprio_set",
+		Num:     289,
+		Name:    "ioprio_set",
+		Entry:   "sys_ioprio_set",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4888,9 +5156,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	290: syscallinfo.Syscall{
-		Num:   290,
-		Name:  "ioprio_get",
-		Entry: "sys_ioprio_get",
+		Num:     290,
+		Name:    "ioprio_get",
+		Entry:   "sys_ioprio_get",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4905,15 +5174,17 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	291: syscallinfo.Syscall{
-		Num:   291,
-		Name:  "inotify_init",
-		Entry: "sys_inotify_init",
-		Args:  []syscallinfo.Argument{},
+		Num:     291,
+		Name:    "inotify_init",
+		Entry:   "sys_inotify_init",
+		Context: 0,
+		Args:    []syscallinfo.Argument{},
 	},
 	292: syscallinfo.Syscall{
-		Num:   292,
-		Name:  "inotify_add_watch",
-		Entry: "sys_inotify_add_watch",
+		Num:     292,
+		Name:    "inotify_add_watch",
+		Entry:   "sys_inotify_add_watch",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4933,9 +5204,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	293: syscallinfo.Syscall{
-		Num:   293,
-		Name:  "inotify_rm_watch",
-		Entry: "sys_inotify_rm_watch",
+		Num:     293,
+		Name:    "inotify_rm_watch",
+		Entry:   "sys_inotify_rm_watch",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4950,9 +5222,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	294: syscallinfo.Syscall{
-		Num:   294,
-		Name:  "migrate_pages",
-		Entry: "sys_migrate_pages",
+		Num:     294,
+		Name:    "migrate_pages",
+		Entry:   "sys_migrate_pages",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -4977,9 +5250,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	295: syscallinfo.Syscall{
-		Num:   295,
-		Name:  "openat",
-		Entry: "sys_openat",
+		Num:     295,
+		Name:    "openat",
+		Entry:   "sys_openat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5004,9 +5278,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	296: syscallinfo.Syscall{
-		Num:   296,
-		Name:  "mkdirat",
-		Entry: "sys_mkdirat",
+		Num:     296,
+		Name:    "mkdirat",
+		Entry:   "sys_mkdirat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5026,9 +5301,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	297: syscallinfo.Syscall{
-		Num:   297,
-		Name:  "mknodat",
-		Entry: "sys_mknodat",
+		Num:     297,
+		Name:    "mknodat",
+		Entry:   "sys_mknodat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5053,9 +5329,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	298: syscallinfo.Syscall{
-		Num:   298,
-		Name:  "fchownat",
-		Entry: "sys_fchownat",
+		Num:     298,
+		Name:    "fchownat",
+		Entry:   "sys_fchownat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5085,9 +5362,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	299: syscallinfo.Syscall{
-		Num:   299,
-		Name:  "futimesat",
-		Entry: "sys_futimesat",
+		Num:     299,
+		Name:    "futimesat",
+		Entry:   "sys_futimesat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5107,9 +5385,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	300: syscallinfo.Syscall{
-		Num:   300,
-		Name:  "fstatat64",
-		Entry: "sys_fstatat64",
+		Num:     300,
+		Name:    "fstatat64",
+		Entry:   "sys_fstatat64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5134,9 +5413,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	301: syscallinfo.Syscall{
-		Num:   301,
-		Name:  "unlinkat",
-		Entry: "sys_unlinkat",
+		Num:     301,
+		Name:    "unlinkat",
+		Entry:   "sys_unlinkat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5156,9 +5436,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	302: syscallinfo.Syscall{
-		Num:   302,
-		Name:  "renameat",
-		Entry: "sys_renameat",
+		Num:     302,
+		Name:    "renameat",
+		Entry:   "sys_renameat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5183,9 +5464,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	303: syscallinfo.Syscall{
-		Num:   303,
-		Name:  "linkat",
-		Entry: "sys_linkat",
+		Num:     303,
+		Name:    "linkat",
+		Entry:   "sys_linkat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5215,9 +5497,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	304: syscallinfo.Syscall{
-		Num:   304,
-		Name:  "symlinkat",
-		Entry: "sys_symlinkat",
+		Num:     304,
+		Name:    "symlinkat",
+		Entry:   "sys_symlinkat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -5237,9 +5520,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	305: syscallinfo.Syscall{
-		Num:   305,
-		Name:  "readlinkat",
-		Entry: "sys_readlinkat",
+		Num:     305,
+		Name:    "readlinkat",
+		Entry:   "sys_readlinkat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5264,9 +5548,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	306: syscallinfo.Syscall{
-		Num:   306,
-		Name:  "fchmodat",
-		Entry: "sys_fchmodat",
+		Num:     306,
+		Name:    "fchmodat",
+		Entry:   "sys_fchmodat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5286,9 +5571,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	307: syscallinfo.Syscall{
-		Num:   307,
-		Name:  "faccessat",
-		Entry: "sys_faccessat",
+		Num:     307,
+		Name:    "faccessat",
+		Entry:   "sys_faccessat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5308,9 +5594,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	308: syscallinfo.Syscall{
-		Num:   308,
-		Name:  "pselect6",
-		Entry: "sys_pselect6",
+		Num:     308,
+		Name:    "pselect6",
+		Entry:   "sys_pselect6",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5345,9 +5632,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	309: syscallinfo.Syscall{
-		Num:   309,
-		Name:  "ppoll",
-		Entry: "sys_ppoll",
+		Num:     309,
+		Name:    "ppoll",
+		Entry:   "sys_ppoll",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -5377,9 +5665,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	310: syscallinfo.Syscall{
-		Num:   310,
-		Name:  "unshare",
-		Entry: "sys_unshare",
+		Num:     310,
+		Name:    "unshare",
+		Entry:   "sys_unshare",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5389,9 +5678,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	311: syscallinfo.Syscall{
-		Num:   311,
-		Name:  "set_robust_list",
-		Entry: "sys_set_robust_list",
+		Num:     311,
+		Name:    "set_robust_list",
+		Entry:   "sys_set_robust_list",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -5406,9 +5696,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	312: syscallinfo.Syscall{
-		Num:   312,
-		Name:  "get_robust_list",
-		Entry: "sys_get_robust_list",
+		Num:     312,
+		Name:    "get_robust_list",
+		Entry:   "sys_get_robust_list",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5428,9 +5719,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	313: syscallinfo.Syscall{
-		Num:   313,
-		Name:  "splice",
-		Entry: "sys_splice",
+		Num:     313,
+		Name:    "splice",
+		Entry:   "sys_splice",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5465,9 +5757,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	314: syscallinfo.Syscall{
-		Num:   314,
-		Name:  "sync_file_range",
-		Entry: "sys_sync_file_range",
+		Num:     314,
+		Name:    "sync_file_range",
+		Entry:   "sys_sync_file_range",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5492,9 +5785,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	315: syscallinfo.Syscall{
-		Num:   315,
-		Name:  "tee",
-		Entry: "sys_tee",
+		Num:     315,
+		Name:    "tee",
+		Entry:   "sys_tee",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5519,9 +5813,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	316: syscallinfo.Syscall{
-		Num:   316,
-		Name:  "vmsplice",
-		Entry: "sys_vmsplice",
+		Num:     316,
+		Name:    "vmsplice",
+		Entry:   "sys_vmsplice",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5546,9 +5841,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	317: syscallinfo.Syscall{
-		Num:   317,
-		Name:  "move_pages",
-		Entry: "sys_move_pages",
+		Num:     317,
+		Name:    "move_pages",
+		Entry:   "sys_move_pages",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5583,9 +5879,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	318: syscallinfo.Syscall{
-		Num:   318,
-		Name:  "getcpu",
-		Entry: "sys_getcpu",
+		Num:     318,
+		Name:    "getcpu",
+		Entry:   "sys_getcpu",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -5605,9 +5902,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	319: syscallinfo.Syscall{
-		Num:   319,
-		Name:  "epoll_pwait",
-		Entry: "sys_epoll_pwait",
+		Num:     319,
+		Name:    "epoll_pwait",
+		Entry:   "sys_epoll_pwait",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5642,9 +5940,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	320: syscallinfo.Syscall{
-		Num:   320,
-		Name:  "utimensat",
-		Entry: "sys_utimensat",
+		Num:     320,
+		Name:    "utimensat",
+		Entry:   "sys_utimensat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5669,9 +5968,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	321: syscallinfo.Syscall{
-		Num:   321,
-		Name:  "signalfd",
-		Entry: "sys_signalfd",
+		Num:     321,
+		Name:    "signalfd",
+		Entry:   "sys_signalfd",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5691,9 +5991,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	322: syscallinfo.Syscall{
-		Num:   322,
-		Name:  "timerfd_create",
-		Entry: "sys_timerfd_create",
+		Num:     322,
+		Name:    "timerfd_create",
+		Entry:   "sys_timerfd_create",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5708,9 +6009,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	323: syscallinfo.Syscall{
-		Num:   323,
-		Name:  "eventfd",
-		Entry: "sys_eventfd",
+		Num:     323,
+		Name:    "eventfd",
+		Entry:   "sys_eventfd",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5720,9 +6022,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	324: syscallinfo.Syscall{
-		Num:   324,
-		Name:  "fallocate",
-		Entry: "sys_fallocate",
+		Num:     324,
+		Name:    "fallocate",
+		Entry:   "sys_fallocate",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5747,9 +6050,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	325: syscallinfo.Syscall{
-		Num:   325,
-		Name:  "timerfd_settime",
-		Entry: "sys_timerfd_settime",
+		Num:     325,
+		Name:    "timerfd_settime",
+		Entry:   "sys_timerfd_settime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5774,9 +6078,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	326: syscallinfo.Syscall{
-		Num:   326,
-		Name:  "timerfd_gettime",
-		Entry: "sys_timerfd_gettime",
+		Num:     326,
+		Name:    "timerfd_gettime",
+		Entry:   "sys_timerfd_gettime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5791,9 +6096,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	327: syscallinfo.Syscall{
-		Num:   327,
-		Name:  "signalfd4",
-		Entry: "sys_signalfd4",
+		Num:     327,
+		Name:    "signalfd4",
+		Entry:   "sys_signalfd4",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5818,9 +6124,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	328: syscallinfo.Syscall{
-		Num:   328,
-		Name:  "eventfd2",
-		Entry: "sys_eventfd2",
+		Num:     328,
+		Name:    "eventfd2",
+		Entry:   "sys_eventfd2",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5835,9 +6142,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	329: syscallinfo.Syscall{
-		Num:   329,
-		Name:  "epoll_create1",
-		Entry: "sys_epoll_create1",
+		Num:     329,
+		Name:    "epoll_create1",
+		Entry:   "sys_epoll_create1",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5847,9 +6155,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	330: syscallinfo.Syscall{
-		Num:   330,
-		Name:  "dup3",
-		Entry: "sys_dup3",
+		Num:     330,
+		Name:    "dup3",
+		Entry:   "sys_dup3",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5869,9 +6178,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	331: syscallinfo.Syscall{
-		Num:   331,
-		Name:  "pipe2",
-		Entry: "sys_pipe2",
+		Num:     331,
+		Name:    "pipe2",
+		Entry:   "sys_pipe2",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -5886,9 +6196,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	332: syscallinfo.Syscall{
-		Num:   332,
-		Name:  "inotify_init1",
-		Entry: "sys_inotify_init1",
+		Num:     332,
+		Name:    "inotify_init1",
+		Entry:   "sys_inotify_init1",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5898,9 +6209,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	333: syscallinfo.Syscall{
-		Num:   333,
-		Name:  "preadv",
-		Entry: "sys_preadv",
+		Num:     333,
+		Name:    "preadv",
+		Entry:   "sys_preadv",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5930,9 +6242,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	334: syscallinfo.Syscall{
-		Num:   334,
-		Name:  "pwritev",
-		Entry: "sys_pwritev",
+		Num:     334,
+		Name:    "pwritev",
+		Entry:   "sys_pwritev",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5962,9 +6275,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	335: syscallinfo.Syscall{
-		Num:   335,
-		Name:  "rt_tgsigqueueinfo",
-		Entry: "sys_rt_tgsigqueueinfo",
+		Num:     335,
+		Name:    "rt_tgsigqueueinfo",
+		Entry:   "sys_rt_tgsigqueueinfo",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -5989,9 +6303,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	336: syscallinfo.Syscall{
-		Num:   336,
-		Name:  "perf_event_open",
-		Entry: "sys_perf_event_open",
+		Num:     336,
+		Name:    "perf_event_open",
+		Entry:   "sys_perf_event_open",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -6021,9 +6336,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	337: syscallinfo.Syscall{
-		Num:   337,
-		Name:  "recvmmsg",
-		Entry: "sys_recvmmsg",
+		Num:     337,
+		Name:    "recvmmsg",
+		Entry:   "sys_recvmmsg",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6053,9 +6369,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	338: syscallinfo.Syscall{
-		Num:   338,
-		Name:  "fanotify_init",
-		Entry: "sys_fanotify_init",
+		Num:     338,
+		Name:    "fanotify_init",
+		Entry:   "sys_fanotify_init",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6070,9 +6387,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	339: syscallinfo.Syscall{
-		Num:   339,
-		Name:  "fanotify_mark",
-		Entry: "sys_fanotify_mark",
+		Num:     339,
+		Name:    "fanotify_mark",
+		Entry:   "sys_fanotify_mark",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6102,9 +6420,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	340: syscallinfo.Syscall{
-		Num:   340,
-		Name:  "prlimit64",
-		Entry: "sys_prlimit64",
+		Num:     340,
+		Name:    "prlimit64",
+		Entry:   "sys_prlimit64",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6129,9 +6448,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	341: syscallinfo.Syscall{
-		Num:   341,
-		Name:  "name_to_handle_at",
-		Entry: "sys_name_to_handle_at",
+		Num:     341,
+		Name:    "name_to_handle_at",
+		Entry:   "sys_name_to_handle_at",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6161,9 +6481,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	342: syscallinfo.Syscall{
-		Num:   342,
-		Name:  "open_by_handle_at",
-		Entry: "sys_open_by_handle_at",
+		Num:     342,
+		Name:    "open_by_handle_at",
+		Entry:   "sys_open_by_handle_at",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6183,9 +6504,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	343: syscallinfo.Syscall{
-		Num:   343,
-		Name:  "clock_adjtime",
-		Entry: "sys_clock_adjtime",
+		Num:     343,
+		Name:    "clock_adjtime",
+		Entry:   "sys_clock_adjtime",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6200,9 +6522,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	344: syscallinfo.Syscall{
-		Num:   344,
-		Name:  "syncfs",
-		Entry: "sys_syncfs",
+		Num:     344,
+		Name:    "syncfs",
+		Entry:   "sys_syncfs",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6212,9 +6535,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	345: syscallinfo.Syscall{
-		Num:   345,
-		Name:  "sendmmsg",
-		Entry: "sys_sendmmsg",
+		Num:     345,
+		Name:    "sendmmsg",
+		Entry:   "sys_sendmmsg",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6239,9 +6563,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	346: syscallinfo.Syscall{
-		Num:   346,
-		Name:  "setns",
-		Entry: "sys_setns",
+		Num:     346,
+		Name:    "setns",
+		Entry:   "sys_setns",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6256,9 +6581,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	347: syscallinfo.Syscall{
-		Num:   347,
-		Name:  "process_vm_readv",
-		Entry: "sys_process_vm_readv",
+		Num:     347,
+		Name:    "process_vm_readv",
+		Entry:   "sys_process_vm_readv",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6293,9 +6619,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	348: syscallinfo.Syscall{
-		Num:   348,
-		Name:  "process_vm_writev",
-		Entry: "sys_process_vm_writev",
+		Num:     348,
+		Name:    "process_vm_writev",
+		Entry:   "sys_process_vm_writev",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6330,9 +6657,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	349: syscallinfo.Syscall{
-		Num:   349,
-		Name:  "kcmp",
-		Entry: "sys_kcmp",
+		Num:     349,
+		Name:    "kcmp",
+		Entry:   "sys_kcmp",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6362,9 +6690,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	350: syscallinfo.Syscall{
-		Num:   350,
-		Name:  "finit_module",
-		Entry: "sys_finit_module",
+		Num:     350,
+		Name:    "finit_module",
+		Entry:   "sys_finit_module",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6384,9 +6713,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	351: syscallinfo.Syscall{
-		Num:   351,
-		Name:  "sched_setattr",
-		Entry: "sys_sched_setattr",
+		Num:     351,
+		Name:    "sched_setattr",
+		Entry:   "sys_sched_setattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6406,9 +6736,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	352: syscallinfo.Syscall{
-		Num:   352,
-		Name:  "sched_getattr",
-		Entry: "sys_sched_getattr",
+		Num:     352,
+		Name:    "sched_getattr",
+		Entry:   "sys_sched_getattr",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6433,9 +6764,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	353: syscallinfo.Syscall{
-		Num:   353,
-		Name:  "renameat2",
-		Entry: "sys_renameat2",
+		Num:     353,
+		Name:    "renameat2",
+		Entry:   "sys_renameat2",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6465,9 +6797,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	354: syscallinfo.Syscall{
-		Num:   354,
-		Name:  "seccomp",
-		Entry: "sys_seccomp",
+		Num:     354,
+		Name:    "seccomp",
+		Entry:   "sys_seccomp",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6487,9 +6820,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	355: syscallinfo.Syscall{
-		Num:   355,
-		Name:  "getrandom",
-		Entry: "sys_getrandom",
+		Num:     355,
+		Name:    "getrandom",
+		Entry:   "sys_getrandom",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -6509,9 +6843,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	356: syscallinfo.Syscall{
-		Num:   356,
-		Name:  "memfd_create",
-		Entry: "sys_memfd_create",
+		Num:     356,
+		Name:    "memfd_create",
+		Entry:   "sys_memfd_create",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 1,
@@ -6526,9 +6861,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	357: syscallinfo.Syscall{
-		Num:   357,
-		Name:  "bpf",
-		Entry: "sys_bpf",
+		Num:     357,
+		Name:    "bpf",
+		Entry:   "sys_bpf",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,
@@ -6548,9 +6884,10 @@ var SyscallTable = syscallinfo.SyscallTable{
 		},
 	},
 	358: syscallinfo.Syscall{
-		Num:   358,
-		Name:  "execveat",
-		Entry: "sys_execveat",
+		Num:     358,
+		Name:    "execveat",
+		Entry:   "sys_execveat",
+		Context: 0,
 		Args: []syscallinfo.Argument{
 			{
 				RefCount: 0,

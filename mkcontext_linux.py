@@ -28,7 +28,7 @@ def main():
     tbl_file = open(tbl_path, 'r')
     syscalls = []
     for line in tbl_file:
-        syscall = {'num': -1, 'entry': '', 'name': '', 'args': []}
+        syscall = {'num': -1, 'entry': '', 'name': '', 'context':'', 'args': []}
 
         match = re.search(r'^(\w+)\t+\w+\t+(\w+)\t+(\w+)', line)
         if not match:
