@@ -61,7 +61,7 @@ func main() {
 }
 
 func usage() {
-	fmt.Fprintf(os.Stderr, "usage: go run mksyscallinfo.go [flags] package ctxfile\n")
+	fmt.Fprintln(os.Stderr, "usage: go run mksyscalltable.go [flags] pkgname ctxfile")
 	flag.PrintDefaults()
 	os.Exit(2)
 }
