@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strings"
 )
 
 // A Syscall contains information about a syscall in a way that it
@@ -94,4 +95,32 @@ func (r Resolver) SyscallByEntry(entry string) (Syscall, error) {
 		}
 	}
 	return Syscall{}, errors.New("unknown syscall")
+}
+
+// CallString returns an string with the representation of the call. The number
+// of provided arguments must be greater or equal to the number of arguments
+// required by the syscall.
+func (r Resolver) Repr(n int, args ...uint64) (string, error) {
+	sc, err := r.Syscall(n)
+	if err != nil {
+		return "", err
+	}
+	if len(args) < len(sc.Args) {
+		return "", errors.New("invalid number of arguments")
+	}
+	argsStr := ""
+	for i := range sc.Args {
+		argsStr += ctxRepr(args[i], sc.Args[i].Context) + ", "
+	}
+	argsStr = strings.TrimSuffix(argsStr, ", ")
+	return fmt.Sprintf("%s(%s)", sc.Name, argsStr), nil
+}
+
+func ctxRepr(arg uint64, ctx Context) string {
+	switch ctx {
+	case CTX_FD:
+		return fmt.Sprintf("%d", arg)
+	default:
+		return fmt.Sprintf("%#08x", arg)
+	}
 }

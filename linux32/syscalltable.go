@@ -37,7 +37,7 @@ var SyscallTable = syscallinfo.SyscallTable{
 			{
 				RefCount: 0,
 				Sig:      "unsigned int fd",
-				Context:  0,
+				Context:  1,
 			},
 			{
 				RefCount: 1,
