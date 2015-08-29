@@ -104,12 +104,8 @@ func (r Resolver) SyscallByEntry(entry string) (Syscall, error) {
 // Repr returns a string with the representation of the call plus the return
 // value. The number of provided arguments must be greater or equal to the
 // number of arguments required by the syscall.
-func (r Resolver) Repr(n int, ret uint64, args ...uint64) (string, error) {
-	sc, err := r.Syscall(n)
-	if err != nil {
-		return "", err
-	}
-	callStr, err := reprCall(sc, args...)
+func (sc Syscall) Repr(ret uint64, args ...uint64) (string, error) {
+	callStr, err := sc.ReprCall(args...)
 	if err != nil {
 		return "", err
 	}
@@ -120,18 +116,7 @@ func (r Resolver) Repr(n int, ret uint64, args ...uint64) (string, error) {
 // ReprCall returns a string with the representation of the call. The number of
 // provided arguments must be greater or equal to the number of arguments
 // required by the syscall.
-func (r Resolver) ReprCall(n int, args ...uint64) (string, error) {
-	sc, err := r.Syscall(n)
-	if err != nil {
-		return "", err
-	}
-	return reprCall(sc, args...)
-}
-
-// reprCall returns a string with the representation of the call.  It takes a
-// Syscall objects as input and the number of provided arguments must be
-// greater or equal to the number of arguments required by the syscall.
-func reprCall(sc Syscall, args ...uint64) (string, error) {
+func (sc Syscall) ReprCall(args ...uint64) (string, error) {
 	if len(args) < len(sc.Args) {
 		return "", errors.New("invalid number of arguments")
 	}

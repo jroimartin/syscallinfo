@@ -127,7 +127,14 @@ func TestReprCall(t *testing.T) {
 	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 
 	for _, check := range checksReprs {
-		str, err := r.ReprCall(check.num, check.args...)
+		sc, err := r.Syscall(check.num)
+		if err != nil {
+			if check.nilError {
+				t.Errorf("wrong error (want=nil, get=%v)", err)
+			}
+			continue
+		}
+		str, err := sc.ReprCall(check.args...)
 		if err != nil {
 			if check.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
@@ -144,7 +151,14 @@ func TestRepr(t *testing.T) {
 	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 
 	for _, check := range checksReprs {
-		str, err := r.Repr(check.num, check.retval, check.args...)
+		sc, err := r.Syscall(check.num)
+		if err != nil {
+			if check.nilError {
+				t.Errorf("wrong error (want=nil, get=%v)", err)
+			}
+			continue
+		}
+		str, err := sc.Repr(check.retval, check.args...)
 		if err != nil {
 			if check.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
