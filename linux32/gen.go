@@ -2,6 +2,6 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package x86
+package linux32
 
-//go:generate go run $GOPATH/src/github.com/jroimartin/syscallinfo/mksyscallinfo.go -arch x86 -output syscallinfo.go syscall_32.json
+//go:generate go run $GOPATH/src/github.com/jroimartin/syscallinfo/mksyscalltable.go -output syscalltable.go linux32 syscall_32.json

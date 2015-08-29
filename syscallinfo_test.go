@@ -2,9 +2,14 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package x86
+package syscallinfo_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/jroimartin/syscallinfo"
+	"github.com/jroimartin/syscallinfo/linux32"
+)
 
 var checks = []struct {
 	num      int
@@ -17,8 +22,9 @@ var checks = []struct {
 }
 
 func TestSyscall(t *testing.T) {
+	r := syscallinfo.NewResolver(linux32.SyscallTable)
 	for _, c := range checks {
-		sc, err := Syscall(c.num)
+		sc, err := r.Syscall(c.num)
 		if err != nil {
 			if c.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
@@ -35,8 +41,9 @@ func TestSyscall(t *testing.T) {
 }
 
 func TestSyscallByEntry(t *testing.T) {
+	r := syscallinfo.NewResolver(linux32.SyscallTable)
 	for _, c := range checks {
-		sc, err := SyscallByEntry(c.entry)
+		sc, err := r.SyscallByEntry(c.entry)
 		if err != nil {
 			if c.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)

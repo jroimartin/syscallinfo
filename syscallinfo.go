@@ -6,6 +6,7 @@ package syscallinfo
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 )
 
@@ -59,4 +60,38 @@ func (ctx *Context) UnmarshalJSON(data []byte) error {
 		*ctx = CTX_NONE
 	}
 	return nil
+}
+
+// A SyscallTable contains the information about the syscalls of an specific
+// OS.
+type SyscallTable map[int]Syscall
+
+// A Resolver allows to access information from a given syscall table.
+type Resolver struct {
+	tbl SyscallTable
+}
+
+// NewResolver returns a syscall resolver for the specified syscall table.
+func NewResolver(tbl SyscallTable) Resolver {
+	return Resolver{tbl: tbl}
+}
+
+// Syscall returns a Syscall object which number matches the provided one.
+func (r Resolver) Syscall(n int) (Syscall, error) {
+	sc, ok := r.tbl[n]
+	if !ok {
+		return Syscall{}, errors.New("unknown syscall")
+	}
+	return sc, nil
+}
+
+// SyscallByEntry returns a Syscall object which entry point matches the
+// provided one.
+func (r Resolver) SyscallByEntry(entry string) (Syscall, error) {
+	for _, sc := range r.tbl {
+		if sc.Entry == entry {
+			return sc, nil
+		}
+	}
+	return Syscall{}, errors.New("unknown syscall")
 }
