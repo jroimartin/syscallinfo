@@ -63,7 +63,7 @@ func (ctx *Context) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// A SyscallTable contains the information about the syscalls of an specific
+// A SyscallTable contains the information about the syscalls of a specific
 // OS.
 type SyscallTable map[int]Syscall
 
@@ -97,8 +97,8 @@ func (r Resolver) SyscallByEntry(entry string) (Syscall, error) {
 	return Syscall{}, errors.New("unknown syscall")
 }
 
-// CallString returns an string with the representation of the call. The number
-// of provided arguments must be greater or equal to the number of arguments
+// Repr returns a string with the representation of the call. The number of
+// provided arguments must be greater or equal to the number of arguments
 // required by the syscall.
 func (r Resolver) Repr(n int, args ...uint64) (string, error) {
 	sc, err := r.Syscall(n)
@@ -116,11 +116,13 @@ func (r Resolver) Repr(n int, args ...uint64) (string, error) {
 	return fmt.Sprintf("%s(%s)", sc.Name, argsStr), nil
 }
 
-func ctxRepr(arg uint64, ctx Context) string {
+// ctxRepr returns a string with the contextualized representation of the
+// provided number.
+func ctxRepr(n uint64, ctx Context) string {
 	switch ctx {
 	case CTX_FD:
-		return fmt.Sprintf("%d", arg)
+		return fmt.Sprintf("%d", n)
 	default:
-		return fmt.Sprintf("%#08x", arg)
+		return fmt.Sprintf("%#08x", n)
 	}
 }
