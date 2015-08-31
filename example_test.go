@@ -11,7 +11,7 @@ import (
 	"github.com/jroimartin/syscallinfo/linux_386"
 )
 
-func ExampleRepr() {
+func ExampleSyscall_Repr() {
 	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 	sc, err := r.Syscall(3)
 	if err != nil {
