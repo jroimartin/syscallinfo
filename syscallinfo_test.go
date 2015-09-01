@@ -36,10 +36,10 @@ var checksResolution = []struct {
 	},
 }
 
-func TestSyscall(t *testing.T) {
+func TestResolver_SyscallN(t *testing.T) {
 	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 	for _, check := range checksResolution {
-		sc, err := r.Syscall(check.num)
+		sc, err := r.SyscallN(check.num)
 		if err != nil {
 			if check.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
@@ -63,10 +63,10 @@ func TestSyscall(t *testing.T) {
 	}
 }
 
-func TestSyscallByEntry(t *testing.T) {
+func TestResolver_SyscallEntry(t *testing.T) {
 	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 	for _, check := range checksResolution {
-		sc, err := r.SyscallByEntry(check.entry)
+		sc, err := r.SyscallEntry(check.entry)
 		if err != nil {
 			if check.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
@@ -90,13 +90,13 @@ func TestSyscallByEntry(t *testing.T) {
 	}
 }
 
-var checksReprs = []struct {
-	num      int
-	args     []uint64
-	retval   uint64
-	reprcall string
-	repr     string
-	nilError bool
+var checksOutputs = []struct {
+	num        int
+	args       []uint64
+	retval     uint64
+	outputCall string
+	output     string
+	nilError   bool
 }{
 	{
 		3,
@@ -124,59 +124,61 @@ var checksReprs = []struct {
 	},
 }
 
-func TestReprCall(t *testing.T) {
+func TestSyscallCall_Output(t *testing.T) {
 	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 
-	for _, check := range checksReprs {
-		sc, err := r.Syscall(check.num)
+	for _, check := range checksOutputs {
+		sc, err := r.SyscallN(check.num)
 		if err != nil {
 			if check.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
 			}
 			continue
 		}
-		str, err := sc.ReprCall(check.args...)
+		scc, err := syscallinfo.NewSyscallCall(sc, check.retval, check.args...)
+		if err != nil {
+			return
+		}
+		str, err := scc.Output(0)
 		if err != nil {
 			if check.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
 			}
 			continue
 		}
-		if str != check.reprcall {
-			t.Errorf("wrong string (want=%v, get=%v)", check.reprcall, str)
+		if str != check.outputCall {
+			t.Errorf("wrong string (want=%v, get=%v)", check.outputCall, str)
 		}
 	}
 }
 
-func TestRepr(t *testing.T) {
+func TestSyscallCall_String(t *testing.T) {
 	r := syscallinfo.NewResolver(linux_386.SyscallTable)
 
-	for _, check := range checksReprs {
-		sc, err := r.Syscall(check.num)
+	for _, check := range checksOutputs {
+		sc, err := r.SyscallN(check.num)
 		if err != nil {
 			if check.nilError {
 				t.Errorf("wrong error (want=nil, get=%v)", err)
 			}
 			continue
 		}
-		str, err := sc.Repr(check.retval, check.args...)
+		scc, err := syscallinfo.NewSyscallCall(sc, check.retval, check.args...)
 		if err != nil {
-			if check.nilError {
-				t.Errorf("wrong error (want=nil, get=%v)", err)
-			}
-			continue
+			return
 		}
-		if str != check.repr {
-			t.Errorf("wrong string (want=%v, get=%v)", check.repr, str)
+		str := scc.String()
+		if str != check.output {
+			t.Errorf("wrong string (want=%v, get=%v)", check.output, str)
 		}
 	}
 }
 
 var checkHandle = struct {
-	num      int
-	args     []uint64
-	retval   uint64
-	reprcall string
+	num        int
+	args       []uint64
+	retval     uint64
+	outputCall string
 }{
 	3,
 	[]uint64{1, 2, 3},
@@ -184,23 +186,25 @@ var checkHandle = struct {
 	"read(test-1, 0x00000002, 0x00000003) = 0x00000004",
 }
 
-func TestHandle(t *testing.T) {
-	r := syscallinfo.NewResolver(linux_386.SyscallTable)
-	r.Handle(syscallinfo.CTX_FD, func(n uint64) (string, error) {
+func TestContextHandler_Handle(t *testing.T) {
+	ch := syscallinfo.ContextHandler{}
+	ch.Handle(syscallinfo.CTX_FD, func(n uint64) (string, error) {
 		return fmt.Sprintf("test-%d", n), nil
 	})
 
-	sc, err := r.Syscall(checkHandle.num)
+	r := syscallinfo.NewResolver(linux_386.SyscallTable)
+	sc, err := r.SyscallN(checkHandle.num)
 	if err != nil {
 		t.Errorf("wrong error (want=nil, get=%v)", err)
 		return
 	}
-	str, err := sc.Repr(checkHandle.retval, checkHandle.args...)
+	scc, err := syscallinfo.NewSyscallCall(sc, checkHandle.retval, checkHandle.args...)
 	if err != nil {
-		t.Errorf("wrong error (want=nil, get=%v)", err)
 		return
 	}
-	if str != checkHandle.reprcall {
-		t.Errorf("wrong string (want=%v, get=%v)", checkHandle.reprcall, str)
+	scc.SetContextHandler(ch)
+	str := scc.String()
+	if str != checkHandle.outputCall {
+		t.Errorf("wrong string (want=%v, get=%v)", checkHandle.outputCall, str)
 	}
 }
