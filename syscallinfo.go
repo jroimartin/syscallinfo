@@ -203,6 +203,11 @@ func (scc *SyscallCall) String() string {
 	return str
 }
 
+// Syscall returns the syscall corresponding to the SyscallCall.
+func (scc *SyscallCall) Syscall() Syscall {
+	return scc.Syscall()
+}
+
 // handleContext returns a string with the contextualized representation of the
 // provided value.
 func (scc *SyscallCall) handleContext(n uint64, ctx Context) (string, error) {
