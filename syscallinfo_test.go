@@ -5,6 +5,7 @@
 package syscallinfo_test
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/jroimartin/syscallinfo"
@@ -168,5 +169,38 @@ func TestRepr(t *testing.T) {
 		if str != check.repr {
 			t.Errorf("wrong string (want=%v, get=%v)", check.repr, str)
 		}
+	}
+}
+
+var checkHandle = struct {
+	num      int
+	args     []uint64
+	retval   uint64
+	reprcall string
+}{
+	3,
+	[]uint64{1, 2, 3},
+	4,
+	"read(test-1, 0x00000002, 0x00000003) = 0x00000004",
+}
+
+func TestHandle(t *testing.T) {
+	r := syscallinfo.NewResolver(linux_386.SyscallTable)
+	r.Handle(syscallinfo.CTX_FD, func(n uint64) string {
+		return fmt.Sprintf("test-%d", n)
+	})
+
+	sc, err := r.Syscall(checkHandle.num)
+	if err != nil {
+		t.Errorf("wrong error (want=nil, get=%v)", err)
+		return
+	}
+	str, err := sc.Repr(checkHandle.retval, checkHandle.args...)
+	if err != nil {
+		t.Errorf("wrong error (want=nil, get=%v)", err)
+		return
+	}
+	if str != checkHandle.reprcall {
+		t.Errorf("wrong string (want=%v, get=%v)", checkHandle.reprcall, str)
 	}
 }

@@ -26,3 +26,22 @@ func ExampleSyscall_Repr() {
 	// Output:
 	// read(1, 0x00000002, 0x00000003) = 0x00000004
 }
+
+func ExampleResolver_Handle() {
+	r := syscallinfo.NewResolver(linux_386.SyscallTable)
+	r.Handle(syscallinfo.CTX_FD, func(n uint64) string {
+		return fmt.Sprintf("FD(%d)", n)
+	})
+	sc, err := r.Syscall(3)
+	if err != nil {
+		return
+	}
+	str, err := sc.Repr(4, 1, 2, 3)
+	if err != nil {
+		return
+	}
+	fmt.Println(str)
+
+	// Output:
+	// read(FD(1), 0x00000002, 0x00000003) = 0x00000004
+}

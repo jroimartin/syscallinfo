@@ -29,6 +29,9 @@ type Syscall struct {
 
 	// Args is a slice containing all the syscall's argurments.
 	Args []Argument
+
+	// r is the resolver used to resolve this syscall
+	r Resolver
 }
 
 // Argument represents a syscall argument.
@@ -73,21 +76,30 @@ type SyscallTable map[int]Syscall
 
 // A Resolver allows to access information from a given syscall table.
 type Resolver struct {
-	tbl SyscallTable
+	tbl         SyscallTable
+	handleFuncs map[Context]HandleFunc
 }
+
+// HandleFunc is a function that implements how a value must be
+// contextualized.
+type HandleFunc func(n uint64) string
 
 // NewResolver returns a syscall resolver for the specified syscall table.
 func NewResolver(tbl SyscallTable) Resolver {
-	return Resolver{tbl: tbl}
+	return Resolver{
+		tbl:         tbl,
+		handleFuncs: make(map[Context]HandleFunc),
+	}
 }
 
 // Syscall returns a Syscall object which number matches the provided one.
 func (r Resolver) Syscall(n int) (Syscall, error) {
 	sc, ok := r.tbl[n]
-	if !ok {
-		return Syscall{}, errors.New("unknown syscall")
+	if ok {
+		sc.r = r
+		return sc, nil
 	}
-	return sc, nil
+	return Syscall{}, errors.New("unknown syscall")
 }
 
 // SyscallByEntry returns a Syscall object which entry point matches the
@@ -95,10 +107,31 @@ func (r Resolver) Syscall(n int) (Syscall, error) {
 func (r Resolver) SyscallByEntry(entry string) (Syscall, error) {
 	for _, sc := range r.tbl {
 		if sc.Entry == entry {
+			sc.r = r
 			return sc, nil
 		}
 	}
 	return Syscall{}, errors.New("unknown syscall")
+}
+
+// Handle assigns a HandleFunc to a context
+func (r Resolver) Handle(ctx Context, h HandleFunc) {
+	r.handleFuncs[ctx] = h
+}
+
+// handleContext returns a string with the contextualized representation of the
+// provided value.
+func (r Resolver) handleContext(n uint64, ctx Context) string {
+	h, ok := r.handleFuncs[ctx]
+	if ok && h != nil {
+		return h(n)
+	}
+	switch ctx {
+	case CTX_FD:
+		return fmt.Sprintf("%d", n)
+	default:
+		return fmt.Sprintf("%#08x", n)
+	}
 }
 
 // Repr returns a string with the representation of the call plus the return
@@ -109,7 +142,7 @@ func (sc Syscall) Repr(ret uint64, args ...uint64) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	retStr := reprCtx(ret, sc.Context)
+	retStr := sc.r.handleContext(ret, sc.Context)
 	return fmt.Sprintf("%s = %s", callStr, retStr), nil
 }
 
@@ -122,19 +155,8 @@ func (sc Syscall) ReprCall(args ...uint64) (string, error) {
 	}
 	argsStr := ""
 	for i := range sc.Args {
-		argsStr += reprCtx(args[i], sc.Args[i].Context) + ", "
+		argsStr += sc.r.handleContext(args[i], sc.Args[i].Context) + ", "
 	}
 	argsStr = strings.TrimSuffix(argsStr, ", ")
 	return fmt.Sprintf("%s(%s)", sc.Name, argsStr), nil
-}
-
-// reprCtx returns a string with the contextualized representation of the
-// provided number.
-func reprCtx(n uint64, ctx Context) string {
-	switch ctx {
-	case CTX_FD:
-		return fmt.Sprintf("%d", n)
-	default:
-		return fmt.Sprintf("%#08x", n)
-	}
 }
