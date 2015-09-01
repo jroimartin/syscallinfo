@@ -76,19 +76,19 @@ type SyscallTable map[int]Syscall
 
 // A Resolver allows to access information from a given syscall table.
 type Resolver struct {
-	tbl         SyscallTable
-	handleFuncs map[Context]HandleFunc
+	tbl          SyscallTable
+	handlerFuncs map[Context]HandlerFunc
 }
 
-// HandleFunc is a function that implements how a value must be
+// HandlerFunc is a function that implements how a value must be
 // contextualized.
-type HandleFunc func(n uint64) string
+type HandlerFunc func(n uint64) string
 
 // NewResolver returns a syscall resolver for the specified syscall table.
 func NewResolver(tbl SyscallTable) Resolver {
 	return Resolver{
-		tbl:         tbl,
-		handleFuncs: make(map[Context]HandleFunc),
+		tbl:          tbl,
+		handlerFuncs: make(map[Context]HandlerFunc),
 	}
 }
 
@@ -114,15 +114,15 @@ func (r Resolver) SyscallByEntry(entry string) (Syscall, error) {
 	return Syscall{}, errors.New("unknown syscall")
 }
 
-// Handle assigns a HandleFunc to a context
-func (r Resolver) Handle(ctx Context, h HandleFunc) {
-	r.handleFuncs[ctx] = h
+// Handle assigns a HandlerFunc to a context
+func (r Resolver) Handle(ctx Context, h HandlerFunc) {
+	r.handlerFuncs[ctx] = h
 }
 
 // handleContext returns a string with the contextualized representation of the
 // provided value.
 func (r Resolver) handleContext(n uint64, ctx Context) string {
-	h, ok := r.handleFuncs[ctx]
+	h, ok := r.handlerFuncs[ctx]
 	if ok && h != nil {
 		return h(n)
 	}
