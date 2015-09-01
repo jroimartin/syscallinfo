@@ -82,7 +82,7 @@ type Resolver struct {
 
 // HandlerFunc is a function that implements how a value must be
 // contextualized.
-type HandlerFunc func(n uint64) string
+type HandlerFunc func(n uint64) (string, error)
 
 // NewResolver returns a syscall resolver for the specified syscall table.
 func NewResolver(tbl SyscallTable) Resolver {
@@ -121,16 +121,16 @@ func (r Resolver) Handle(ctx Context, h HandlerFunc) {
 
 // handleContext returns a string with the contextualized representation of the
 // provided value.
-func (r Resolver) handleContext(n uint64, ctx Context) string {
+func (r Resolver) handleContext(n uint64, ctx Context) (string, error) {
 	h, ok := r.handlerFuncs[ctx]
 	if ok && h != nil {
 		return h(n)
 	}
 	switch ctx {
 	case CTX_FD:
-		return fmt.Sprintf("%d", n)
+		return fmt.Sprintf("%d", n), nil
 	default:
-		return fmt.Sprintf("%#08x", n)
+		return fmt.Sprintf("%#08x", n), nil
 	}
 }
 
@@ -142,7 +142,10 @@ func (sc Syscall) Repr(ret uint64, args ...uint64) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	retStr := sc.r.handleContext(ret, sc.Context)
+	retStr, err := sc.r.handleContext(ret, sc.Context)
+	if err != nil {
+		return "", err
+	}
 	return fmt.Sprintf("%s = %s", callStr, retStr), nil
 }
 
@@ -155,7 +158,11 @@ func (sc Syscall) ReprCall(args ...uint64) (string, error) {
 	}
 	argsStr := ""
 	for i := range sc.Args {
-		argsStr += sc.r.handleContext(args[i], sc.Args[i].Context) + ", "
+		argStr, err := sc.r.handleContext(args[i], sc.Args[i].Context)
+		if err != nil {
+			return "", err
+		}
+		argsStr += argStr + ", "
 	}
 	argsStr = strings.TrimSuffix(argsStr, ", ")
 	return fmt.Sprintf("%s(%s)", sc.Name, argsStr), nil

@@ -29,8 +29,8 @@ func ExampleSyscall_Repr() {
 
 func ExampleResolver_Handle() {
 	r := syscallinfo.NewResolver(linux_386.SyscallTable)
-	r.Handle(syscallinfo.CTX_FD, func(n uint64) string {
-		return fmt.Sprintf("FD(%d)", n)
+	r.Handle(syscallinfo.CTX_FD, func(n uint64) (string, error) {
+		return fmt.Sprintf("FD(%d)", n), nil
 	})
 	sc, err := r.Syscall(3)
 	if err != nil {
