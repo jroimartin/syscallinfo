@@ -22,9 +22,9 @@ var checksResolution = []struct {
 		3,
 		"sys_read",
 		[]syscallinfo.Context{
-			syscallinfo.CTX_FD,
-			syscallinfo.CTX_NONE,
-			syscallinfo.CTX_NONE,
+			syscallinfo.CtxFD,
+			syscallinfo.CtxNone,
+			syscallinfo.CtxNone,
 		},
 		true,
 	},
@@ -188,7 +188,7 @@ var checkHandle = struct {
 
 func TestContextHandler_Handle(t *testing.T) {
 	ch := syscallinfo.ContextHandler{}
-	ch.Handle(syscallinfo.CTX_FD, func(n uint64) (string, error) {
+	ch.Handle(syscallinfo.CtxFD, func(n uint64) (string, error) {
 		return fmt.Sprintf("test-%d", n), nil
 	})
 

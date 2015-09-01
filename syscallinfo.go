@@ -13,7 +13,7 @@ import (
 
 // Initialize the package's DefaultContextHandler with default handlers.
 func init() {
-	Handle(CTX_FD, func(n uint64) (string, error) {
+	Handle(CtxFD, func(n uint64) (string, error) {
 		return fmt.Sprintf("%d", n), nil
 	})
 }
@@ -55,8 +55,10 @@ type Argument struct {
 type Context int
 
 const (
-	CTX_NONE Context = iota // Unknown context
-	CTX_FD                  // File descriptor
+	// CtxNone represents an Unknown context
+	CtxNone Context = iota
+	// CtxFD represents a File descriptor
+	CtxFD
 )
 
 // UnmarshalJSON implements JSON unmarshaling for context.
@@ -67,9 +69,9 @@ func (ctx *Context) UnmarshalJSON(data []byte) error {
 	}
 	switch s {
 	case "FD":
-		*ctx = CTX_FD
+		*ctx = CtxFD
 	default:
-		*ctx = CTX_NONE
+		*ctx = CtxNone
 	}
 	return nil
 }
@@ -164,7 +166,8 @@ func (scc *SyscallCall) SetContextHandler(ch ContextHandler) {
 type OutputOption int
 
 const (
-	OUT_RET OutputOption = 1 << iota
+	// OutRet makes the ret value to be printed.
+	OutRet OutputOption = 1 << iota
 )
 
 // Output returns a string with the representation of the call.
@@ -180,7 +183,7 @@ func (scc *SyscallCall) Output(opts OutputOption) (string, error) {
 	}
 	argsStr = strings.TrimSuffix(argsStr, ", ")
 	str += fmt.Sprintf("%s(%s)", scc.sc.Name, argsStr)
-	if opts&OUT_RET != 0 {
+	if opts&OutRet != 0 {
 		retStr, err := scc.handleContext(scc.ret, scc.sc.Context)
 		if err != nil {
 			return "", err
@@ -193,7 +196,7 @@ func (scc *SyscallCall) Output(opts OutputOption) (string, error) {
 // String returns a string with the representation of the call plus the return
 // value. An empty string is returned on error.
 func (scc *SyscallCall) String() string {
-	str, err := scc.Output(OUT_RET)
+	str, err := scc.Output(OutRet)
 	if err != nil {
 		return ""
 	}

@@ -28,7 +28,7 @@ func ExampleNewSyscallCall() {
 }
 
 func ExampleHandle() {
-	syscallinfo.Handle(syscallinfo.CTX_FD, func(n uint64) (string, error) {
+	syscallinfo.Handle(syscallinfo.CtxFD, func(n uint64) (string, error) {
 		return fmt.Sprintf("FD(%d)", n), nil
 	})
 
