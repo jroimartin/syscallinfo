@@ -30,7 +30,7 @@ type Syscall struct {
 	// Args is a slice containing all the syscall's argurments.
 	Args []Argument
 
-	// r is the resolver used to resolve this syscall
+	// r is the resolver used to resolve this syscall.
 	r Resolver
 }
 
@@ -114,7 +114,7 @@ func (r Resolver) SyscallByEntry(entry string) (Syscall, error) {
 	return Syscall{}, errors.New("unknown syscall")
 }
 
-// Handle assigns a HandlerFunc to a context
+// Handle assigns a HandlerFunc to a context.
 func (r Resolver) Handle(ctx Context, h HandlerFunc) {
 	r.handlerFuncs[ctx] = h
 }
