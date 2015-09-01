@@ -55,9 +55,9 @@ type Argument struct {
 type Context int
 
 const (
-	// CtxNone represents an Unknown context
+	// CtxNone represents an Unknown context.
 	CtxNone Context = iota
-	// CtxFD represents a File descriptor
+	// CtxFD represents a File descriptor.
 	CtxFD
 )
 
