@@ -205,7 +205,7 @@ func (scc *SyscallCall) String() string {
 
 // Syscall returns the syscall corresponding to the SyscallCall.
 func (scc *SyscallCall) Syscall() Syscall {
-	return scc.Syscall()
+	return scc.sc
 }
 
 // handleContext returns a string with the contextualized representation of the
