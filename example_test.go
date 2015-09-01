@@ -27,7 +27,7 @@ func ExampleNewSyscallCall() {
 	// read(1, 0x00000002, 0x00000003) = 0x00000004
 }
 
-func ExampleContextHandler_Handle() {
+func ExampleHandle() {
 	syscallinfo.Handle(syscallinfo.CTX_FD, func(n uint64) (string, error) {
 		return fmt.Sprintf("FD(%d)", n), nil
 	})
