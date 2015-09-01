@@ -154,6 +154,8 @@ func NewSyscallCall(sc Syscall, ret uint64, args ...uint64) (*SyscallCall, error
 	return scc, nil
 }
 
+// SetContextHandler allows to set a custom ContextHandler to a SyscallCall
+// object.
 func (scc *SyscallCall) SetContextHandler(ch ContextHandler) {
 	scc.ch = ch
 }
